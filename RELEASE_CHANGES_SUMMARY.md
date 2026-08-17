@@ -18,6 +18,9 @@
 - Added `.gitattributes` for text normalization and common binary-file handling without requiring Git LFS.
 - Completed private-GitHub pre-push checks for audit, tests, py_compile, large files, caches, raw artifacts, and credential-file candidates.
 - Updated release-audit tooling to allow the repository root `.git` directory while still rejecting nested Git directories.
+- Updated `.gitignore` and release-audit skip logic so normal local development directories such as `.venv/`, `venv/`, `.tox/`, `.nox/`, `.mypy_cache/`, `.ruff_cache/`, `build/`, `dist/`, and `*.egg-info/` are ignored.
+- Forced LF normalization for release text artifacts and regenerated bundle checksums so fresh clones pass `sha256sum -c CHECKSUMS.sha256`.
+- Added release-audit tests for ignored local virtualenvs, nested Git rejection, and `.env` rejection.
 
 ## Usability Added
 
@@ -31,11 +34,12 @@
 ## Validation
 
 - `python -m py_compile` on all staged Python files: passed.
-- `pytest --collect-only -q`: passed, 18 tests collected.
-- `pytest -q`: passed, 18 tests passed.
+- `pytest --collect-only -q`: passed, 21 tests collected.
+- `pytest -q`: passed, 21 tests passed.
 - `python scripts/audit_release.py`: passed with 0 findings.
 - `sha256sum -c CHECKSUMS.sha256` from `paper_artifacts/release_bundle/`: passed.
 - `find . -type f -size +25M`: passed, no files found.
+- Simulated in-repo `.venv/pyvenv.cfg` with a private-looking absolute path: audit and pytest passed; fake `.venv/` was removed.
 - Offline smoke, local example initialization, config validation, local corpus prep, and run summary commands passed using temporary output directories.
 
 ## Intentional Exclusions

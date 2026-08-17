@@ -22,7 +22,18 @@ SECRET_PATTERNS = {
 RAW_TEXT_DIR_NAMES = {"parsed_texts", "paper_texts", "parsed_full_texts", "full_texts"}
 RAW_LLM_NAMES = {"llm_calls.jsonl", "environment.txt"}
 RAW_LLM_DIR_NAMES = {"llm_raw_outputs", "llm_parsed_outputs", "prompts_runtime"}
-SKIP_DIR_NAMES = {".git", "__pycache__", ".pytest_cache"}
+RUNTIME_LOG_DIR_NAMES = {"logs"}
+LOCAL_DEV_DIR_NAMES = {
+    ".venv",
+    "venv",
+    ".tox",
+    ".nox",
+    ".pytest_cache",
+    ".mypy_cache",
+    ".ruff_cache",
+    "build",
+    "dist",
+}
 
 
 @dataclass
@@ -35,13 +46,27 @@ class Finding:
 def iter_paths(root: Path) -> Iterable[Path]:
     for path in root.rglob("*"):
         rel = path.relative_to(root)
-        if rel.parts == (".git",):
+        if rel.parts[0] == ".git":
             continue
-        if any(part in SKIP_DIR_NAMES for part in rel.parts):
-            if path.name in SKIP_DIR_NAMES:
-                yield path
+        if _inside_local_dev_dir(rel):
+            continue
+        if ".git" in rel.parts[:-1]:
+            continue
+        if path.name == ".git":
+            yield path
             continue
         yield path
+
+
+def _inside_local_dev_dir(rel: Path) -> bool:
+    for part in rel.parts:
+        if part in LOCAL_DEV_DIR_NAMES:
+            return True
+        if "pycache" in part.lower():
+            return True
+        if part.endswith(".egg-info"):
+            return True
+    return False
 
 
 def read_text_safely(path: Path) -> str:
@@ -67,8 +92,12 @@ def audit(root: Path, *, max_bytes: int = DEFAULT_MAX_BYTES) -> list[Finding]:
                 findings.append(Finding("parsed_full_text", rel, "parsed full-text directory name"))
             if path.name in RAW_LLM_DIR_NAMES:
                 findings.append(Finding("raw_llm", rel, "raw LLM output directory name"))
+            if path.name in RUNTIME_LOG_DIR_NAMES:
+                findings.append(Finding("runtime_logs", rel, "runtime log directory"))
             continue
 
+        if path.name == ".env" or (path.name.startswith(".env.") and path.name != ".env.example"):
+            findings.append(Finding("env_file", rel, "local environment file"))
         if path.name in RAW_LLM_NAMES:
             findings.append(Finding("raw_llm", rel, "runtime environment or LLM call log"))
         if path.suffix.lower() == ".pdf":

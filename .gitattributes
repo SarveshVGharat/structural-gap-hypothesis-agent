@@ -1,16 +1,16 @@
 * text=auto
 
-*.py text
-*.md text
-*.txt text
-*.yaml text
-*.yml text
-*.toml text
-*.json text
-*.jsonl text
-*.csv text
-*.tex text
-*.cff text
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.csv text eol=lf
+*.tex text eol=lf
+*.cff text eol=lf
 *.sh text eol=lf
 
 *.png binary

@@ -26,3 +26,28 @@ def test_no_raw_pdfs_or_parsed_full_text_dirs() -> None:
     parsed_names = {"parsed_texts", "paper_texts", "parsed_full_texts", "full_texts"}
     assert not [p for p in ROOT.rglob("*.pdf")]
     assert not [p for p in ROOT.rglob("*") if p.is_dir() and p.name in parsed_names]
+
+
+def test_audit_ignores_local_virtualenv_dirs(tmp_path: Path) -> None:
+    venv = tmp_path / ".venv"
+    venv.mkdir()
+    private_home = "/" + "users" + "/student/example/python"
+    (venv / "pyvenv.cfg").write_text(f"home = {private_home}\n", encoding="utf-8")
+
+    findings = audit(tmp_path)
+    assert findings == []
+
+
+def test_audit_rejects_nested_git_dirs(tmp_path: Path) -> None:
+    nested = tmp_path / "vendor" / ".git"
+    nested.mkdir(parents=True)
+
+    findings = audit(tmp_path)
+    assert any(finding.kind == "nested_git" for finding in findings)
+
+
+def test_audit_rejects_env_files(tmp_path: Path) -> None:
+    (tmp_path / ".env").write_text("PLACEHOLDER=1\n", encoding="utf-8")
+
+    findings = audit(tmp_path)
+    assert any(finding.kind == "env_file" for finding in findings)

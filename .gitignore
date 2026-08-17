@@ -1,8 +1,14 @@
 .env
 .env.*
 !.env.example
+.venv/
+venv/
+.tox/
+.nox/
 __pycache__/
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 *.pyc
 *.pyo
 *.egg-info/

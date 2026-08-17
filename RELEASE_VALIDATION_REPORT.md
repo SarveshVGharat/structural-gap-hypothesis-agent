@@ -1,6 +1,6 @@
 # Release Validation Report
 
-Status: PASS for the public staging metadata, artifact bundle, usability layer, external-user dry run, and private GitHub pre-push preparation.
+Status: PASS for the public staging metadata, artifact bundle, usability layer, external-user dry run, and post-clone release fix.
 
 ## Metadata and Licensing
 
@@ -9,8 +9,8 @@ Status: PASS for the public staging metadata, artifact bundle, usability layer, 
 - `paper_artifacts/README.md`: artifact license note and exclusion policy are present.
 - `CITATION.cff`: software metadata is present; final arXiv paper title, author list, DOI, repository URL, and arXiv identifier remain TODO placeholders.
 - `pyproject.toml`: package metadata, console script, classifiers, and placeholder project URLs are present.
-- `.gitignore`: release-safe ignore rules are present for caches, runtime outputs, raw PDFs/full texts, model artifacts, and credential files.
-- `.gitattributes`: text normalization and common binary-file markers are present; Git LFS is not required.
+- `.gitignore`: release-safe ignore rules are present for virtualenvs, caches, runtime outputs, raw PDFs/full texts, model artifacts, and credential files.
+- `.gitattributes`: LF normalization is enforced for release text artifacts, with common binary-file markers present; Git LFS is not required.
 
 ## Paper Artifact Bundle
 
@@ -18,7 +18,7 @@ Status: PASS for the public staging metadata, artifact bundle, usability layer, 
 - Bundle file count: 260 files.
 - Manifest rows: 260, with no MISSING rows.
 - Figure artifacts are not part of the current public artifact bundle.
-- `CHECKSUMS.sha256`: generated for 259 bundle files, excluding the checksum file itself, and verified with `sha256sum -c CHECKSUMS.sha256`.
+- `CHECKSUMS.sha256`: regenerated for 259 LF-normalized bundle files, excluding the checksum file itself, and verified with `sha256sum -c CHECKSUMS.sha256`.
 - `SECRET_LEAKAGE_CHECK.md`: passed with no findings.
 - Source-paper PDFs, parsed full texts, generated figure files, raw model responses, private logs, secrets, caches, and full run directories are excluded.
 
@@ -42,20 +42,20 @@ Model-backed SGHA stage examples in the docs were not executed because they requ
 ## Static and Test Checks
 
 - `python -m py_compile` on all staged Python files: passed.
-- `pytest --collect-only -q`: passed, 18 tests collected.
-- `pytest -q`: passed, 18 tests passed.
+- `pytest --collect-only -q`: passed, 21 tests collected.
+- `pytest -q`: passed, 21 tests passed.
 - `python scripts/audit_release.py`: passed with 0 findings.
 - Artifact bundle checksum verification: passed.
 - Large-file scan with `find . -type f -size +25M`: passed, no files found.
 - Cache/raw artifact scan: passed, no `__pycache__`, `.pytest_cache`, raw PDFs, parsed full-text directories, runtime logs, `.env` files, or nested Git directories found in the staging tree.
+- In-repository local virtualenv simulation: passed. A fake `.venv/pyvenv.cfg` with a private-looking absolute path was ignored by the release audit and tests, then removed.
 
-## Git Preparation
+## Git Preparation And Push
 
-- A fresh Git repository was initialized in the staging directory on branch `main` without importing original research history.
-- Release-ready files were staged for the initial commit after checking staged names and diff stats.
-- The staged set contains 388 files, including sanitized source, docs, tests, configs, prompts, schemas, and the curated artifact bundle.
-- The initial commit is pending local Git `user.name` and `user.email`; no author identity was invented during validation.
-- No remote push was performed during validation.
+- The staging directory is a Git repository on branch `main` with `origin` set for the public SGHA repository.
+- Release-audit tooling now skips normal local development directories while still rejecting nested Git directories and release-managed raw artifacts.
+- The checksum bundle was regenerated after LF normalization fixes.
+- The post-clone fix is validated and committed locally for GitHub push.
 
 ## Release Audit
 
