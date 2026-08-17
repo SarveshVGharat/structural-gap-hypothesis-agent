@@ -1,0 +1,5 @@
+method,n_domains,mean_rank_clarity_specificity,mean_rank_significance,mean_rank_novelty_potential,mean_rank_feasibility,mean_rank_evidence_grounding,mean_rank_formalizability,mean_rank_non_incrementality,mean_rank_actionability,mean_rank_low_term_soup,mean_rank_auditability_overall,mean_rank_pursuit_priority
+NATIVE_AI_SCIENTIST_V2,5,2.8,2.8,2.4,2.4,3.0,3.2,2.6,2.2,3.0,3.0,2.6
+QWEN_RAG,5,2.0,2.2,2.0,1.4,1.8,2.2,2.0,1.6,2.0,2.0,2.2
+SGHA_FULL,5,1.6,1.4,1.8,2.6,1.8,1.0,1.6,2.6,1.6,1.6,1.4
+SIMPLE_QWEN,5,3.6,3.6,3.8,3.6,3.4,3.6,3.8,3.6,3.4,3.4,3.8

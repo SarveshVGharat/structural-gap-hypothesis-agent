@@ -1,0 +1,22 @@
+output_root: ${SGHA_OUTPUT_ROOT:-./runs}
+dataset_root: ${SGHA_DATA_ROOT:-./data}
+model_cache_root: ${SGHA_MODEL_CACHE:-./models}
+query: "in-context learning robustness"
+max_results: 25
+
+retrieval:
+  enabled: true
+  sources:
+    - openreview
+  final_k: 25
+  use_embeddings: false
+  use_paper_search_mcp: false
+
+llm:
+  mock: false
+  base_url: ${SGHA_LLM_BASE_URL:-http://localhost:8000/v1}
+  model: ${SGHA_LLM_MODEL:-Qwen/Qwen3.5-9B}
+  api_key: ${SGHA_LLM_API_KEY:-EMPTY}
+
+verification:
+  skeptic_external_arxiv: false

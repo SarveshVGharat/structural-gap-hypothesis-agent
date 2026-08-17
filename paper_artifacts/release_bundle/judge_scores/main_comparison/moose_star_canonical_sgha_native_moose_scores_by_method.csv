@@ -1,0 +1,4 @@
+method,source_evaluation,n,mean_problem_definition_clarity_10,mean_technical_specificity_10,mean_well_posedness_10,mean_assumption_boundary_clarity_10,mean_formalizability_10,mean_nontriviality_10,mean_scope_control_10,mean_source_grounded_specificity_10,mean_ambiguity_hygiene_10,mean_overall_formulation_quality_10
+SGHA_FULL,sgha_vs_native_ai_scientist_v2_prompt_frozen_repair,75,6.7733,5.8933,5.7733,6.4533,5.5067,6.3867,5.3600,7.4267,7.6133,5.9867
+NATIVE_AI_SCIENTIST_V2,sgha_vs_native_ai_scientist_v2_prompt_frozen_repair,75,5.5867,4.7200,3.5333,3.6133,3.6800,5.2667,5.7333,5.1067,2.8133,4.5467
+MOOSE_STAR_PUBLIC_MODEL,sgha_vs_moose_star_public_model_formulation_only_judge,75,1.8533,2.5067,1.5200,1.3733,1.5067,2.8933,3.0667,3.7467,1.4800,2.0000

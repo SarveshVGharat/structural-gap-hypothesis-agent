@@ -1,0 +1,5 @@
+Synthetic example paper. This text is not copied from any real paper.
+
+Title: Tiny Retrieval Memory for Synthetic Classifiers
+
+We describe a mock retrieval module that stores three prototype examples for a toy classifier. Retrieval helps when the test point resembles a stored prototype, but the memory budget creates unstable behavior near class boundaries. The example suggests a tradeoff between retrieval refresh frequency and predictable calibration.

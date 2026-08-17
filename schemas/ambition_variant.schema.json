@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"AmbitionVariant","type":"object","required":["variant_id","source_formulation_id","problem_statement"],"properties":{"variant_id":{"type":"string"},"source_formulation_id":{"type":"string"},"problem_statement":{"type":"string"},"non_incrementality_rationale":{"type":"string"},"critic":{"type":"object"}}}

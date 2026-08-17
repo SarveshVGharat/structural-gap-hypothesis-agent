@@ -1,0 +1,6 @@
+judge_model,judge_model_slug,scores_written,raw_responses,parse_errors,exit_status,completed_15
+anthropic/claude-sonnet-4,anthropic_claude_sonnet_4,15,16,0,0,True
+openai/gpt-5.6-sol-pro,openai_gpt_5_6_sol_pro,15,15,0,0,True
+x-ai/grok-4.5,x_ai_grok_4_5,15,16,0,0,True
+moonshotai/kimi-k3,moonshotai_kimi_k3,10,10,0,interrupted_or_unknown,False
+google/gemini-3.6-flash,google_gemini_3_6_flash,0,0,0,not_started,False

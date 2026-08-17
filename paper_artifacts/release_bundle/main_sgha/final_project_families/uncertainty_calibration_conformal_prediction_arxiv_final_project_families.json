@@ -1,0 +1,1265 @@
+{
+  "families": [
+    {
+      "family_id": "family:04",
+      "family_title": "Calibrating Conformal Prediction Under Arbitrary Covariate Shift via Invariant Coverage Mechanisms",
+      "member_variant_ids": [
+        "var:10",
+        "var:11"
+      ],
+      "member_ranks": [
+        4,
+        7
+      ],
+      "representative_variant_id": "var:10",
+      "representative_title": "Calibrating Conformal Prediction Under Arbitrary Covariate Shift via Invariant Coverage Mechanisms",
+      "family_problem_statement": "Conformal prediction guarantees valid coverage under the i.i.d. assumption, which breaks catastrophically under dataset shift. Existing literature acknowledges this failure but lacks a rigorous framework to characterize the precise conditions under which coverage degrades or to construct methods that maintain validity without i.i.d. assumptions. The current gap is not merely a lack of benchmarks, but a missing theoretical characterization of the failure regime and a constructive mechanism for invariant coverage.",
+      "representative_problem_statement": "Conformal prediction guarantees valid coverage under the i.i.d. assumption, which breaks catastrophically under dataset shift. Existing literature acknowledges this failure but lacks a rigorous framework to characterize the precise conditions under which coverage degrades or to construct methods that maintain validity without i.i.d. assumptions. The current gap is not merely a lack of benchmarks, but a missing theoretical characterization of the failure regime and a constructive mechanism for invariant coverage.",
+      "proposal_style_abstract": "This project studies the fundamental limits of uncertainty quantification when the i.i.d. assumption is violated by arbitrary covariate shifts. The central question is how to characterize the boundary between regimes where standard conformal prediction fails and those where modified mechanisms can restore validity. A successful outcome would provide a rigorous impossibility boundary demonstrating which shift types are inherently incompatible with finite-sample coverage guarantees without additional structural assumptions. Furthermore, it proposes a constructive mechanism class based on distributionally robust optimization that ensures coverage validity by explicitly accounting for the worst-case shift within a defined ambiguity set, rather than relying on historical data averages. This work moves beyond empirical validation to establish a new evaluation class for robust uncertainty quantification.",
+      "theorem_target": "An impossibility theorem characterizing the necessary structural conditions (e.g., invariance) required to maintain coverage under arbitrary shifts.",
+      "algorithmic_target": "A distributionally robust calibration algorithm that minimizes coverage error over an ambiguity set of shifted distributions.",
+      "empirical_target": "A systematic evaluation of the proposed robust mechanism class against standard conformal methods across diverse shift types.",
+      "main_risk": "The derived ambiguity set for the distributionally robust mechanism may be too conservative, leading to vacuous coverage guarantees in practice.",
+      "falsification_condition": "Demonstration that no structural assumption (other than trivial ones) can guarantee coverage under arbitrary shifts, or empirical evidence that the proposed robust mechanism consistently fails to cover in realistic shift scenarios.",
+      "critic_reason": "The variant shifts the scientific object from building a validation benchmark (source) to characterizing the theoretical failure boundary and constructing invariant mechanisms (variant), representing a genuine non-incremental leap in scope and ambition. While the source evidence only supports the existence of the gap, the proposed contribution type is specific and not merely a relabeling of the validation task.",
+      "critic_quality_label": "STRONG_NON_INCREMENTAL",
+      "critic_non_incrementality_score": 0.95,
+      "critic_fake_ambition_risk": 0.1,
+      "critic_supported_by_source": "moderate",
+      "research_object": "Conformal prediction under arbitrary covariate shift",
+      "problem_class": "Robust Uncertainty Quantification under Distributional Shift",
+      "assumption_shift": "Relaxes the i.i.d. assumption to allow for arbitrary covariate shift, requiring a new structural condition for validity.",
+      "failure_boundary_or_mechanism": "Characterizes the boundary where exchangeability fails and coverage guarantees become invalid, identifying the specific shift characteristics that cause this.",
+      "constructive_or_evaluation_target": "A constructive mechanism class for robust calibration and a unifying explanation of failure modes via exchangeability breakdown.",
+      "source_verified_gaps": [
+        "gap:a45116748c5f1c8a"
+      ],
+      "source_direct_formulations": [
+        "direct:04"
+      ],
+      "supporting_papers": [
+        "2010.03039v2",
+        "2112.09196v2"
+      ],
+      "related_seed_papers": [],
+      "duplicate_status": "unique",
+      "merged_duplicate_variant_ids": [],
+      "main_risks": [
+        "Difficulty in formally proving tight bounds for complex, real-world shift types without restrictive assumptions.",
+        "The derived ambiguity set for the distributionally robust mechanism may be too conservative, leading to vacuous coverage guarantees in practice."
+      ],
+      "contribution_types": {
+        "impossibility_boundary": 2
+      },
+      "evidence_grounding": "moderate",
+      "non_incrementality": "strong",
+      "specificity": "strong",
+      "plausibility": "strong",
+      "domain_fit": "strong",
+      "quality_label": "A_STRONG",
+      "recommended_action": "READ_FIRST",
+      "downgrade_reasons": [],
+      "label_rationale": "A_STRONG: evidence=moderate, non_incrementality=strong, specificity=strong, plausibility=strong, domain_fit=strong \u2014 strong on every required axis, not a duplicate cluster.",
+      "label_inconsistency_warning": false,
+      "maybe_recoverable_as": null,
+      "family_rank": 1,
+      "formal_problem_formulation": {
+        "family_id": "family:04",
+        "representative_variant_id": "var:10",
+        "family_title": "Calibrating Conformal Prediction Under Arbitrary Covariate Shift via Invariant Coverage Mechanisms",
+        "plain_language_problem": "Standard conformal prediction methods guarantee valid uncertainty estimates only when data is independent and identically distributed (i.i.d.). When the data distribution shifts arbitrarily (covariate shift), these guarantees fail. The problem is to rigorously characterize the specific conditions under which this failure occurs (the impossibility boundary) and to construct a new class of algorithms that maintains valid coverage by explicitly accounting for the worst-case distributional shift within a defined ambiguity set.",
+        "formal_problem_statement": "The question is whether one can characterize the precise structural conditions on the covariate shift distribution that render standard exchangeability-based conformal prediction invalid, and if so, construct a distributionally robust calibration mechanism that guarantees coverage validity under arbitrary shifts by optimizing over an ambiguity set of possible shifted distributions.",
+        "mathematical_setup": {
+          "entities": [
+            "Training data distribution P_train",
+            "Test data distribution P_test",
+            "Ambiguity set A",
+            "Coverage guarantee function C",
+            "Shift operator S"
+          ],
+          "variables": [
+            {
+              "symbol": "P_train",
+              "meaning": "The probability distribution of the training data",
+              "type": "distribution",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "P_test",
+              "meaning": "The probability distribution of the test data under shift",
+              "type": "distribution",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "A",
+              "meaning": "The set of candidate distributions representing the worst-case shift",
+              "type": "set",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "C",
+              "meaning": "The coverage guarantee level (e.g., 1-alpha)",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "S",
+              "meaning": "The transformation mapping training distribution to test distribution",
+              "type": "function",
+              "source": "introduced for formalization"
+            }
+          ],
+          "data_or_observations": "Observed training samples drawn from P_train and test samples drawn from P_test.",
+          "feedback_or_measurement_model": "The feedback is binary: whether the true label falls within the predicted set. The measurement model is unclear regarding the exact statistical properties of the shift S.",
+          "decision_variables_or_outputs": "The choice of the ambiguity set A and the calibration threshold q.",
+          "objective": "Minimize the coverage error over the worst-case distribution in A while ensuring the coverage probability is at least C.",
+          "constraints": "The method must maintain validity for all distributions in the ambiguity set A.",
+          "success_criterion": "Derivation of an impossibility theorem defining the boundary where coverage fails, and construction of an algorithm where the coverage error is bounded by the size of the ambiguity set."
+        },
+        "assumptions": [
+          {
+            "name": "Exchangeability under i.i.d.",
+            "description": "Standard conformal prediction assumes data points are exchangeable.",
+            "status": "relaxed",
+            "source_evidence": [
+              "Conformal prediction guarantees valid coverage under the i.i.d. assumption, which breaks catastrophically under dataset shift."
+            ]
+          },
+          {
+            "name": "Existence of Ambiguity Set",
+            "description": "There exists a well-defined set of distributions A that captures the worst-case shift.",
+            "status": "kept",
+            "source_evidence": [
+              "explicitly accounting for the worst-case shift within a defined ambiguity set"
+            ]
+          },
+          {
+            "name": "Finite Sample Regime",
+            "description": "The analysis focuses on finite-sample coverage guarantees.",
+            "status": "kept",
+            "source_evidence": [
+              "inherently incompatible with finite-sample coverage guarantees"
+            ]
+          }
+        ],
+        "open_question": "What specific structural properties of the covariate shift S allow for the construction of a valid ambiguity set A that is not vacuous?",
+        "possible_result_types": {
+          "theorem": "An impossibility theorem characterizing the necessary structural conditions (e.g., invariance) required to maintain coverage under arbitrary shifts.",
+          "algorithm": "A distributionally robust calibration algorithm that minimizes coverage error over an ambiguity set of shifted distributions.",
+          "empirical_or_benchmark": "A systematic evaluation of the proposed robust mechanism class against standard conformal methods across diverse shift types."
+        },
+        "evaluation_protocol": "Systematic evaluation of the proposed robust mechanism class against standard conformal methods across diverse shift types to verify coverage validity.",
+        "ambiguity_flags": [
+          {
+            "term": "Arbitrary covariate shift",
+            "why_ambiguous": "The term 'arbitrary' implies no structure, but the proposed solution requires a defined ambiguity set, suggesting some structure is assumed or constructed.",
+            "what_user_must_define": "The specific class of distributions or the metric defining the distance between P_train and P_test."
+          },
+          {
+            "term": "Vacuous coverage guarantees",
+            "why_ambiguous": "This refers to a set A so large that the only valid prediction set is the entire space.",
+            "what_user_must_define": "The quantitative threshold for what constitutes a 'vacuous' set in the context of the ambiguity set construction."
+          },
+          {
+            "term": "boundary",
+            "why_ambiguous": "This term may hide multiple operational meanings in the source family.",
+            "what_user_must_define": "Specify the measurable object, boundary, or condition denoted by this term."
+          },
+          {
+            "term": "feedback_or_measurement_model",
+            "why_ambiguous": "The source evidence does not fully specify what is observed or measured.",
+            "what_user_must_define": "Define the observation channel, measurement process, or data collection protocol."
+          }
+        ],
+        "source_grounding": {
+          "source_verified_gaps": [
+            "gap:a45116748c5f1c8a"
+          ],
+          "supporting_papers": [
+            "2010.03039v2",
+            "2112.09196v2"
+          ],
+          "representative_formulation": "var:10",
+          "critic_reason": "The variant shifts the scientific object from building a validation benchmark (source) to characterizing the theoretical failure boundary and constructing invariant mechanisms (variant), representing a genuine non-incremental leap in scope and ambition. While the source evidence only supports the existence of the gap, the proposed contribution type is specific and not merely a relabeling of the validation task."
+        },
+        "formalization_confidence": "medium",
+        "formalization_risk": "The derived ambiguity set for the distributionally robust mechanism may be too conservative, leading to vacuous coverage guarantees in practice.",
+        "requires_human_definition": true,
+        "formalization_is_fallback": false,
+        "formalization_retry_used": false,
+        "formalization_parse_error": "",
+        "formalization_retry_error": ""
+      }
+    },
+    {
+      "family_id": "family:01",
+      "family_title": "Characterizing the Fundamental Limits of Data-Adaptive Uncertainty Calibration",
+      "member_variant_ids": [
+        "var:27"
+      ],
+      "member_ranks": [
+        1
+      ],
+      "representative_variant_id": "var:27",
+      "representative_title": "Characterizing the Fundamental Limits of Data-Adaptive Uncertainty Calibration",
+      "family_problem_statement": "Monte Carlo Dropout and similar stochastic approximation methods rely on fixed hyperparameters to estimate uncertainty, failing when training data distributions shift or contain outliers. Current literature treats the optimal dropout rate as a static parameter or a simple schedule, ignoring the theoretical constraints on how much data statistics can influence uncertainty calibration without compromising model integrity. This project investigates the fundamental boundary between data-adaptive uncertainty estimation and overfitting, asking how much a model's uncertainty can depend on training data statistics before the estimation becomes statistically impossible.",
+      "representative_problem_statement": "Monte Carlo Dropout and similar stochastic approximation methods rely on fixed hyperparameters to estimate uncertainty, failing when training data distributions shift or contain outliers. Current literature treats the optimal dropout rate as a static parameter or a simple schedule, ignoring the theoretical constraints on how much data statistics can influence uncertainty calibration without compromising model integrity. This project investigates the fundamental boundary between data-adaptive uncertainty estimation and overfitting, asking how much a model's uncertainty can depend on training data statistics before the estimation becomes statistically impossible.",
+      "proposal_style_abstract": "This project studies the theoretical limits of adaptive uncertainty calibration in deep neural networks, moving beyond empirical tuning of dropout rates to characterize the conditions under which data-dependent uncertainty estimates are valid. The central question is to identify the boundary between beneficial adaptation to data distribution shifts and the failure modes where adaptive mechanisms induce severe overfitting or calibration collapse. A successful outcome would establish a rigorous impossibility boundary or lower bound on the variance of uncertainty estimators that are conditioned on training data statistics, providing a principled framework for when adaptive methods are theoretically justified versus when they are inherently unstable. This work proposes a new evaluation protocol to expose failure regimes across a family of adaptive uncertainty methods, rather than validating a single algorithm.",
+      "theorem_target": "A necessary condition for the existence of a consistent uncertainty estimator that depends on training data statistics, showing that beyond a specific dependence on data moments, calibration error diverges.",
+      "algorithmic_target": "",
+      "empirical_target": "",
+      "main_risk": "The mathematical derivation of the impossibility boundary may be intractable for high-dimensional neural network architectures without simplifying assumptions that reduce practical relevance.",
+      "falsification_condition": "If a robust, consistent uncertainty estimator is found that depends heavily on training data statistics without violating the proposed theoretical bounds, the core hypothesis regarding the boundary is falsified.",
+      "critic_reason": "The variant successfully shifts from a specific engineering fix for MC-Dropout to a fundamental theoretical investigation of identifiability limits under distributional shift, moving beyond the source's narrow validation of adaptive schedules.",
+      "critic_quality_label": "STRONG_NON_INCREMENTAL",
+      "critic_non_incrementality_score": 0.95,
+      "critic_fake_ambition_risk": 0.0,
+      "critic_supported_by_source": "moderate",
+      "research_object": "Deep Neural Networks with Stochastic Approximation for Uncertainty Quantification",
+      "problem_class": "Fundamental limits of statistical learning under distributional shift and the identifiability of uncertainty in stochastic models.",
+      "assumption_shift": "Relaxes the assumption that uncertainty estimation requires fixed hyperparameters; instead, it characterizes the necessary conditions for any data-dependent estimator to exist.",
+      "failure_boundary_or_mechanism": "The phase transition point where the dependence of the uncertainty estimator on training data statistics causes the estimator to lose consistency or calibration properties.",
+      "constructive_or_evaluation_target": "A theoretical boundary defining the class of valid data-adaptive uncertainty estimators versus the class of invalid ones.",
+      "source_verified_gaps": [
+        "gap:22d6aa79790b1d2e"
+      ],
+      "source_direct_formulations": [
+        "direct:09"
+      ],
+      "supporting_papers": [
+        "2110.06427v1",
+        "2202.12369v2",
+        "2206.02152v2",
+        "2210.09909v1",
+        "2302.11874v1",
+        "2306.01189v1",
+        "2309.10586v1",
+        "2402.08383v1",
+        "2403.09228v1",
+        "2407.00616v1",
+        "2505.14803v2",
+        "2509.19417v3"
+      ],
+      "related_seed_papers": [],
+      "duplicate_status": "unique",
+      "merged_duplicate_variant_ids": [],
+      "main_risks": [
+        "The mathematical derivation of the impossibility boundary may be intractable for high-dimensional neural network architectures without simplifying assumptions that reduce practical relevance."
+      ],
+      "contribution_types": {
+        "impossibility_boundary": 1
+      },
+      "evidence_grounding": "moderate",
+      "non_incrementality": "strong",
+      "specificity": "strong",
+      "plausibility": "strong",
+      "domain_fit": "strong",
+      "quality_label": "A_STRONG",
+      "recommended_action": "READ_FIRST",
+      "downgrade_reasons": [],
+      "label_rationale": "A_STRONG: evidence=moderate, non_incrementality=strong, specificity=strong, plausibility=strong, domain_fit=strong \u2014 strong on every required axis, not a duplicate cluster.",
+      "label_inconsistency_warning": false,
+      "maybe_recoverable_as": null,
+      "family_rank": 2,
+      "formal_problem_formulation": {
+        "family_id": "family:01",
+        "representative_variant_id": "var:27",
+        "family_title": "Characterizing the Fundamental Limits of Data-Adaptive Uncertainty Calibration",
+        "plain_language_problem": "Monte Carlo Dropout and similar methods use fixed hyperparameters to estimate uncertainty, which fails when training data distributions shift. This project seeks to define the theoretical boundary where adapting these hyperparameters to training data statistics becomes statistically impossible due to overfitting or loss of calibration.",
+        "formal_problem_statement": "Let $\\mathcal{D}$ be a training dataset and $\\theta$ be the parameters of a Deep Neural Network with Stochastic Approximation. Let $\\hat{\\sigma}(\\mathcal{D})$ be an uncertainty estimator conditioned on the statistics of $\\mathcal{D}$. The problem is to characterize the set of functions $\\mathcal{F}_{\\text{valid}}$ such that for any $f \\in \\mathcal{F}_{\\text{valid}}$, the estimator $\\hat{\\\\sigma}$ maintains calibration properties under distributional shifts. Specifically, identify the dependence on data moments $\\mu(\\\\mathcal{D})$ beyond which the variance of $\\hat{\\sigma}$ diverges or the estimator loses consistency, establishing a necessary condition for the existence of a consistent data-adaptive uncertainty estimator.",
+        "mathematical_setup": {
+          "entities": [
+            "Deep Neural Network with Stochastic Approximation",
+            "Training Dataset",
+            "Uncertainty Estimator",
+            "Data Statistics",
+            "Calibration Error"
+          ],
+          "variables": [
+            {
+              "symbol": "$\\mathcal{D}$",
+              "meaning": "Training dataset used to condition the uncertainty estimator",
+              "type": "set",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "$\\theta$",
+              "meaning": "Parameters of the neural network model",
+              "type": "vector",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "$\\hat{\\sigma}$",
+              "meaning": "Uncertainty estimator function",
+              "type": "function",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "$\\mu(\\mathcal{D})$",
+              "meaning": "Statistics (moments) of the training data",
+              "type": "vector",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "$\\epsilon_{\\text{cal}}$",
+              "meaning": "Calibration error of the estimator",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "$\\mathcal{F}_{\\text{valid}}$",
+              "meaning": "Set of valid data-adaptive estimators",
+              "type": "set",
+              "source": "introduced for formalization"
+            }
+          ],
+          "data_or_observations": "The training dataset $\\mathcal{D}$ and its associated statistics $\\mu(\\mathcal{D})$.",
+          "feedback_or_measurement_model": "The feedback is the calibration error $\\epsilon_{\\text{cal}}$ and the variance of the estimator under distributional shifts. The model is unclear regarding the exact functional form of the divergence.",
+          "decision_variables_or_outputs": "The choice of the dependence function $\\hat{\\sigma}(\\mathcal{D})$ and the identification of the boundary condition.",
+          "objective": "To derive a necessary condition on the dependence of $\\hat{\\sigma}$ on $\\mu(\\mathcal{D})$ such that $\\lim_{\\text{shift}} \\epsilon_{\\text{cal}} < \\infty$.",
+          "constraints": "The estimator must not compromise model integrity (consistency) and must handle distributional shifts.",
+          "success_criterion": "Establishing a rigorous impossibility boundary or lower bound on the variance of uncertainty estimators conditioned on training data statistics."
+        },
+        "assumptions": [
+          {
+            "name": "Stochastic Approximation Validity",
+            "description": "The model relies on stochastic approximation methods (like MC-Dropout) to approximate uncertainty.",
+            "status": "kept",
+            "source_evidence": [
+              "Monte Carlo Dropout and similar stochastic approximation methods rely on fixed hyperparameters"
+            ]
+          },
+          {
+            "name": "Distributional Shift Existence",
+            "description": "The training data distribution may shift or contain outliers compared to the test distribution.",
+            "status": "kept",
+            "source_evidence": [
+              "failing when training data distributions shift or contain outliers"
+            ]
+          },
+          {
+            "name": "Fixed Hyperparameter Insufficiency",
+            "description": "Fixed hyperparameters are insufficient for robust uncertainty estimation under shift.",
+            "status": "relaxed",
+            "source_evidence": [
+              "Current literature treats the optimal dropout rate as a static parameter or a simple schedule, ignoring the theoretical constraints"
+            ]
+          },
+          {
+            "name": "Identifiability of Uncertainty",
+            "description": "Uncertainty is theoretically identifiable up to a certain dependence on data statistics.",
+            "status": "questioned",
+            "source_evidence": [
+              "asking how much a model's uncertainty can depend on training data statistics before the estimation becomes statistically impossible"
+            ]
+          }
+        ],
+        "open_question": "What is the specific functional form of the dependence on data moments $\\mu(\\mathcal{D})$ that causes the calibration error to diverge?",
+        "possible_result_types": {
+          "theorem": "A necessary condition for the existence of a consistent uncertainty estimator that depends on training data statistics, showing that beyond a specific dependence on data moments, calibration error diverges.",
+          "algorithm": "",
+          "empirical_or_benchmark": "A new evaluation protocol to expose failure regimes across a family of adaptive uncertainty methods."
+        },
+        "evaluation_protocol": "The question is whether a new evaluation protocol can be constructed to expose failure regimes across a family of adaptive uncertainty methods, rather than validating a single algorithm.",
+        "ambiguity_flags": [
+          {
+            "term": "Model Integrity",
+            "why_ambiguous": "The term is used qualitatively in the source text without a precise mathematical definition.",
+            "what_user_must_define": "A formal constraint or metric defining 'compromised model integrity'."
+          },
+          {
+            "term": "Statistically Impossible",
+            "why_ambiguous": "The threshold for 'impossibility' is not defined in terms of specific error bounds or sample complexity.",
+            "what_user_must_define": "The specific divergence criteria (e.g., infinite variance, non-vanishing bias) that constitute impossibility."
+          },
+          {
+            "term": "feedback_or_measurement_model",
+            "why_ambiguous": "The source evidence does not fully specify what is observed or measured.",
+            "what_user_must_define": "Define the observation channel, measurement process, or data collection protocol."
+          }
+        ],
+        "source_grounding": {
+          "source_verified_gaps": [
+            "gap:22d6aa79790b1d2e"
+          ],
+          "supporting_papers": [
+            "2110.06427v1",
+            "2202.12369v2",
+            "2206.02152v2",
+            "2210.09909v1",
+            "2302.11874v1",
+            "2306.01189v1",
+            "2309.10586v1",
+            "2402.08383v1",
+            "2403.09228v1",
+            "2407.00616v1",
+            "2505.14803v2",
+            "2509.19417v3"
+          ],
+          "representative_formulation": "var:27",
+          "critic_reason": "The variant successfully shifts from a specific engineering fix for MC-Dropout to a fundamental theoretical investigation of identifiability limits under distributional shift, moving beyond the source's"
+        },
+        "formalization_confidence": "medium",
+        "formalization_risk": "Some terms may remain under-specified until the source papers are read.",
+        "requires_human_definition": true,
+        "formalization_is_fallback": false,
+        "formalization_retry_used": false,
+        "formalization_parse_error": "",
+        "formalization_retry_error": ""
+      }
+    },
+    {
+      "family_id": "family:02",
+      "family_title": "Characterizing the Fundamental Limits of Calibration Under Extreme Non-Exchangeable Shifts",
+      "member_variant_ids": [
+        "var:15"
+      ],
+      "member_ranks": [
+        2
+      ],
+      "representative_variant_id": "var:15",
+      "representative_title": "Characterizing the Fundamental Limits of Calibration Under Extreme Non-Exchangeable Shifts",
+      "family_problem_statement": "Current federated conformal prediction frameworks rely on exchangeability assumptions that fail under extreme client heterogeneity. While existing literature identifies this fragility, it lacks a rigorous characterization of the boundary where coverage guarantees fundamentally collapse. This project moves beyond validating specific robustness techniques to establishing the theoretical limits of valid uncertainty quantification in non-exchangeable federated settings.",
+      "representative_problem_statement": "Current federated conformal prediction frameworks rely on exchangeability assumptions that fail under extreme client heterogeneity. While existing literature identifies this fragility, it lacks a rigorous characterization of the boundary where coverage guarantees fundamentally collapse. This project moves beyond validating specific robustness techniques to establishing the theoretical limits of valid uncertainty quantification in non-exchangeable federated settings.",
+      "proposal_style_abstract": "This project studies the fundamental boundaries of calibration validity in federated learning environments characterized by extreme non-exchangeable distribution shifts. The central question is to characterize the precise regime where standard conformal prediction guarantees become impossible to satisfy, regardless of the specific algorithmic instantiation. A successful outcome would provide a rigorous impossibility boundary and a failure regime analysis that explains why coverage degrades under specific structural violations of exchangeability. This work defines a new evaluation class for stress-testing uncertainty quantification methods, rather than merely benchmarking existing ones. By identifying the necessary conditions for validity, this research establishes a theoretical foundation for designing future methods that can operate safely in highly divergent distributed environments.",
+      "theorem_target": "Necessary and sufficient conditions for coverage validity under non-exchangeable shifts",
+      "algorithmic_target": "",
+      "empirical_target": "",
+      "main_risk": "High mathematical complexity in deriving tight bounds for non-exchangeable processes.",
+      "falsification_condition": "Discovery of a specific non-exchangeable setting where coverage remains valid without satisfying the proposed necessary conditions.",
+      "critic_reason": "The variant successfully shifts from a narrow validation of specific robustness techniques to a fundamental theoretical inquiry about the limits of calibration under non-exchangeability, which is explicitly supported by the source's identification of the missing stress-test gap.",
+      "critic_quality_label": "STRONG_NON_INCREMENTAL",
+      "critic_non_incrementality_score": 0.95,
+      "critic_fake_ambition_risk": 0.05,
+      "critic_supported_by_source": "strong",
+      "research_object": "Federated learning with extreme non-exchangeable client data distributions",
+      "problem_class": "Theoretical limits of uncertainty quantification under distributional shift",
+      "assumption_shift": "Removes reliance on specific algorithmic fixes to instead characterize the necessity of exchangeability-like conditions",
+      "failure_boundary_or_mechanism": "The precise boundary where coverage guarantees collapse due to non-exchangeability",
+      "constructive_or_evaluation_target": "A theoretical framework defining the failure regime of conformal prediction under non-exchangeability",
+      "source_verified_gaps": [
+        "gap:713adb8bca030296"
+      ],
+      "source_direct_formulations": [
+        "direct:05"
+      ],
+      "supporting_papers": [
+        "2305.17564v2"
+      ],
+      "related_seed_papers": [],
+      "duplicate_status": "unique",
+      "merged_duplicate_variant_ids": [],
+      "main_risks": [
+        "High mathematical complexity in deriving tight bounds for non-exchangeable processes."
+      ],
+      "contribution_types": {
+        "impossibility_boundary": 1
+      },
+      "evidence_grounding": "strong",
+      "non_incrementality": "strong",
+      "specificity": "strong",
+      "plausibility": "strong",
+      "domain_fit": "strong",
+      "quality_label": "A_STRONG",
+      "recommended_action": "READ_FIRST",
+      "downgrade_reasons": [],
+      "label_rationale": "A_STRONG: evidence=strong, non_incrementality=strong, specificity=strong, plausibility=strong, domain_fit=strong \u2014 strong on every required axis, not a duplicate cluster.",
+      "label_inconsistency_warning": false,
+      "maybe_recoverable_as": null,
+      "family_rank": 3,
+      "formal_problem_formulation": {
+        "family_id": "family:02",
+        "representative_variant_id": "var:15",
+        "family_title": "Characterizing the Fundamental Limits of Calibration Under Extreme Non-Exchangeable Shifts",
+        "plain_language_problem": "Standard federated conformal prediction methods assume data from different clients is exchangeable (statistically similar). In highly heterogeneous federated settings, this assumption often fails. This project seeks to mathematically define the exact boundary where these methods stop providing valid coverage guarantees (i.e., where the probability of the true label being in the prediction interval drops below the target level) due to extreme non-exchangeability.",
+        "formal_problem_statement": "Let $\\mathcal{D}$ be a collection of client data distributions $\\{D_i\\}_{i \\in \\mathcal{I}}$ in a federated setting. Let $\\mathcal{C}$ be a conformal prediction algorithm parameterized by a calibration set. The problem is to characterize the set of distributional configurations $\\mathcal{D}$ and shift magnitudes $\\delta$ such that the coverage probability $\\mathbb{P}(Y \\in \\hat{C}(X))$ falls strictly below the target level $\\alpha$, regardless of the specific instantiation of $\\mathcal{C}$. Specifically, we seek necessary and sufficient conditions on the dependence structure and marginal differences between $D_i$ that render the exchangeability assumption invalid for valid uncertainty quantification.",
+        "mathematical_setup": {
+          "entities": [
+            "Client data distributions",
+            "Conformal prediction algorithm",
+            "Coverage probability",
+            "Exchangeability condition",
+            "Distributional shift magnitude"
+          ],
+          "variables": [
+            {
+              "symbol": "$\\mathcal{D}$",
+              "meaning": "The set of all possible client data distributions in the federated environment",
+              "type": "set",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "$D_i$",
+              "meaning": "The data distribution associated with client $i$",
+              "type": "distribution",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "$\\mathcal{C}$",
+              "meaning": "A conformal prediction algorithm mapping inputs to prediction sets",
+              "type": "function",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "$\\hat{C}(X)$",
+              "meaning": "The prediction set output by algorithm $\\mathcal{C}$ for input $X$",
+              "type": "set",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "$\\alpha$",
+              "meaning": "The target coverage level (e.g., 0.95)",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "$\\mathbb{P}(Y \\in \\hat{C}(X))$",
+              "meaning": "The actual coverage probability under the joint distribution of data and labels",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "$\\delta$",
+              "meaning": "A measure of the magnitude of non-exchangeable shift between clients",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            }
+          ],
+          "data_or_observations": "Samples drawn from the joint distribution of client data and labels, assumed to be non-exchangeable across clients.",
+          "feedback_or_measurement_model": "The feedback is the empirical coverage rate measured over a test set. The measurement model is unclear regarding the specific metric used to quantify 'extreme' non-exchangeability.",
+          "decision_variables_or_outputs": "The theoretical boundary conditions (necessary and sufficient conditions) defining the failure regime.",
+          "objective": "To derive the set of conditions $S$ such that for all $\\mathcal{D} \\in S$, $\\inf_{\\mathcal{C}} \\mathbb{P}(Y \\in \\hat{C}(X)) < \\alpha$.",
+          "constraints": "The analysis must hold for any conformal prediction algorithm $\\mathcal{C}$, not just specific robust variants.",
+          "success_criterion": "Derivation of a rigorous impossibility boundary theorem stating the precise structural violations of exchangeability that guarantee coverage collapse."
+        },
+        "assumptions": [
+          {
+            "name": "Federated Setting",
+            "description": "Data is distributed across multiple clients $i \\in \\mathcal{I}$.",
+            "status": "kept",
+            "source_evidence": [
+              "Current federated conformal prediction frameworks rely on exchangeability assumptions that fail under extreme client heterogeneity."
+            ]
+          },
+          {
+            "name": "Non-Exchangeability",
+            "description": "The joint distribution of data across clients violates the exchangeability assumption required for standard conformal prediction.",
+            "status": "kept",
+            "source_evidence": [
+              "Current federated conformal prediction frameworks rely on exchangeability assumptions that fail under extreme client heterogeneity."
+            ]
+          },
+          {
+            "name": "Existence of a Failure Boundary",
+            "description": "There exists a precise boundary where coverage guarantees fundamentally collapse.",
+            "status": "kept",
+            "source_evidence": [
+              "This project moves beyond validating specific robustness techniques to establishing the theoretical limits of valid uncertainty quantification in non-exchangeable federated settings."
+            ]
+          },
+          {
+            "name": "Algorithm Agnosticism",
+            "description": "The characterization applies to the class of conformal predictors generally, not specific algorithmic fixes.",
+            "status": "kept",
+            "source_evidence": [
+              "This project moves beyond validating specific robustness techniques to establishing the theoretical limits..."
+            ]
+          }
+        ],
+        "open_question": "What is the precise mathematical characterization of the 'failure regime' where coverage guarantees collapse due to non-exchangeability, and what are the necessary and sufficient conditions for validity?",
+        "possible_result_types": {
+          "theorem": "Necessary and sufficient conditions for coverage validity under non-exchangeable shifts.",
+          "algorithm": "",
+          "empirical_or_benchmark": "A new evaluation class for stress-testing uncertainty quantification methods."
+        },
+        "evaluation_protocol": "Theoretical derivation of bounds and impossibility results, potentially validated via simulation of extreme non-exchangeable distributions.",
+        "ambiguity_flags": [
+          {
+            "term": "Extreme non-exchangeable shifts",
+            "why_ambiguous": "The term 'extreme' is qualitative and lacks a precise mathematical definition in the source evidence.",
+            "what_user_must_define": "A quantitative threshold or structural condition defining 'extreme' non-exchangeability."
+          },
+          {
+            "term": "Coverage guarantees collapse",
+            "why_ambiguous": "The degree of collapse is not specified (e.g., dropping below $\\alpha$, or dropping to zero).",
+            "what_user_must_define": "The specific condition for 'collapse' (e.g., $\\mathbb{P} < \\alpha - \\epsilon$)."
+          },
+          {
+            "term": "boundary",
+            "why_ambiguous": "This term may hide multiple operational meanings in the source family.",
+            "what_user_must_define": "Specify the measurable object, boundary, or condition denoted by this term."
+          },
+          {
+            "term": "feedback_or_measurement_model",
+            "why_ambiguous": "The source evidence does not fully specify what is observed or measured.",
+            "what_user_must_define": "Define the observation channel, measurement process, or data collection protocol."
+          }
+        ],
+        "source_grounding": {
+          "source_verified_gaps": [
+            "gap:713adb8bca030296"
+          ],
+          "supporting_papers": [
+            "2305.17564v2"
+          ],
+          "representative_formulation": "var:15",
+          "critic_reason": "The variant successfully shifts from a narrow validation of specific robustness techniques to a fundamental theoretical inquiry about the limits of calibration under non-exchangeability, which is explicitly supported by the source's identification of the missing stress-test gap."
+        },
+        "formalization_confidence": "medium",
+        "formalization_risk": "High mathematical complexity in deriving tight bounds for non-exchangeable processes; the feedback/measurement model for 'collapse' is under-specified.",
+        "requires_human_definition": true,
+        "formalization_is_fallback": false,
+        "formalization_retry_used": false,
+        "formalization_parse_error": "",
+        "formalization_retry_error": ""
+      }
+    },
+    {
+      "family_id": "family:05",
+      "family_title": "Characterizing Calibration Collapse in Federated Conformal Prediction Under Arbitrary Heterogeneity",
+      "member_variant_ids": [
+        "var:03"
+      ],
+      "member_ranks": [
+        5
+      ],
+      "representative_variant_id": "var:03",
+      "representative_title": "Characterizing Calibration Collapse in Federated Conformal Prediction Under Arbitrary Heterogeneity",
+      "family_problem_statement": "Standard conformal prediction relies on exchangeability, an assumption shattered in federated learning by non-IID data. While Federated Conformal Predictors (FCP) have been proposed to mitigate this, existing literature lacks a rigorous characterization of the failure regimes where calibration guarantees catastrophically break down. This project moves beyond empirical validation to define the precise structural conditions under which FCP fails and whether robustness can be theoretically guaranteed without exchangeability.",
+      "representative_problem_statement": "Standard conformal prediction relies on exchangeability, an assumption shattered in federated learning by non-IID data. While Federated Conformal Predictors (FCP) have been proposed to mitigate this, existing literature lacks a rigorous characterization of the failure regimes where calibration guarantees catastrophically break down. This project moves beyond empirical validation to define the precise structural conditions under which FCP fails and whether robustness can be theoretically guaranteed without exchangeability.",
+      "proposal_style_abstract": "This project studies the fundamental limits of uncertainty quantification in distributed learning systems where data distributions are arbitrarily heterogeneous. The central question is whether the violation of exchangeability in federated settings induces a phase transition in calibration accuracy, leading to a specific class of 'calibration collapse' that current methods cannot recover from. A successful outcome would establish a rigorous impossibility boundary for standard federated conformal predictors under non-exchangeable data, identifying the exact divergence between local and global coverage guarantees. Furthermore, this work proposes a constructive alternative at the evaluation class level: a new benchmark suite designed to expose failure modes across a family of conformal prediction mechanisms, rather than testing a single named method. By characterizing the mechanism of failure, the project aims to provide a unifying explanation for why standard approaches degrade in realistic federated environments, thereby shifting the scientific object from method validation to the characterization of robustness boundaries in distributed statistical learning.",
+      "theorem_target": "Necessary and sufficient conditions for the existence of valid coverage guarantees in federated conformal prediction without exchangeability",
+      "algorithmic_target": "",
+      "empirical_target": "A benchmark suite exposing failure modes across a family of conformal prediction mechanisms",
+      "main_risk": "Theoretical analysis of calibration collapse may require unrealistic assumptions about the nature of the data shift if the failure mechanism is too complex to characterize analytically.",
+      "falsification_condition": "If a general theorem can be proven that guarantees calibration for all conformal methods under broad classes of non-IID shifts, the impossibility boundary claim would be falsified.",
+      "critic_reason": "The variant shifts the objective from empirical validation of existing methods to defining the theoretical failure regimes and impossibility boundaries of the class, which is a distinct scientific leap beyond the source's gap.",
+      "critic_quality_label": "STRONG_NON_INCREMENTAL",
+      "critic_non_incrementality_score": 0.9,
+      "critic_fake_ambition_risk": 0.0,
+      "critic_supported_by_source": "moderate",
+      "research_object": "Federated learning with arbitrary non-IID (heterogeneous) data distributions",
+      "problem_class": "Robustness of statistical inference guarantees under distributional shift in distributed systems",
+      "assumption_shift": "Removal of the exchangeability assumption and characterization of its necessity for valid coverage",
+      "failure_boundary_or_mechanism": "Calibration collapse: the regime where local non-IID shifts cause global coverage guarantees to diverge significantly from nominal levels",
+      "constructive_or_evaluation_target": "A general evaluation protocol (benchmark suite) for the class of conformal prediction methods under distributional shift",
+      "source_verified_gaps": [
+        "gap:3f5fc34e43752eef"
+      ],
+      "source_direct_formulations": [
+        "direct:01"
+      ],
+      "supporting_papers": [
+        "2305.17564v2",
+        "2502.05709v3",
+        "2507.11739v1"
+      ],
+      "related_seed_papers": [],
+      "duplicate_status": "unique",
+      "merged_duplicate_variant_ids": [],
+      "main_risks": [
+        "Theoretical analysis of calibration collapse may require unrealistic assumptions about the nature of the data shift if the failure mechanism is too complex to characterize analytically."
+      ],
+      "contribution_types": {
+        "impossibility_boundary": 1
+      },
+      "evidence_grounding": "moderate",
+      "non_incrementality": "strong",
+      "specificity": "strong",
+      "plausibility": "strong",
+      "domain_fit": "strong",
+      "quality_label": "A_STRONG",
+      "recommended_action": "READ_FIRST",
+      "downgrade_reasons": [],
+      "label_rationale": "A_STRONG: evidence=moderate, non_incrementality=strong, specificity=strong, plausibility=strong, domain_fit=strong \u2014 strong on every required axis, not a duplicate cluster.",
+      "label_inconsistency_warning": false,
+      "maybe_recoverable_as": null,
+      "family_rank": 4,
+      "formal_problem_formulation": {
+        "family_id": "family:05",
+        "representative_variant_id": "var:03",
+        "family_title": "Characterizing Calibration Collapse in Federated Conformal Prediction Under Arbitrary Heterogeneity",
+        "plain_language_problem": "Standard conformal prediction requires data to be exchangeable (order-independent), but federated learning often involves non-IID data where this assumption fails. This project seeks to mathematically define the specific conditions under which Federated Conformal Predictors (FCP) lose their ability to provide valid coverage guarantees (calibration collapse) and to establish whether valid inference is theoretically possible without exchangeability.",
+        "formal_problem_statement": "Let D be a federated learning environment composed of clients C with local data distributions P_i. Let CP be a class of conformal prediction mechanisms. The problem is to characterize the set of distributional shifts {P_i} for which the coverage guarantee of any CP in the class diverges from the nominal level alpha. Specifically, determine necessary and sufficient conditions on the heterogeneity of {P_i} such that sup_{P_i} |Coverage(CP, P_i) - alpha| > epsilon for some epsilon > 0, and identify if there exists a CP that maintains coverage under arbitrary non-exchangeable shifts.",
+        "mathematical_setup": {
+          "entities": [
+            "Federated Learning Environment",
+            "Local Data Distributions",
+            "Conformal Prediction Mechanism",
+            "Coverage Guarantee",
+            "Nominal Level"
+          ],
+          "variables": [
+            {
+              "symbol": "C",
+              "meaning": "Set of clients in the federated system",
+              "type": "set",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "P_i",
+              "meaning": "Data distribution at client i",
+              "type": "distribution",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "CP",
+              "meaning": "Class of conformal prediction mechanisms",
+              "type": "set",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "alpha",
+              "meaning": "Nominal coverage level",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "Coverage(CP, P_i)",
+              "meaning": "Actual coverage probability of mechanism CP under distribution P_i",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "epsilon",
+              "meaning": "Threshold for calibration collapse divergence",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            }
+          ],
+          "data_or_observations": "Observed predictions and labels from the federated system under varying data heterogeneity regimes.",
+          "feedback_or_measurement_model": "The coverage guarantee is measured as the empirical frequency of true labels falling within the predicted sets over a validation set drawn from the joint distribution of clients.",
+          "decision_variables_or_outputs": "The structural conditions defining the failure regime and the existence of a robust mechanism.",
+          "objective": "To derive necessary and sufficient conditions for the existence of valid coverage guarantees in federated conformal prediction without exchangeability.",
+          "constraints": "The analysis must hold for arbitrary non-IID (heterogeneous) data distributions.",
+          "success_criterion": "Establishing a rigorous impossibility boundary or a constructive proof of robustness for the class of conformal predictors under non-exchangeable data."
+        },
+        "assumptions": [
+          {
+            "name": "Exchangeability",
+            "description": "The assumption that data points are exchangeable, which is standard for conformal prediction but violated in federated settings.",
+            "status": "removed",
+            "source_evidence": [
+              "Standard conformal prediction relies on exchangeability, an assumption shattered in federated learning by non-IID data."
+            ]
+          },
+          {
+            "name": "Arbitrary Heterogeneity",
+            "description": "The data distributions across clients can be arbitrarily different (non-IID).",
+            "status": "kept",
+            "source_evidence": [
+              "Federated learning with arbitrary non-IID (heterogeneous) data distributions"
+            ]
+          },
+          {
+            "name": "Existence of Valid Coverage",
+            "description": "The hypothesis that valid coverage might be achievable without exchangeability.",
+            "status": "questioned",
+            "source_evidence": [
+              "whether robustness can be theoretically guaranteed without exchangeability"
+            ]
+          }
+        ],
+        "open_question": "Does a phase transition exist in calibration accuracy where local non-IID shifts cause global coverage guarantees to diverge significantly from nominal levels, leading to a 'calibration collapse' that current methods cannot recover from?",
+        "possible_result_types": {
+          "theorem": "Necessary and sufficient conditions for the existence of valid coverage guarantees in federated conformal prediction without exchangeability.",
+          "algorithm": "",
+          "empirical_or_benchmark": "A benchmark suite exposing failure modes across a family of conformal prediction mechanisms."
+        },
+        "evaluation_protocol": "A benchmark suite designed to expose failure modes across a family of conformal prediction mechanisms, rather than testing a single named method, to characterize the mechanism of failure.",
+        "ambiguity_flags": [
+          {
+            "term": "Calibration Collapse",
+            "why_ambiguous": "The term is used descriptively in the source to denote a regime of failure but lacks a precise mathematical definition in the provided evidence.",
+            "what_user_must_define": "A quantitative threshold or structural condition that defines the onset of 'calibration collapse'."
+          },
+          {
+            "term": "Robustness",
+            "why_ambiguous": "The source mentions 'robustness' generally but does not specify the metric (e.g., coverage lower bound, calibration error bound).",
+            "what_user_must_define": "The specific metric or bound used to quantify robustness in the absence of exchangeability."
+          },
+          {
+            "term": "robust",
+            "why_ambiguous": "This term may hide multiple operational meanings in the source family.",
+            "what_user_must_define": "Specify the measurable object, boundary, or condition denoted by this term."
+          }
+        ],
+        "source_grounding": {
+          "source_verified_gaps": [
+            "gap:3f5fc34e43752eef"
+          ],
+          "supporting_papers": [
+            "2305.17564v2",
+            "2502.05709v3",
+            "2507.11739v1"
+          ],
+          "representative_formulation": "Characterizing Calibration Collapse in Federated Conformal Prediction Under Arbitrary Heterogeneity",
+          "critic_reason": "The variant shifts the objective from empirical validation of existing methods to defining the theoretical failure regimes and impossibility boundaries of the class, which is a distinct scientific leap beyond the source's gap."
+        },
+        "formalization_confidence": "medium",
+        "formalization_risk": "Theoretical analysis of calibration collapse may require unrealistic assumptions about the nature of the data shift if the failure mechanism is too complex to characterize analytically.",
+        "requires_human_definition": true,
+        "formalization_is_fallback": false,
+        "formalization_retry_used": false,
+        "formalization_parse_error": "",
+        "formalization_retry_error": ""
+      }
+    },
+    {
+      "family_id": "family:06",
+      "family_title": "Calibration-Optimal Single-Pass Uncertainty via Structural Mismatch Bounds",
+      "member_variant_ids": [
+        "var:31"
+      ],
+      "member_ranks": [
+        8
+      ],
+      "representative_variant_id": "var:31",
+      "representative_title": "Calibration-Optimal Single-Pass Uncertainty via Structural Mismatch Bounds",
+      "family_problem_statement": "Deep ensembles provide robust uncertainty quantification but incur prohibitive inference costs due to multiple forward passes. Existing single-pass approximations often fail to maintain the calibration guarantees inherent to ensemble averaging because they lack a theoretical mechanism to bridge the gap between single-pass estimates and multi-pass ground truth. This project investigates the fundamental limits of single-pass uncertainty estimation under structural mismatch between the estimator and the ensemble distribution.",
+      "representative_problem_statement": "Deep ensembles provide robust uncertainty quantification but incur prohibitive inference costs due to multiple forward passes. Existing single-pass approximations often fail to maintain the calibration guarantees inherent to ensemble averaging because they lack a theoretical mechanism to bridge the gap between single-pass estimates and multi-pass ground truth. This project investigates the fundamental limits of single-pass uncertainty estimation under structural mismatch between the estimator and the ensemble distribution.",
+      "proposal_style_abstract": "This project studies the theoretical boundary between single-pass inference and ensemble-level uncertainty calibration in deep learning systems. The central question is whether a constructive method class can achieve ensemble-equivalent calibration without multiple forward passes, or if a fundamental structural mismatch necessitates a trade-off. A successful outcome would define a precise failure regime where single-pass methods inevitably degrade and propose a new algorithmic framework that operates at the boundary of this regime. The work moves beyond empirical validation to characterize the identifiability limits of uncertainty estimation under computational constraints.",
+      "theorem_target": "A lower bound on the calibration error of any single-pass estimator relative to the ensemble distribution under specific structural mismatch conditions.",
+      "algorithmic_target": "",
+      "empirical_target": "",
+      "main_risk": "The theoretical lower bound may be too loose to be practically useful for designing specific algorithms.",
+      "falsification_condition": "Demonstration that single-pass methods can achieve ensemble-level calibration without satisfying the proposed structural mismatch conditions.",
+      "critic_reason": "The variant shifts from a practical calibration framework to a fundamental theoretical investigation of structural mismatch bounds, moving beyond the source's narrow validation of existing methods to define the limits of single-pass estimation.",
+      "critic_quality_label": "STRONG_NON_INCREMENTAL",
+      "critic_non_incrementality_score": 0.85,
+      "critic_fake_ambition_risk": 0.0,
+      "critic_supported_by_source": "moderate",
+      "research_object": "Deep Learning Uncertainty Quantification",
+      "problem_class": "Computational-Statistical Trade-offs in Probabilistic Deep Learning",
+      "assumption_shift": "Relaxes the assumption that single-pass methods can be universally tuned to match ensemble performance without structural changes; instead characterizes the necessity of structural alignment.",
+      "failure_boundary_or_mechanism": "The phase transition where the structural complexity of the uncertainty manifold exceeds the representational capacity of a single forward pass.",
+      "constructive_or_evaluation_target": "A method class for 'Calibration-Optimal Single-Pass Estimators' defined by their adherence to derived structural bounds.",
+      "source_verified_gaps": [
+        "gap:233bb1623d19f74e"
+      ],
+      "source_direct_formulations": [
+        "direct:11"
+      ],
+      "supporting_papers": [
+        "2202.12369v2",
+        "2204.13963v1",
+        "2210.09909v1",
+        "2302.04019v1",
+        "2308.09647v2",
+        "2402.08383v1",
+        "2403.07741v2",
+        "2403.09228v1",
+        "2405.20550v2",
+        "2407.00616v1",
+        "2502.03982v1",
+        "2507.07511v2",
+        "2508.07556v2",
+        "2512.12341v1",
+        "2604.01305v1",
+        "2606.09923v1"
+      ],
+      "related_seed_papers": [],
+      "duplicate_status": "unique",
+      "merged_duplicate_variant_ids": [],
+      "main_risks": [
+        "The theoretical lower bound may be too loose to be practically useful for designing specific algorithms."
+      ],
+      "contribution_types": {
+        "impossibility_boundary": 1
+      },
+      "evidence_grounding": "moderate",
+      "non_incrementality": "strong",
+      "specificity": "strong",
+      "plausibility": "strong",
+      "domain_fit": "strong",
+      "quality_label": "A_STRONG",
+      "recommended_action": "READ_FIRST",
+      "downgrade_reasons": [],
+      "label_rationale": "A_STRONG: evidence=moderate, non_incrementality=strong, specificity=strong, plausibility=strong, domain_fit=strong \u2014 strong on every required axis, not a duplicate cluster.",
+      "label_inconsistency_warning": false,
+      "maybe_recoverable_as": null,
+      "family_rank": 5,
+      "formal_problem_formulation": {
+        "family_id": "family:06",
+        "representative_variant_id": "var:31",
+        "family_title": "Calibration-Optimal Single-Pass Uncertainty via Structural Mismatch Bounds",
+        "plain_language_problem": "Deep ensembles provide robust uncertainty estimates but require multiple forward passes, making them computationally expensive. Single-pass methods are cheaper but often lack the calibration guarantees of ensembles. This project seeks to determine the fundamental theoretical limits of single-pass estimation by characterizing the 'structural mismatch' between a single forward pass and the ensemble distribution, specifically identifying conditions under which single-pass methods inevitably fail to match ensemble calibration.",
+        "formal_problem_statement": "Let $\\mathcal{D}$ be a data distribution and $\\mathcal{E}$ be an ensemble of $K$ models. Let $\\pi_{\\mathcal{E}}$ denote the ensemble distribution over predictions and $\\pi_{SP}$ denote a single-pass estimator distribution. The problem is to characterize the set of structural mismatches $\\Delta(\\pi_{SP}, \\pi_{\\\\mathcal{E}})$ such that the calibration error $\\mathcal{C}(\\pi_{SP})$ is bounded below by a function of $\\Delta$. Specifically, determine if there exists a constructive method class where $\\mathcal{C}(\\pi_{SP}) \\approx \\mathcal{C}(\\pi_{\\mathcal{E}})$ without multiple passes, or if a phase transition exists where $\\mathcal{C}(\\pi_{SP})$ diverges from $\\mathcal{C}(\\pi_{\\mathcal{E}})$ as the structural complexity of the uncertainty manifold exceeds the representational capacity of a single forward pass.",
+        "mathematical_setup": {
+          "entities": [
+            "Data distribution $\\mathcal{D}$",
+            "Ensemble distribution $\\pi_{\\mathcal{E}}$",
+            "Single-pass estimator distribution $\\pi_{SP}$",
+            "Structural mismatch $\\Delta$",
+            "Calibration error $\\mathcal{C}$",
+            "Uncertainty manifold $\\mathcal{M}$"
+          ],
+          "variables": [
+            {
+              "symbol": "$\\mathcal{D}$",
+              "meaning": "The underlying probability distribution of data points",
+              "type": "distribution",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "$\\pi_{\\mathcal{E}}$",
+              "meaning": "The joint distribution of predictions generated by the ensemble of models",
+              "type": "distribution",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "$\\pi_{SP}$",
+              "meaning": "The distribution of predictions generated by a single-pass estimator",
+              "type": "distribution",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "$\\Delta$",
+              "meaning": "The structural mismatch between the single-pass estimator and the ensemble distribution",
+              "type": "other",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "$\\mathcal{C}(\\pi)$",
+              "meaning": "The calibration error of a distribution $\\pi$ relative to the true labels",
+              "type": "scalar",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "$\\mathcal{M}$",
+              "meaning": "The uncertainty manifold representing the space of possible uncertainty distributions",
+              "type": "set",
+              "source": "introduced for formalization"
+            }
+          ],
+          "data_or_observations": "Observed predictions from the single-pass estimator $\\pi_{SP}$ and the ensemble $\\pi_{\\mathcal{E}}$ on samples from $\\mathcal{D}$.",
+          "feedback_or_measurement_model": "The calibration error $\\mathcal{C}$ is measured as the deviation between predicted confidence and empirical accuracy. The feedback model is unclear regarding how $\\mathcal{C}$ explicitly depends on $\\Delta$ without empirical specification.",
+          "decision_variables_or_outputs": "The choice of the single-pass estimator architecture and parameters to minimize $\\mathcal{C}(\\pi_{SP})$ subject to computational constraints.",
+          "objective": "To derive a lower bound on $\\mathcal{C}(\\pi_{SP})$ as a function of $\\Delta(\\pi_{SP}, \\pi_{\\\\mathcal{E}})$ and to identify the boundary conditions where $\\mathcal{C}(\\pi_{SP})$ becomes unacceptably large.",
+          "constraints": "The estimator must operate with a single forward pass (computational constraint).",
+          "success_criterion": "Derivation of a non-trivial lower bound on calibration error under structural mismatch, or identification of a specific algorithmic framework that achieves ensemble-equivalent calibration within the derived boundary."
+        },
+        "assumptions": [
+          {
+            "name": "Ensemble Calibration",
+            "description": "The ensemble distribution $\\pi_{\\mathcal{E}}$ is assumed to possess robust calibration guarantees inherent to ensemble averaging.",
+            "status": "kept",
+            "source_evidence": [
+              "Deep ensembles provide robust uncertainty quantification but incur prohibitive inference costs due to multiple forward passes."
+            ]
+          },
+          {
+            "name": "Structural Mismatch Necessity",
+            "description": "The assumption that single-pass methods can be universally tuned to match ensemble performance without structural changes is relaxed; instead, structural alignment is characterized as necessary.",
+            "status": "relaxed",
+            "source_evidence": [
+              "Relaxes the assumption that single-pass methods can be universally tuned to match ensemble performance without structural changes; instead characterizes the necessity of structural alignment."
+            ]
+          },
+          {
+            "name": "Representational Capacity Limit",
+            "description": "There exists a phase transition where the structural complexity of the uncertainty manifold exceeds the representational capacity of a single forward pass.",
+            "status": "kept",
+            "source_evidence": [
+              "The phase transition where the structural complexity of the uncertainty manifold exceeds the representational capacity of a single forward pass."
+            ]
+          }
+        ],
+        "open_question": "Does a constructive method class exist that achieves ensemble-equivalent calibration without multiple forward passes, or is a fundamental structural mismatch necessitating a trade-off inevitable?",
+        "possible_result_types": {
+          "theorem": "A lower bound on the calibration error of any single-pass estimator relative to the ensemble distribution under specific structural mismatch conditions.",
+          "algorithm": "A new algorithmic framework operating at the boundary of the identified failure regime.",
+          "empirical_or_benchmark": "Characterization of the identifiability limits of uncertainty estimation under computational constraints."
+        },
+        "evaluation_protocol": "Theoretical derivation of bounds and analysis of the phase transition regime. Empirical validation is secondary to the characterization of limits.",
+        "ambiguity_flags": [
+          {
+            "term": "Structural Mismatch",
+            "why_ambiguous": "The term is used to describe the gap between single-pass and ensemble distributions but lacks a precise mathematical definition in the source evidence.",
+            "what_user_must_define": "A formal metric or distance function quantifying the difference between $\\pi_{SP}$ and $\\pi_{\\mathcal{E}}$."
+          },
+          {
+            "term": "Representational Capacity",
+            "why_ambiguous": "The source mentions this concept in the context of the phase transition but does not define it mathematically.",
+            "what_user_must_define": "A capacity measure for the single forward pass, such as VC dimension or Rademacher complexity, applicable to the uncertainty manifold."
+          },
+          {
+            "term": "Calibration Error",
+            "why_ambiguous": "While implied, the specific definition (e.g., expected calibration error, reliability diagram area) is not explicitly stated.",
+            "what_user_must_define": "The precise functional form of $\\mathcal{C}(\\pi)$."
+          },
+          {
+            "term": "mismatch",
+            "why_ambiguous": "This term may hide multiple operational meanings in the source family.",
+            "what_user_must_define": "Specify the measurable object, boundary, or condition denoted by this term."
+          },
+          {
+            "term": "feedback_or_measurement_model",
+            "why_ambiguous": "The source evidence does not fully specify what is observed or measured.",
+            "what_user_must_define": "Define the observation channel, measurement process, or data collection protocol."
+          }
+        ],
+        "source_grounding": {
+          "source_verified_gaps": [
+            "gap:233bb1623d19f74e"
+          ],
+          "supporting_papers": [
+            "2202.12369v2",
+            "2204.13963v1",
+            "2210.09909v1",
+            "2302.04019v1",
+            "2308.09647v2",
+            "2402.08383v1",
+            "2403.07741v2",
+            "2403.09228v1",
+            "2405.20550v2",
+            "2407.00616v1",
+            "2502.03982v1",
+            "2507.07511v2",
+            "2508.07556v2",
+            "2512.12341v1",
+            "2604.01305v1",
+            "2606.09923v1"
+          ],
+          "representative_formulation": "Deep ensembles provide robust uncertainty quantification but incur prohibitive inference costs due to multiple forward passes. Existing single-pass approximations often fail to maintain the calibration guarantees inherent to ensemble averaging because they lack a theoretical mechanism to bridge the gap between single-pass estimates and multi-pass ground truth. This project investigates the fundamental limits of single-pass uncertainty estimation under structural mismatch between the estimator and the ensemble distribution.",
+          "critic_reason": "The variant shifts from a practical calibration framework to a fundamental theoretical investigation of structural mismatch bounds, moving beyond the source's narrow validation of existing methods to define the limits of single-pass estimation."
+        },
+        "formalization_confidence": "medium",
+        "formalization_risk": "Some terms may remain under-specified until the source papers are read.",
+        "requires_human_definition": true,
+        "formalization_is_fallback": false,
+        "formalization_retry_used": false,
+        "formalization_parse_error": "",
+        "formalization_retry_error": ""
+      }
+    },
+    {
+      "family_id": "family:03",
+      "family_title": "Characterizing the Fragility Boundary of Distribution-Free Conformal Prediction Under Extreme Label Shift",
+      "member_variant_ids": [
+        "var:08",
+        "var:07"
+      ],
+      "member_ranks": [
+        3,
+        6
+      ],
+      "representative_variant_id": "var:08",
+      "representative_title": "Characterizing the Fragility Boundary of Distribution-Free Conformal Prediction Under Extreme Label Shift",
+      "family_problem_statement": "Current conformal prediction guarantees claim distribution-free validity, yet empirical evidence suggests these guarantees collapse under severe label shifts. The critical missing component is a rigorous characterization of the boundary between valid and invalid regimes, rather than mere validation of specific methods in new settings. This project seeks to define the precise conditions under which distribution-free validity fails.",
+      "representative_problem_statement": "Current conformal prediction guarantees claim distribution-free validity, yet empirical evidence suggests these guarantees collapse under severe label shifts. The critical missing component is a rigorous characterization of the boundary between valid and invalid regimes, rather than mere validation of specific methods in new settings. This project seeks to define the precise conditions under which distribution-free validity fails.",
+      "proposal_style_abstract": "This project studies the fundamental limits of distribution-free validity in conformal prediction when subjected to severe label shifts. The central question is identifying the structural boundary where theoretical guarantees cease to hold, moving beyond incremental validation of specific algorithms. A successful outcome would establish a rigorous failure regime characterization, defining the exact magnitude and nature of label shift required to invalidate coverage guarantees. This work proposes a systematic evaluation framework designed to expose these fragility boundaries across a broad class of conformal methods, ensuring robustness claims are grounded in verified limits rather than optimistic assumptions.",
+      "theorem_target": "Characterization of the minimal label shift magnitude and structure required to violate finite-sample coverage guarantees.",
+      "algorithmic_target": "",
+      "empirical_target": "Construction of a standardized benchmark suite to empirically map the fragility boundary across diverse conformal prediction methods.",
+      "main_risk": "Difficulty in constructing a sufficiently diverse set of shift scenarios to accurately map the theoretical boundary.",
+      "falsification_condition": "Demonstration that distribution-free validity holds robustly even under arbitrarily severe label shifts, rendering the proposed boundary characterization vacuous.",
+      "critic_reason": "The variant shifts the objective from validating specific methods to characterizing the fundamental failure boundary of the entire class of distribution-free guarantees, which is a distinct scientific question supported by the source's identification of the lack of stress-testing under severe shifts.",
+      "critic_quality_label": "STRONG_NON_INCREMENTAL",
+      "critic_non_incrementality_score": 0.95,
+      "critic_fake_ambition_risk": 0.1,
+      "critic_supported_by_source": "moderate",
+      "research_object": "Classification under severe, realistic label shift",
+      "problem_class": "Robustness of distribution-free statistical guarantees under distributional shift",
+      "assumption_shift": "Relaxation of implicit 'mild shift' assumptions to characterize the exact failure boundary under severe shift",
+      "failure_boundary_or_mechanism": "The specific boundary separating valid coverage from invalid coverage under extreme label shift",
+      "constructive_or_evaluation_target": "A characterization of the failure regime and the structural conditions necessitating the breakdown of validity",
+      "source_verified_gaps": [
+        "gap:40df536211a4b3f4"
+      ],
+      "source_direct_formulations": [
+        "direct:03"
+      ],
+      "supporting_papers": [
+        "2103.03323v4",
+        "2306.05131v2"
+      ],
+      "related_seed_papers": [],
+      "duplicate_status": "merged_duplicate_family",
+      "merged_duplicate_variant_ids": [
+        "var:07"
+      ],
+      "main_risks": [
+        "Difficulty in constructing a sufficiently diverse set of shift scenarios to accurately map the theoretical boundary.",
+        "The theoretical boundary may be too loose to be practically useful if the required shift is extremely large."
+      ],
+      "contribution_types": {
+        "impossibility_boundary": 2
+      },
+      "evidence_grounding": "strong",
+      "non_incrementality": "strong",
+      "specificity": "strong",
+      "plausibility": "strong",
+      "domain_fit": "strong",
+      "quality_label": "D_DROP",
+      "recommended_action": "DROP",
+      "downgrade_reasons": [
+        "duplicate_of_stronger_family"
+      ],
+      "label_rationale": "D_DROP: evidence=strong, non_incrementality=strong, specificity=strong, plausibility=strong, domain_fit=strong. Dropped because: ['duplicate_of_stronger_family']. NOTE: components look strong \u2014 review (possible duplicate-only or critic-flagged family).",
+      "label_inconsistency_warning": true,
+      "maybe_recoverable_as": "MERGE_WITH_RELATED_FAMILY",
+      "family_rank": 6,
+      "formal_problem_formulation": {
+        "family_id": "family:03",
+        "representative_variant_id": "var:08",
+        "family_title": "Characterizing the Fragility Boundary of Distribution-Free Conformal Prediction Under Extreme Label Shift",
+        "plain_language_problem": "Distribution-free conformal prediction guarantees are claimed to hold regardless of data distribution, but empirical evidence suggests they fail under severe label shifts. The core problem is to rigorously define the specific boundary (magnitude and structure of shift) where these theoretical coverage guarantees cease to be valid, rather than just testing specific methods.",
+        "formal_problem_statement": "Let C be the class of distribution-free conformal prediction methods. Let P be the true data-generating distribution and P' be a shifted distribution characterized by a label shift parameter delta. Let alpha be the target coverage level. The problem is to characterize the set of pairs (P, P') such that the finite-sample coverage of any method in C under P' is strictly less than 1-alpha. Specifically, identify the minimal structural properties of the label shift delta that induce this violation.",
+        "mathematical_setup": {
+          "entities": [
+            "Conformal prediction method",
+            "Data distribution",
+            "Label shift parameter",
+            "Coverage guarantee",
+            "Validation set"
+          ],
+          "variables": [
+            {
+              "symbol": "C",
+              "meaning": "The class of distribution-free conformal prediction methods",
+              "type": "set",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "P",
+              "meaning": "The true data-generating distribution on (X, Y)",
+              "type": "distribution",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "P'",
+              "meaning": "The shifted data-generating distribution under label shift",
+              "type": "distribution",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "delta",
+              "meaning": "The structural parameter characterizing the label shift between P and P'",
+              "type": "vector",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "alpha",
+              "meaning": "The target coverage level (e.g., 0.95)",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "Coverage(C, P', alpha)",
+              "meaning": "The actual coverage probability achieved by method C under distribution P' at level alpha",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "FragilityBoundary",
+              "meaning": "The set of shift parameters delta where Coverage(C, P', alpha) < 1-alpha",
+              "type": "set",
+              "source": "introduced for formalization"
+            }
+          ],
+          "data_or_observations": "Samples drawn from P' used to construct prediction sets and evaluate coverage.",
+          "feedback_or_measurement_model": "The feedback is binary: whether the true label falls within the predicted set. The measurement model is the empirical coverage rate over a validation set, which estimates Coverage(C, P', alpha).",
+          "decision_variables_or_outputs": "The characterization of the minimal delta required to violate the guarantee.",
+          "objective": "To define the set FragilityBoundary = { delta | exists C in C such that Coverage(C, P', alpha) < 1-alpha } and identify the minimal magnitude and structure of delta within this set.",
+          "constraints": "The analysis must hold for the class C of distribution-free methods without assuming specific parametric forms for P or P'.",
+          "success_criterion": "A rigorous mathematical or empirical characterization of the conditions (magnitude/structure of delta) under which the coverage guarantee fails."
+        },
+        "assumptions": [
+          {
+            "name": "Distribution-free validity claim",
+            "description": "The assumption that conformal prediction methods satisfy coverage guarantees regardless of the underlying distribution P.",
+            "status": "relaxed",
+            "source_evidence": [
+              "Current conformal prediction guarantees claim distribution-free validity, yet empirical evidence suggests these guarantees collapse under severe label shifts."
+            ]
+          },
+          {
+            "name": "Existence of severe label shift",
+            "description": "The assumption that there exist realistic scenarios where the label distribution shifts significantly from the training distribution.",
+            "status": "kept",
+            "source_evidence": [
+              "Classification under severe, realistic label shift",
+              "The critical missing component is a rigorous characterization of the boundary between valid and invalid regimes"
+            ]
+          },
+          {
+            "name": "Finite-sample coverage definition",
+            "description": "The assumption that coverage is defined by the probability that the true label is contained in the prediction set.",
+            "status": "kept",
+            "source_evidence": [
+              "violate finite-sample coverage guarantees"
+            ]
+          }
+        ],
+        "open_question": "What is the precise structural relationship between the label shift parameter delta and the violation of the coverage guarantee? Is there a threshold magnitude of shift below which guarantees hold and above which they fail?",
+        "possible_result_types": {
+          "theorem": "A characterization of the minimal label shift magnitude and structure required to violate finite-sample coverage guarantees.",
+          "algorithm": "",
+          "empirical_or_benchmark": "Construction of a standardized benchmark suite to empirically map the fragility boundary across diverse conformal prediction methods."
+        },
+        "evaluation_protocol": "Construct a suite of synthetic and real-world datasets with varying degrees and structures of label shift. For each dataset, compute the empirical coverage of standard conformal prediction methods. Identify the transition point where coverage drops below the target level.",
+        "ambiguity_flags": [
+          {
+            "term": "Severe label shift",
+            "why_ambiguous": "The term 'severe' is qualitative and lacks a precise mathematical definition in the source evidence.",
+            "what_user_must_define": "A quantitative threshold or structural class of distributions that constitutes 'severe' shift."
+          },
+          {
+            "term": "Fragility boundary",
+            "why_ambiguous": "The exact nature of the boundary (e.g., a specific value, a region, or a phase transition) is not explicitly defined in the source.",
+            "what_user_must_define": "Whether the boundary is defined by a specific magnitude of shift, a specific structural property, or a combination of both."
+          },
+          {
+            "term": "boundary",
+            "why_ambiguous": "This term may hide multiple operational meanings in the source family.",
+            "what_user_must_define": "Specify the measurable object, boundary, or condition denoted by this term."
+          }
+        ],
+        "source_grounding": {
+          "source_verified_gaps": [
+            "gap:40df536211a4b3f4"
+          ],
+          "supporting_papers": [
+            "2103.03323v4",
+            "2306.05131v2"
+          ],
+          "representative_formulation": "var:08",
+          "critic_reason": "The variant shifts the objective from validating specific methods to characterizing the fundamental failure boundary of the entire class of distribution-free guarantees, which is a distinct scientific question supported by the source's identification of the lack of stress-testing under severe shifts."
+        },
+        "formalization_confidence": "medium",
+        "formalization_risk": "Difficulty in constructing a sufficiently diverse set of shift scenarios to accurately map the theoretical boundary; the definition of 'severe' shift is under-specified.",
+        "requires_human_definition": true,
+        "formalization_is_fallback": false,
+        "formalization_retry_used": false,
+        "formalization_parse_error": "",
+        "formalization_retry_error": ""
+      }
+    }
+  ],
+  "counts": {
+    "A_STRONG": 5,
+    "D_DROP": 1
+  },
+  "formal_problem": {
+    "enabled": true,
+    "included_in_markdown": true,
+    "input": "stage10_formal_problem_formulations/formal_problem_formulations.jsonl",
+    "formalizations_loaded": 6,
+    "status": "PASS",
+    "fallback_formalization_count": 0,
+    "formalization_retry_used_count": 0,
+    "formalization_parse_error_count": 0
+  },
+  "extraction_quality": {},
+  "verification_gate": {
+    "enabled": true,
+    "mode": "survival_score",
+    "threshold": 0.6,
+    "reviewed_count": 15,
+    "passed_count": 12,
+    "failed_count": 3,
+    "passed_only": true,
+    "warning": ""
+  }
+}

@@ -1,0 +1,31 @@
+\begin{table}[htbp]
+\centering
+\caption{Per-domain formulation-quality scores by method.}
+\label{tab:per\_domain\_scores}
+\begin{tabular}{llrrrrrr}
+\toprule
+Domain & Method & Candidates & Judges & Overall & Grounding & Formalizability & Ambiguity \\
+\midrule
+Bandits & SGHA & 3 & 5 & 5.93 & 7.33 & 5.20 & 7.80 \\
+Bandits & AI-Scientist-v2 + Qwen & 3 & 5 & 4.53 & 5.20 & 4.00 & 2.93 \\
+Bandits & AI-Scientist-v2 + Claude Opus & 3 & 5 & 5.87 & 2.80 & 5.07 & 3.47 \\
+Bandits & MOOSE-Star & 3 & 5 & 1.93 & 3.47 & 1.27 & 1.40 \\
+In-context learning & SGHA & 4 & 5 & 5.80 & 7.25 & 5.35 & 7.55 \\
+In-context learning & AI-Scientist-v2 + Qwen & 4 & 5 & 4.35 & 4.60 & 3.40 & 2.60 \\
+In-context learning & AI-Scientist-v2 + Claude Opus & 4 & 5 & 5.80 & 3.00 & 5.30 & 3.70 \\
+In-context learning & MOOSE-Star & 4 & 5 & 1.95 & 4.00 & 1.55 & 1.50 \\
+Offline RL & SGHA & 1 & 5 & 6.40 & 7.60 & 6.00 & 7.80 \\
+Offline RL & AI-Scientist-v2 + Qwen & 1 & 5 & 4.80 & 5.60 & 3.80 & 3.00 \\
+Offline RL & AI-Scientist-v2 + Claude Opus & 1 & 5 & 5.40 & 2.80 & 4.80 & 3.00 \\
+Offline RL & MOOSE-Star & 1 & 5 & 2.40 & 4.40 & 2.00 & 1.60 \\
+Reasoning / test-time compute & SGHA & 1 & 5 & 7.20 & 7.80 & 6.40 & 7.80 \\
+Reasoning / test-time compute & AI-Scientist-v2 + Qwen & 1 & 5 & 4.60 & 5.40 & 3.40 & 2.40 \\
+Reasoning / test-time compute & AI-Scientist-v2 + Claude Opus & 1 & 5 & 6.00 & 3.40 & 5.40 & 3.40 \\
+Reasoning / test-time compute & MOOSE-Star & 1 & 5 & 2.00 & 4.00 & 1.40 & 1.40 \\
+Uncertainty / calibration / conformal prediction & SGHA & 6 & 5 & 5.87 & 7.50 & 5.53 & 7.50 \\
+Uncertainty / calibration / conformal prediction & AI-Scientist-v2 + Qwen & 6 & 5 & 4.63 & 5.27 & 3.73 & 2.93 \\
+Uncertainty / calibration / conformal prediction & AI-Scientist-v2 + Claude Opus & 6 & 5 & 5.90 & 3.00 & 5.27 & 3.67 \\
+Uncertainty / calibration / conformal prediction & MOOSE-Star & 6 & 5 & 2.00 & 3.57 & 1.53 & 1.50 \\
+\bottomrule
+\end{tabular}
+\end{table}

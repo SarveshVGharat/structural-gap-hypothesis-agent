@@ -1,0 +1,22 @@
+output_root: ./runs
+dataset_root: ./data
+model_cache_root: ./models
+query: "toy structural gap smoke test"
+max_results: 2
+
+retrieval:
+  enabled: false
+  final_k: 2
+
+llm:
+  mock: true
+  base_url: http://localhost:8000/v1
+  model: Qwen/Qwen3.5-9B
+  api_key: EMPTY
+
+verification:
+  skeptic_external_arxiv: false
+
+finalization:
+  mode: family_report
+  use_evolution: false

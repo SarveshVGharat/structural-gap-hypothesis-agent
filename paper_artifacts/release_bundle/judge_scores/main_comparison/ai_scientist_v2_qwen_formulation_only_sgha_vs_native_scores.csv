@@ -1,0 +1,3 @@
+method,candidates,mean_problem_definition_clarity_10,mean_technical_specificity_10,mean_well_posedness_10,mean_assumption_boundary_clarity_10,mean_formalizability_10,mean_nontriviality_10,mean_scope_control_10,mean_source_grounded_specificity_10,mean_ambiguity_hygiene_10,mean_overall_formulation_quality_10,cap_violation_records,cap_violation_count
+NATIVE_AI_SCIENTIST_V2,15,6.6,5.4667,3.9333,4.4667,4.4667,6.7333,6.8,4.3333,3.8,4.9333,2,2
+SGHA_FULL,15,7.4,6.5333,6.3333,7.4667,6.3333,7.0,5.8667,7.9333,7.5333,6.4,2,2

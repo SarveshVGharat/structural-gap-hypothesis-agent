@@ -1,0 +1,5 @@
+method,best_overall_count,most_auditable_count,most_actionable_count,most_novel_potential_count
+NATIVE_AI_SCIENTIST_V2,1,0,2,1
+QWEN_RAG,1,1,3,1
+SGHA_FULL,3,4,0,3
+SIMPLE_QWEN,0,0,0,0

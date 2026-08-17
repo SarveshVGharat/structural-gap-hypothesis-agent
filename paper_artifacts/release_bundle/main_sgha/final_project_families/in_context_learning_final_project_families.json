@@ -1,0 +1,818 @@
+{
+  "families": [
+    {
+      "family_id": "family:01",
+      "family_title": "Characterizing the Depth-Window Phase Transition in Linear Attention Mechanisms",
+      "member_variant_ids": [
+        "var:27"
+      ],
+      "member_ranks": [
+        1
+      ],
+      "representative_variant_id": "var:27",
+      "representative_title": "Characterizing the Depth-Window Phase Transition in Linear Attention Mechanisms",
+      "family_problem_statement": "Current empirical studies on Linear Attention mechanisms focus on shallow architectures, leaving the fundamental limits of information propagation in deep networks unquantified. Specifically, it remains unknown if and where the performance degradation occurs as depth increases beyond two layers or when attention windows are fixed, suggesting a potential phase transition rather than a smooth decline. This project aims to map the precise boundary conditions under which Linear Attention fails to support in-context learning, distinguishing between architectural depth limits and window adaptability constraints.",
+      "representative_problem_statement": "Current empirical studies on Linear Attention mechanisms focus on shallow architectures, leaving the fundamental limits of information propagation in deep networks unquantified. Specifically, it remains unknown if and where the performance degradation occurs as depth increases beyond two layers or when attention windows are fixed, suggesting a potential phase transition rather than a smooth decline. This project aims to map the precise boundary conditions under which Linear Attention fails to support in-context learning, distinguishing between architectural depth limits and window adaptability constraints.",
+      "proposal_style_abstract": "This project studies the fundamental failure regimes of Linear Attention mechanisms in deep architectures, moving beyond shallow empirical validation to characterize a potential phase transition in information propagation. The central question is whether the inability to adapt attention windows in deep networks represents a hard boundary or a gradual degradation dependent on task complexity. A successful outcome would define the critical depth and window size thresholds where Linear Attention becomes provably insufficient for in-context learning, providing a unified explanation for observed performance drops across diverse tasks. This work proposes a systematic evaluation protocol to expose the general failure modes of the Linear Attention class, rather than validating a single method in a specific setting.",
+      "theorem_target": "",
+      "algorithmic_target": "",
+      "empirical_target": "Mapping the phase transition boundary between successful and failed in-context learning under depth and window constraints",
+      "main_risk": "The phase transition may be gradual rather than sharp, complicating the definition of a clear boundary",
+      "falsification_condition": "If Linear Attention performance degrades smoothly without a distinct threshold, the phase transition hypothesis is falsified",
+      "critic_reason": "The variant elevates the scope from a generic validation of failure modes to a rigorous characterization of phase transitions and boundary conditions, directly addressing the specific gap regarding depth and window limits identified in the source without merely relabeling the problem.",
+      "critic_quality_label": "STRONG_NON_INCREMENTAL",
+      "critic_non_incrementality_score": 0.95,
+      "critic_fake_ambition_risk": 0.0,
+      "critic_supported_by_source": "strong",
+      "research_object": "Few-shot in-context learning with Linear Attention mechanisms in architectures deeper than two layers",
+      "problem_class": "Information propagation limits and capacity constraints in deep transformer-like architectures",
+      "assumption_shift": "Relaxes the assumption that Linear Attention is universally viable by characterizing the specific structural conditions (depth/window) where it becomes ineffective",
+      "failure_boundary_or_mechanism": "The critical depth and window size thresholds where Linear Attention transitions from functional to non-functional in in-context learning tasks",
+      "constructive_or_evaluation_target": "A unified characterization of the failure regime for Linear Attention mechanisms under depth and window constraints",
+      "source_verified_gaps": [
+        "gap:1f032c8842a6a531"
+      ],
+      "source_direct_formulations": [
+        "direct:09"
+      ],
+      "supporting_papers": [
+        "openreview:AC9FsaVIpk",
+        "openreview:kZbTkpnafR",
+        "openreview:lYPAYmfQqm",
+        "openreview:lYongcxaNz",
+        "openreview:lfxIASyLxB",
+        "openreview:uqLQjtSdFN"
+      ],
+      "related_seed_papers": [],
+      "duplicate_status": "unique",
+      "merged_duplicate_variant_ids": [],
+      "main_risks": [
+        "The phase transition may be gradual rather than sharp, complicating the definition of a clear boundary"
+      ],
+      "contribution_types": {
+        "impossibility_boundary": 1
+      },
+      "evidence_grounding": "strong",
+      "non_incrementality": "strong",
+      "specificity": "strong",
+      "plausibility": "strong",
+      "domain_fit": "strong",
+      "quality_label": "A_STRONG",
+      "recommended_action": "READ_FIRST",
+      "downgrade_reasons": [],
+      "label_rationale": "A_STRONG: evidence=strong, non_incrementality=strong, specificity=strong, plausibility=strong, domain_fit=strong \u2014 strong on every required axis, not a duplicate cluster.",
+      "label_inconsistency_warning": false,
+      "maybe_recoverable_as": null,
+      "family_rank": 1,
+      "formal_problem_formulation": {
+        "family_id": "family:01",
+        "representative_variant_id": "var:27",
+        "family_title": "Characterizing the Depth-Window Phase Transition in Linear Attention Mechanisms",
+        "plain_language_problem": "We need to determine the specific conditions (specifically network depth and attention window size) under which Linear Attention mechanisms fail to support few-shot in-context learning. The goal is to map the boundary between a functional regime and a non-functional regime, characterizing whether the failure is a sharp phase transition or a gradual degradation.",
+        "formal_problem_statement": "Let D be the depth of a transformer-like architecture and W be the fixed attention window size. Let P(D, W) be the performance of a Linear Attention mechanism on a class of in-context learning tasks. The problem is to identify the critical thresholds (D*, W*) such that for D > D* or W < W*, the mechanism P(D, W) falls below a functional threshold, thereby characterizing the depth-window phase transition.",
+        "mathematical_setup": {
+          "entities": [
+            "Linear Attention Mechanism",
+            "Deep Transformer Architecture",
+            "In-Context Learning Task",
+            "Information Propagation Metric"
+          ],
+          "variables": [
+            {
+              "symbol": "D",
+              "meaning": "Architectural depth of the network",
+              "type": "scalar",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "W",
+              "meaning": "Fixed attention window size",
+              "type": "scalar",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "P",
+              "meaning": "Performance metric for in-context learning",
+              "type": "scalar",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "T",
+              "meaning": "Set of in-context learning tasks",
+              "type": "set",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "D*",
+              "meaning": "Critical depth threshold",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "W*",
+              "meaning": "Critical window size threshold",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            }
+          ],
+          "data_or_observations": "Empirical performance measurements of Linear Attention models across varying depths D and window sizes W on diverse tasks T.",
+          "feedback_or_measurement_model": "The feedback model is the observed performance P(D, W) on task T, which is currently unquantified regarding the specific boundary conditions for failure.",
+          "decision_variables_or_outputs": "The estimated critical thresholds D* and W* that delineate the functional and non-functional regimes.",
+          "objective": "To empirically map the boundary conditions (D*, W*) where Linear Attention transitions from supporting to failing in-context learning.",
+          "constraints": "The analysis is restricted to Linear Attention mechanisms and architectures deeper than two layers.",
+          "success_criterion": "A unified characterization of the failure regime that distinguishes between architectural depth limits and window adaptability constraints."
+        },
+        "assumptions": [
+          {
+            "name": "Phase Transition Existence",
+            "description": "The performance degradation follows a phase transition (sharp boundary) rather than a smooth decline.",
+            "status": "questioned",
+            "source_evidence": [
+              "main_risk: The phase transition may be gradual rather than sharp"
+            ]
+          },
+          {
+            "name": "Depth Limitation",
+            "description": "Linear Attention fails to adapt attention windows and degrades performance in architectures with depth greater than two layers.",
+            "status": "kept",
+            "source_evidence": [
+              "core_assumption_or_failure: Linear Attention fails to adapt attention windows and degrades performance in architectures with depth greater than two layers"
+            ]
+          },
+          {
+            "name": "Window Adaptability",
+            "description": "The inability to adapt attention windows in deep networks represents a hard boundary or a gradual degradation dependent on task complexity.",
+            "status": "relaxed",
+            "source_evidence": [
+              "representative_problem_statement: distinguishing between architectural depth limits and window adaptability constraints"
+            ]
+          }
+        ],
+        "open_question": "Whether the inability to adapt attention windows in deep networks represents a hard boundary or a gradual degradation dependent on task complexity.",
+        "possible_result_types": {
+          "theorem": "A possible theorem would characterize the critical depth and window size thresholds where Linear Attention becomes provably insufficient for in-context learning.",
+          "algorithm": "A systematic evaluation protocol to expose the general failure modes of the Linear Attention class.",
+          "empirical_or_benchmark": "Mapping the phase transition boundary between successful and failed in-context learning under depth and window constraints."
+        },
+        "evaluation_protocol": "A systematic evaluation protocol to expose the general failure modes of the Linear Attention class, rather than validating a single method in a specific setting.",
+        "ambiguity_flags": [
+          {
+            "term": "Functional vs. Non-functional",
+            "why_ambiguous": "The specific performance threshold that defines the transition from functional to non-functional is not explicitly defined in the source evidence.",
+            "what_user_must_define": "The quantitative metric or threshold value that constitutes 'failure' in the in-context learning context."
+          },
+          {
+            "term": "Task Complexity",
+            "why_ambiguous": "The relationship between task complexity and the phase transition is mentioned but not formalized.",
+            "what_user_must_define": "The specific definition of task complexity and how it interacts with depth and window constraints."
+          }
+        ],
+        "source_grounding": {
+          "source_verified_gaps": [
+            "gap:1f032c8842a6a531"
+          ],
+          "supporting_papers": [
+            "openreview:AC9FsaVIpk",
+            "openreview:kZbTkpnafR",
+            "openreview:lYPAYmfQqm",
+            "openreview:lYongcxaNz",
+            "openreview:lfxIASyLxB",
+            "openreview:uqLQjtSdFN"
+          ],
+          "representative_formulation": "Characterizing the Depth-Window Phase Transition in Linear Attention Mechanisms",
+          "critic_reason": "The variant elevates the scope from a generic validation of failure modes to a rigorous characterization of phase transitions and boundary conditions, directly addressing the specific gap regarding depth and window limits identified in the source without merely relabeling the problem."
+        },
+        "formalization_confidence": "medium",
+        "formalization_risk": "The phase transition may be gradual rather than sharp, complicating the definition of a clear boundary.",
+        "requires_human_definition": true,
+        "formalization_is_fallback": false,
+        "formalization_retry_used": false,
+        "formalization_parse_error": "",
+        "formalization_retry_error": ""
+      }
+    },
+    {
+      "family_id": "family:02",
+      "family_title": "Characterizing the Fundamental Robustness Boundary of Autoregressive and Masked In-Context Learning",
+      "member_variant_ids": [
+        "var:12"
+      ],
+      "member_ranks": [
+        2
+      ],
+      "representative_variant_id": "var:12",
+      "representative_title": "Characterizing the Fundamental Robustness Boundary of Autoregressive and Masked In-Context Learning",
+      "family_problem_statement": "Prior research incorrectly assumes that in-context learning (ICL) is unique to causal language models, systematically excluding masked models from robustness analyses. This bias obscures whether the failure modes of ICL under distributional shift are architectural artifacts or universal properties of the in-context mechanism itself. The central problem is establishing the fundamental boundary between architectures that can generalize from context and those that cannot, specifically under adversarial or shifted conditions.",
+      "representative_problem_statement": "Prior research incorrectly assumes that in-context learning (ICL) is unique to causal language models, systematically excluding masked models from robustness analyses. This bias obscures whether the failure modes of ICL under distributional shift are architectural artifacts or universal properties of the in-context mechanism itself. The central problem is establishing the fundamental boundary between architectures that can generalize from context and those that cannot, specifically under adversarial or shifted conditions.",
+      "proposal_style_abstract": "This project studies the fundamental limits of in-context learning by characterizing the robustness failure regimes of both autoregressive and masked language model classes. The central question is whether the exclusion of masked models from robustness literature masks a universal fragility in the ICL mechanism or if architectures possess distinct, irreducible boundaries of generalization. A successful outcome would define a precise boundary condition separating architectures capable of robust few-shot adaptation from those that fail systematically under distributional shift. This work proposes a unified evaluation protocol designed to expose these class-level failure modes rather than validating specific instances. By treating ICL as a mechanism shared across architectural families, the project aims to derive structural constraints on when context-based generalization is possible, moving beyond empirical comparisons of specific models to a theoretical understanding of the ICL capability class.",
+      "theorem_target": "Structural conditions under which in-context learning fails to generalize under distributional shift for a class of architectures",
+      "algorithmic_target": "",
+      "empirical_target": "A unified evaluation suite exposing class-level failure modes in ICL robustness",
+      "main_risk": "The hypothesis that masked models share identical failure modes may be false, requiring a complex redefinition of the boundary.",
+      "falsification_condition": "Demonstration that masked models exhibit a qualitatively different failure regime under shift that cannot be captured by the proposed unified boundary.",
+      "critic_reason": "The variant successfully elevates the scope from a specific validation of a misconception to a fundamental characterization of architectural boundaries under distributional shift, moving beyond mere relabeling. While the source evidence supports the existence of the gap, the claim of a 'fundamental boundary' is an ambitious extrapolation that requires rigorous proof beyond the initial verification of the bias.",
+      "critic_quality_label": "STRONG_NON_INCREMENTAL",
+      "critic_non_incrementality_score": 0.95,
+      "critic_fake_ambition_risk": 0.1,
+      "critic_supported_by_source": "moderate",
+      "research_object": "Few-shot in-context learning evaluation under distributional shift across autoregressive and masked model classes",
+      "problem_class": "The fundamental limits of generalization from context in neural sequence models",
+      "assumption_shift": "Relaxes the assumption that ICL is unique to causal models to treat it as a shared mechanism with potential universal failure modes.",
+      "failure_boundary_or_mechanism": "The boundary between architectures that can robustly generalize from context and those that fail systematically under distributional shift",
+      "constructive_or_evaluation_target": "A unified evaluation class and structural boundary for ICL robustness across architectural families",
+      "source_verified_gaps": [
+        "gap:81ede26b259172dd"
+      ],
+      "source_direct_formulations": [
+        "direct:04"
+      ],
+      "supporting_papers": [
+        "openreview:BCA9NMZkLS",
+        "openreview:Dj9wssUmLn"
+      ],
+      "related_seed_papers": [],
+      "duplicate_status": "unique",
+      "merged_duplicate_variant_ids": [],
+      "main_risks": [
+        "The hypothesis that masked models share identical failure modes may be false, requiring a complex redefinition of the boundary."
+      ],
+      "contribution_types": {
+        "impossibility_boundary": 1
+      },
+      "evidence_grounding": "moderate",
+      "non_incrementality": "strong",
+      "specificity": "strong",
+      "plausibility": "strong",
+      "domain_fit": "strong",
+      "quality_label": "A_STRONG",
+      "recommended_action": "READ_FIRST",
+      "downgrade_reasons": [],
+      "label_rationale": "A_STRONG: evidence=moderate, non_incrementality=strong, specificity=strong, plausibility=strong, domain_fit=strong \u2014 strong on every required axis, not a duplicate cluster.",
+      "label_inconsistency_warning": false,
+      "maybe_recoverable_as": null,
+      "family_rank": 2,
+      "formal_problem_formulation": {
+        "family_id": "family:02",
+        "representative_variant_id": "var:12",
+        "family_title": "Characterizing the Fundamental Robustness Boundary of Autoregressive and Masked In-Context Learning",
+        "plain_language_problem": "Prior research assumes in-context learning (ICL) is unique to causal (autoregressive) models, excluding masked models from robustness analysis. This project seeks to determine if the failure modes of ICL under distributional shift are specific to architecture or universal to the mechanism. The goal is to define the fundamental boundary separating architectures that can robustly generalize from context from those that fail systematically.",
+        "formal_problem_statement": "Let M be the class of neural sequence models partitioned into autoregressive (AR) and masked (MASK) architectures. Let D be a distribution over input contexts and tasks. The problem is to characterize the set of conditions C under which the in-context learning mechanism fails to generalize for a model M in M under a shifted distribution D'. Specifically, we seek to identify if the failure boundary is shared across M (universal fragility) or distinct for subsets of M (architectural artifacts).",
+        "mathematical_setup": {
+          "entities": [
+            "Neural sequence model classes (Autoregressive, Masked)",
+            "Input contexts and task definitions",
+            "Distributional shifts (adversarial or natural)",
+            "In-context learning mechanism",
+            "Generalization performance metric"
+          ],
+          "variables": [
+            {
+              "symbol": "M_AR",
+              "meaning": "Set of autoregressive language model architectures",
+              "type": "set",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "M_MASK",
+              "meaning": "Set of masked language model architectures",
+              "type": "set",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "D",
+              "meaning": "Base distribution over contexts and tasks",
+              "type": "distribution",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "D'",
+              "meaning": "Shifted or adversarial distribution",
+              "type": "distribution",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "ICL(M, D)",
+              "meaning": "Performance of model M using in-context learning on distribution D",
+              "type": "function",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "B",
+              "meaning": "The fundamental robustness boundary separating generalizable from non-generalizable architectures",
+              "type": "set",
+              "source": "introduced for formalization"
+            }
+          ],
+          "data_or_observations": "Empirical performance metrics of models M in M_AR and M_MASK under distribution D' relative to D.",
+          "feedback_or_measurement_model": "The measurement model is the observed generalization gap between training distribution D and shifted distribution D'. The feedback loop involves comparing failure modes across M_AR and M_MASK to infer the structure of B.",
+          "decision_variables_or_outputs": "The identification of the boundary B and the classification of architectures as robust or fragile under shift.",
+          "objective": "To derive structural conditions defining the boundary B such that for any M in M, M generalizes under D' if and only if M is in B, and to determine if B = M_AR U M_MASK (universal) or B is a proper subset.",
+          "constraints": "Evaluation must be conducted under distributional shift; comparisons must control for task difficulty and context length.",
+          "success_criterion": "A precise characterization of the failure boundary B that distinguishes between architectural artifacts and universal ICL fragility."
+        },
+        "assumptions": [
+          {
+            "name": "ICL Mechanism Universality",
+            "description": "The in-context learning mechanism is a shared property across both autoregressive and masked architectures, despite differences in generation direction.",
+            "status": "relaxed",
+            "source_evidence": [
+              "The central problem is establishing the fundamental boundary between architectures that can generalize from context and those that cannot, specifically under adversarial or shifted conditions.",
+              "Relaxes the assumption that ICL is unique to causal models to treat it as a shared mechanism with potential universal failure modes."
+            ]
+          },
+          {
+            "name": "Architectural Distinction",
+            "description": "Autoregressive and masked models represent distinct classes with potentially different failure modes.",
+            "status": "kept",
+            "source_evidence": [
+              "Prior research incorrectly assumes that in-context learning (ICL) is unique to causal language models, systematically excluding masked models from robustness analyses."
+            ]
+          }
+        ],
+        "open_question": "Whether the failure modes of ICL under distributional shift are architectural artifacts specific to autoregressive or masked models, or universal properties of the in-context mechanism itself.",
+        "possible_result_types": {
+          "theorem": "Structural conditions under which in-context learning fails to generalize under distributional shift for a class of architectures.",
+          "algorithm": "",
+          "empirical_or_benchmark": "A unified evaluation suite exposing class-level failure modes in ICL robustness."
+        },
+        "evaluation_protocol": "A unified evaluation protocol designed to expose class-level failure modes rather than validating specific instances, treating ICL as a mechanism shared across architectural families.",
+        "ambiguity_flags": [
+          {
+            "term": "Fundamental Robustness Boundary",
+            "why_ambiguous": "The term implies a precise mathematical or structural limit, but the evidence suggests this is an ambitious extrapolation requiring rigorous proof.",
+            "what_user_must_define": "The specific mathematical or structural definition of the boundary (e.g., capacity constraints, attention patterns, or loss landscape properties)."
+          },
+          {
+            "term": "Distributional Shift",
+            "why_ambiguous": "The evidence mentions 'adversarial or shifted conditions' but does not specify the types of shifts (covariate, concept, or task shift).",
+            "what_user_must_define": "The specific nature of the distributional shifts to be tested in the unified evaluation suite."
+          },
+          {
+            "term": "boundary",
+            "why_ambiguous": "This term may hide multiple operational meanings in the source family.",
+            "what_user_must_define": "Specify the measurable object, boundary, or condition denoted by this term."
+          }
+        ],
+        "source_grounding": {
+          "source_verified_gaps": [
+            "gap:81ede26b259172dd"
+          ],
+          "supporting_papers": [
+            "openreview:BCA9NMZkLS",
+            "openreview:Dj9wssUmLn"
+          ],
+          "representative_formulation": "var:12",
+          "critic_reason": "The variant successfully elevates the scope from a specific validation of a misconception to a fundamental characterization of architectural boundaries under distributional shift, moving beyond mere relabeling. While the source evidence supports the existence of the gap, the claim of a 'fundamental boundary' is an ambitious extrapolation that requires rigorous proof beyond the initial verification of the bias."
+        },
+        "formalization_confidence": "medium",
+        "formalization_risk": "The hypothesis that masked models share identical failure modes may be false, requiring a complex redefinition of the boundary.",
+        "requires_human_definition": true,
+        "formalization_is_fallback": false,
+        "formalization_retry_used": false,
+        "formalization_parse_error": "",
+        "formalization_retry_error": ""
+      }
+    },
+    {
+      "family_id": "family:04",
+      "family_title": "Robustness Phase Transitions in In-Context Learning Under Adversarial Feedback",
+      "member_variant_ids": [
+        "var:17"
+      ],
+      "member_ranks": [
+        4
+      ],
+      "representative_variant_id": "var:17",
+      "representative_title": "Robustness Phase Transitions in In-Context Learning Under Adversarial Feedback",
+      "family_problem_statement": "Current empirical studies on in-context learning (ICL) treat noise and counterfactual feedback as static perturbations, failing to characterize how these adversarial conditions interact with prompt length and model capacity to induce catastrophic failure. There is no unified framework to identify the boundary conditions where ICL transitions from robust generalization to systematic hallucination under adversarial data regimes.",
+      "representative_problem_statement": "Current empirical studies on in-context learning (ICL) treat noise and counterfactual feedback as static perturbations, failing to characterize how these adversarial conditions interact with prompt length and model capacity to induce catastrophic failure. There is no unified framework to identify the boundary conditions where ICL transitions from robust generalization to systematic hallucination under adversarial data regimes.",
+      "proposal_style_abstract": "This project studies the phase transition boundaries of in-context learning when subjected to noisy annotations and counterfactual feedback. The central question is how the interaction between prompt length, model architecture, and the density of adversarial examples determines the robustness regime of few-shot learners. A successful outcome would establish a generalized failure map that identifies the critical thresholds where theoretical guarantees break down, moving beyond isolated robustness tests to a comprehensive characterization of ICL instability across method families.",
+      "theorem_target": "",
+      "algorithmic_target": "",
+      "empirical_target": "A generalized failure map quantifying robustness thresholds across model architectures and prompt lengths.",
+      "main_risk": "High computational cost of evaluating phase transitions across diverse model families and prompt lengths.",
+      "falsification_condition": "If no distinct phase transition boundaries are found and robustness degrades linearly regardless of prompt length or architecture.",
+      "critic_reason": "The variant shifts the scientific object from static noise validation to dynamic phase transitions and synergistic feedback regimes, moving beyond the source's narrow benchmark gap to a fundamental characterization of failure boundaries.",
+      "critic_quality_label": "STRONG_NON_INCREMENTAL",
+      "critic_non_incrementality_score": 0.85,
+      "critic_fake_ambition_risk": 0.0,
+      "critic_supported_by_source": "moderate",
+      "research_object": "In-context learning with few-shot prompting under adversarial data conditions",
+      "problem_class": "Robustness and generalization limits of non-parametric learning under adversarial perturbations",
+      "assumption_shift": "Relaxes the assumption of independent, additive noise to coupled, synergistic adversarial feedback.",
+      "failure_boundary_or_mechanism": "The critical threshold where ICL transitions from robust generalization to systematic hallucination under coupled adversarial conditions.",
+      "constructive_or_evaluation_target": "A generalized failure map exposing the structural conditions for ICL instability.",
+      "source_verified_gaps": [
+        "gap:58c15de0e11db764"
+      ],
+      "source_direct_formulations": [
+        "direct:06"
+      ],
+      "supporting_papers": [
+        "openreview:00uVk06eVK",
+        "openreview:7H1jbTaOIn",
+        "openreview:BNAvYSCrLD",
+        "openreview:CCUrU4A92S",
+        "openreview:FxLxbJTm7F",
+        "openreview:INe4otjryz",
+        "openreview:J6Xgra2bE5",
+        "openreview:QHRLFdhkLu",
+        "openreview:YzXPU3QRnL",
+        "openreview:aKJr5NnN8U",
+        "openreview:p3tSEFMwpG",
+        "openreview:vl8VpW2niQ",
+        "openreview:yOhNLIqTEF"
+      ],
+      "related_seed_papers": [],
+      "duplicate_status": "unique",
+      "merged_duplicate_variant_ids": [],
+      "main_risks": [
+        "High computational cost of evaluating phase transitions across diverse model families and prompt lengths."
+      ],
+      "contribution_types": {
+        "empirical_study": 1
+      },
+      "evidence_grounding": "moderate",
+      "non_incrementality": "strong",
+      "specificity": "strong",
+      "plausibility": "strong",
+      "domain_fit": "strong",
+      "quality_label": "A_STRONG",
+      "recommended_action": "READ_FIRST",
+      "downgrade_reasons": [],
+      "label_rationale": "A_STRONG: evidence=moderate, non_incrementality=strong, specificity=strong, plausibility=strong, domain_fit=strong \u2014 strong on every required axis, not a duplicate cluster.",
+      "label_inconsistency_warning": false,
+      "maybe_recoverable_as": null,
+      "family_rank": 3,
+      "formal_problem_formulation": {
+        "family_id": "family:04",
+        "representative_variant_id": "var:17",
+        "family_title": "Robustness Phase Transitions in In-Context Learning Under Adversarial Feedback",
+        "plain_language_problem": "Current studies on in-context learning (ICL) treat noise and counterfactual feedback as independent, static disturbances. This project seeks to formalize the problem of identifying the specific boundary conditions where the interaction between prompt length, model capacity, and coupled adversarial feedback causes a phase transition from robust generalization to systematic hallucination.",
+        "formal_problem_statement": "Let \\( \\mathcal{M} \\) be a family of in-context learning models parameterized by capacity \\( C \\). Let \\( L \\) denote the prompt length. Let \\( \\mathcal{D}_{adv} \\) be a data distribution containing coupled noisy annotations and counterfactual feedback. The problem is to characterize the function \\( \\Phi: \\mathcal{M} \\times \\mathbb{N} \\times \\mathcal{D}_{adv} \\to \\{\\text{robust}, \\text{hallucination}\\} \\) that identifies the critical threshold \\( (C^*, L^*) \\) where the system transitions from robust generalization to systematic failure.",
+        "mathematical_setup": {
+          "entities": [
+            "In-context learning model \\( \\mathcal{M} \\)",
+            "Prompt length \\( L \\)",
+            "Adversarial data distribution \\( \\mathcal{D}_{adv} \\)",
+            "Robustness regime \\( \\mathcal{R}_{robust} \\)",
+            "Hallucination regime \\( \\mathcal{R}_{hall} \\)",
+            "Phase transition boundary \\( \\partial \\mathcal{R} \\)"
+          ],
+          "variables": [
+            {
+              "symbol": "C",
+              "meaning": "Model capacity parameter",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "L",
+              "meaning": "Prompt length",
+              "type": "scalar",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "\\mathcal{D}_{adv}",
+              "meaning": "Distribution of data with coupled noisy and counterfactual feedback",
+              "type": "distribution",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "\\Phi",
+              "meaning": "Mapping from model, prompt, and data to failure regime",
+              "type": "function",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "\\theta",
+              "meaning": "Model parameters",
+              "type": "vector",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "y_{true}",
+              "meaning": "Ground truth label",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "y_{obs}",
+              "meaning": "Observed label (potentially noisy or counterfactual)",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            }
+          ],
+          "data_or_observations": "Observations consist of input prompts \\( x \\) and observed labels \\( y_{obs} \\) drawn from \\( \\mathcal{D}_{adv} \\), where \\( y_{obs} \\) may differ from \\( y_{true} \\) due to noise or counterfactual manipulation.",
+          "feedback_or_measurement_model": "The feedback mechanism is defined by the adversarial perturbation process \\( \\epsilon \\) applied to ground truth, resulting in \\( y_{obs} = y_{true} + \\epsilon \\), where \\( \\epsilon \\) exhibits synergistic coupling between noise and counterfactual components.",
+          "decision_variables_or_outputs": "The output is the predicted label \\( \\hat{y} \\) generated by the model \\( \\mathcal{M} \\) given the prompt and context.",
+          "objective": "To identify the critical thresholds \\( C^* \\) and \\( L^* \\) such that for \\( C < C^* \\) or \\( L > L^* \\), the probability of systematic hallucination exceeds a failure tolerance \\( \\delta \\).",
+          "constraints": "The analysis must account for the coupled nature of adversarial perturbations, relaxing the assumption of independent additive noise.",
+          "success_criterion": "Construction of a generalized failure map that quantifies robustness thresholds across model architectures and prompt lengths."
+        },
+        "assumptions": [
+          {
+            "name": "Independent Noise Assumption",
+            "description": "The assumption that noise and counterfactual feedback are independent, additive perturbations.",
+            "status": "relaxed",
+            "source_evidence": [
+              "assumption_shift",
+              "core_assumption_or_failure"
+            ]
+          },
+          {
+            "name": "Static Perturbation Assumption",
+            "description": "The assumption that adversarial conditions are static rather than interacting dynamically with prompt length and capacity.",
+            "status": "relaxed",
+            "source_evidence": [
+              "problem_statement",
+              "proposal_style_abstract"
+            ]
+          },
+          {
+            "name": "Existence of Phase Transition",
+            "description": "The assumption that a sharp boundary exists between robust generalization and systematic hallucination.",
+            "status": "kept",
+            "source_evidence": [
+              "family_title",
+              "failure_boundary_or_mechanism"
+            ]
+          }
+        ],
+        "open_question": "How the interaction between prompt length, model architecture, and the density of adversarial examples determines the robustness regime of few-shot learners.",
+        "possible_result_types": {
+          "theorem": "A characterization of the critical thresholds \\( (C^*, L^*) \\) defining the phase transition boundary.",
+          "algorithm": "A method for estimating the failure boundary from empirical data.",
+          "empirical_or_benchmark": "A generalized failure map quantifying robustness thresholds across model architectures and prompt lengths."
+        },
+        "evaluation_protocol": "Empirical evaluation across diverse model families and prompt lengths to map the region of systematic hallucination.",
+        "ambiguity_flags": [
+          {
+            "term": "Systematic hallucination",
+            "why_ambiguous": "The term is used to describe catastrophic failure but lacks a precise quantitative definition in the source evidence.",
+            "what_user_must_define": "A specific metric or threshold for output divergence from ground truth that qualifies as 'systematic'."
+          },
+          {
+            "term": "Coupled adversarial feedback",
+            "why_ambiguous": "The specific mathematical form of the coupling between noise and counterfactuals is not specified.",
+            "what_user_must_define": "The functional relationship or dependency structure between the noise component and the counterfactual component."
+          },
+          {
+            "term": "robust",
+            "why_ambiguous": "This term may hide multiple operational meanings in the source family.",
+            "what_user_must_define": "Specify the measurable object, boundary, or condition denoted by this term."
+          }
+        ],
+        "source_grounding": {
+          "source_verified_gaps": [
+            "gap:58c15de0e11db764"
+          ],
+          "supporting_papers": [
+            "openreview:00uVk06eVK",
+            "openreview:7H1jbTaOIn",
+            "openreview:BNAvYSCrLD",
+            "openreview:CCUrU4A92S",
+            "openreview:FxLxbJTm7F",
+            "openreview:INe4otjryz",
+            "openreview:J6Xgra2bE5",
+            "openreview:QHRLFdhkLu",
+            "openreview:YzXPU3QRnL",
+            "openreview:aKJr5NnN8U",
+            "openreview:p3tSEFMwpG",
+            "openreview:vl8VpW2niQ",
+            "openreview:yOhNLIqTEF"
+          ],
+          "representative_formulation": "var:17",
+          "critic_reason": "The variant shifts the scientific object from static noise validation to dynamic phase transitions and synergistic feedback regimes, moving beyond the source's narrow benchmark gap to a fundamental characterization of failure boundaries."
+        },
+        "formalization_confidence": "medium",
+        "formalization_risk": "High computational cost of evaluating phase transitions across diverse model families and prompt lengths; potential ambiguity in defining 'systematic hallucination' quantitatively.",
+        "requires_human_definition": true,
+        "formalization_is_fallback": false,
+        "formalization_retry_used": false,
+        "formalization_parse_error": "",
+        "formalization_retry_error": ""
+      }
+    },
+    {
+      "family_id": "family:03",
+      "family_title": "Characterizing the Failure Regime of Linear Intervention Methods Under Neural Superposition",
+      "member_variant_ids": [
+        "var:35"
+      ],
+      "member_ranks": [
+        3
+      ],
+      "representative_variant_id": "var:35",
+      "representative_title": "Characterizing the Failure Regime of Linear Intervention Methods Under Neural Superposition",
+      "family_problem_statement": "Mechanistic interpretability relies on intervention methods like TaRot that assume attention heads operate as independent, low-dimensional linear units. However, neural superposition causes token associations to entangle within single heads, violating these independence assumptions. This project characterizes the specific boundary where such linear interventions fail, moving beyond validating a single tool to defining the structural limits of the entire class of linear intervention mechanisms.",
+      "representative_problem_statement": "Mechanistic interpretability relies on intervention methods like TaRot that assume attention heads operate as independent, low-dimensional linear units. However, neural superposition causes token associations to entangle within single heads, violating these independence assumptions. This project characterizes the specific boundary where such linear interventions fail, moving beyond validating a single tool to defining the structural limits of the entire class of linear intervention mechanisms.",
+      "proposal_style_abstract": "This project studies the fundamental limits of mechanistic editing methods that rely on linear independence assumptions in neural networks. The central question is identifying the precise structural conditions under which the entanglement of representations in attention heads renders linear interventions ineffective. A successful outcome would establish a rigorous failure regime for the class of linear intervention methods, providing a theoretical boundary that distinguishes editable circuits from entangled superpositions. This work proposes a new evaluation protocol to map the transition from robust editing to catastrophic disruption as superposition density increases, thereby redefining the scope of applicability for current interpretability tools.",
+      "theorem_target": "A structural threshold for the efficacy of linear interventions based on superposition density",
+      "algorithmic_target": "",
+      "empirical_target": "",
+      "main_risk": "Difficulty in quantifying 'entanglement' density in high-dimensional spaces without introducing its own strong assumptions",
+      "falsification_condition": "Demonstration that linear interventions remain robust even in regimes predicted to cause catastrophic disruption by the proposed boundary",
+      "critic_reason": "The variant successfully generalizes from a specific critique of TaRot to a systematic characterization of the failure regime for an entire class of linear intervention methods, directly addressing the identified gap in superposition robustness without merely relabeling the original problem.",
+      "critic_quality_label": "STRONG_NON_INCREMENTAL",
+      "critic_non_incrementality_score": 0.9,
+      "critic_fake_ambition_risk": 0.0,
+      "critic_supported_by_source": "strong",
+      "research_object": "Mechanistic interpretability of Transformer attention heads under neural superposition",
+      "problem_class": "The structural identifiability and editability of neural circuits in the presence of representation superposition",
+      "assumption_shift": "Relaxing the assumption of independent, low-dimensional linear operations to characterize the failure of this entire class under entanglement",
+      "failure_boundary_or_mechanism": "The phase transition where linear interventions shift from precise editing to disruptive noise due to entangled circuits",
+      "constructive_or_evaluation_target": "A structural boundary defining the limits of linear intervention methods",
+      "source_verified_gaps": [
+        "gap:c7dff43244739c0d"
+      ],
+      "source_direct_formulations": [
+        "direct:12"
+      ],
+      "supporting_papers": [
+        "openreview:iZI1vCiTTA"
+      ],
+      "related_seed_papers": [],
+      "duplicate_status": "unique",
+      "merged_duplicate_variant_ids": [],
+      "main_risks": [
+        "Difficulty in quantifying 'entanglement' density in high-dimensional spaces without introducing its own strong assumptions"
+      ],
+      "contribution_types": {
+        "impossibility_boundary": 1
+      },
+      "evidence_grounding": "strong",
+      "non_incrementality": "strong",
+      "specificity": "strong",
+      "plausibility": "strong",
+      "domain_fit": "moderate",
+      "quality_label": "B_PROMISING_NEEDS_REFRAMING",
+      "recommended_action": "REFRAME",
+      "downgrade_reasons": [
+        "low_domain_fit"
+      ],
+      "label_rationale": "B_PROMISING_NEEDS_REFRAMING: evidence=strong, non_incrementality=strong, specificity=strong, plausibility=strong, domain_fit=moderate. Promising but needs reframing/narrowing due to: ['low_domain_fit'].",
+      "label_inconsistency_warning": false,
+      "maybe_recoverable_as": null,
+      "family_rank": 4,
+      "formal_problem_formulation": {
+        "family_id": "family:03",
+        "representative_variant_id": "var:35",
+        "family_title": "Characterizing the Failure Regime of Linear Intervention Methods Under Neural Superposition",
+        "plain_language_problem": "Mechanistic interpretability tools like TaRot assume that attention heads in Transformer models operate as independent, low-dimensional linear units. However, neural superposition causes multiple token associations to entangle within single heads, violating this independence. The problem is to characterize the specific structural boundary where these linear intervention methods fail, shifting from precise editing to disruptive noise, and to define the limits of the entire class of such linear intervention mechanisms.",
+        "formal_problem_statement": "Let $\\mathcal{H}$ be the set of attention heads in a Transformer model. Let $\\mathcal{S}$ be the set of token associations (superpositions) within these heads. The problem is to identify the structural conditions on $\\mathcal{S}$ such that a linear intervention operator $\\mathcal{I}$, designed to isolate and modify a specific association $s \\in \\mathcal{S}$, fails to produce the intended edit without disrupting other associations $s' \\in \\mathcal{S}$. Specifically, we seek a threshold or boundary in the space of superposition densities where the efficacy of $\\mathcal{I}$ transitions from robust editing to catastrophic disruption.",
+        "mathematical_setup": {
+          "entities": [
+            "Attention heads",
+            "Token associations",
+            "Linear intervention operators",
+            "Superposition density",
+            "Entanglement structure"
+          ],
+          "variables": [
+            {
+              "symbol": "$\\mathcal{H}$",
+              "meaning": "Set of attention heads in the model",
+              "type": "set",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "$\\mathcal{S}$",
+              "meaning": "Set of token associations (superpositions) within heads",
+              "type": "set",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "$\\mathcal{I}$",
+              "meaning": "Linear intervention operator acting on a head",
+              "type": "function",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "$\\rho$",
+              "meaning": "Superposition density (measure of entanglement)",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "$E_{edit}$",
+              "meaning": "Efficacy of the intervention in achieving the target edit",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "$D_{noise}$",
+              "meaning": "Disruption noise affecting non-target associations",
+              "type": "scalar",
+              "source": "introduced for formalization"
+            }
+          ],
+          "data_or_observations": "Observed behavior of the model after applying intervention $\\mathcal{I}$, specifically the change in output distribution and internal state representations.",
+          "feedback_or_measurement_model": "The measurement model is unclear. The evidence suggests measuring 'efficacy' and 'disruption' but does not specify the exact metric (e.g., change in loss, correlation with target concept, or specific output divergence).",
+          "decision_variables_or_outputs": "The structural threshold or boundary condition defining the failure regime.",
+          "objective": "To characterize the boundary where $E_{edit}$ drops below a critical threshold or $D_{noise}$ exceeds a tolerance level as a function of superposition density $\\rho$.",
+          "constraints": "The intervention $\\mathcal{I}$ must be linear and low-dimensional, consistent with the class of methods being analyzed.",
+          "success_criterion": "Establishing a rigorous structural threshold that distinguishes editable circuits from entangled superpositions."
+        },
+        "assumptions": [
+          {
+            "name": "Linear Independence Assumption",
+            "description": "Attention heads operate as independent, low-dimensional linear units.",
+            "status": "relaxed",
+            "source_evidence": [
+              "Mechanistic interpretability relies on intervention methods like TaRot that assume attention heads operate as independent, low-dimensional linear units.",
+              "The assumption that attention heads operate independently in a linear fashion breaks down under neural superposition of token associations"
+            ]
+          },
+          {
+            "name": "Existence of Superposition",
+            "description": "Neural superposition causes token associations to entangle within single heads.",
+            "status": "kept",
+            "source_evidence": [
+              "However, neural superposition causes token associations to entangle within single heads, violating these independence assumptions."
+            ]
+          },
+          {
+            "name": "Class Generalization",
+            "description": "The failure of TaRot implies the failure of the entire class of linear intervention mechanisms.",
+            "status": "kept",
+            "source_evidence": [
+              "This project characterizes the specific boundary where such linear interventions fail, moving beyond validating a single tool to defining the structural limits of the entire class of linear intervention mechanisms."
+            ]
+          }
+        ],
+        "open_question": "What is the precise structural condition (e.g., a specific density threshold or geometric property of the entanglement) that marks the transition from effective editing to disruptive noise?",
+        "possible_result_types": {
+          "theorem": "A structural threshold for the efficacy of linear interventions based on superposition density.",
+          "algorithm": "",
+          "empirical_or_benchmark": "A new evaluation protocol to map the transition from robust editing to catastrophic disruption as superposition density increases."
+        },
+        "evaluation_protocol": "The evidence proposes a new evaluation protocol but does not detail the specific steps, metrics, or datasets required to execute it. The protocol must be defined to map the transition from robust editing to catastrophic disruption.",
+        "ambiguity_flags": [
+          {
+            "term": "Entanglement density",
+            "why_ambiguous": "The main risk identified is the difficulty in quantifying 'entanglement' density in high-dimensional spaces without introducing its own strong assumptions.",
+            "what_user_must_define": "A rigorous, assumption-minimal definition or metric for quantifying the degree of superposition/entanglement in attention heads."
+          },
+          {
+            "term": "Efficacy vs. Disruption",
+            "why_ambiguous": "The feedback/measurement model is unclear regarding how to precisely measure 'efficacy' of the edit versus 'disruption' of other circuits.",
+            "what_user_must_define": "Specific quantitative metrics for 'precise editing' and 'catastrophic disruption' to operationalize the failure boundary."
+          },
+          {
+            "term": "failure",
+            "why_ambiguous": "This term may hide multiple operational meanings in the source family.",
+            "what_user_must_define": "Specify the measurable object, boundary, or condition denoted by this term."
+          },
+          {
+            "term": "feedback_or_measurement_model",
+            "why_ambiguous": "The source evidence does not fully specify what is observed or measured.",
+            "what_user_must_define": "Define the observation channel, measurement process, or data collection protocol."
+          }
+        ],
+        "source_grounding": {
+          "source_verified_gaps": [
+            "gap:c7dff43244739c0d"
+          ],
+          "supporting_papers": [
+            "openreview:iZI1vCiTTA"
+          ],
+          "representative_formulation": "var:35",
+          "critic_reason": "The variant successfully generalizes from a specific critique of TaRot to a systematic characterization of the failure regime for an entire class of linear intervention methods, directly addressing the identified gap in superposition robustness without merely relabeling the original problem."
+        },
+        "formalization_confidence": "medium",
+        "formalization_risk": "The problem relies on quantifying 'entanglement' in high-dimensional spaces, which may require introducing strong assumptions that contradict the goal of characterizing the failure of such assumptions. Additionally, the measurement model for 'efficacy' and 'disruption' is not fully specified in the source evidence.",
+        "requires_human_definition": true,
+        "formalization_is_fallback": false,
+        "formalization_retry_used": false,
+        "formalization_parse_error": "",
+        "formalization_retry_error": ""
+      }
+    }
+  ],
+  "counts": {
+    "A_STRONG": 3,
+    "B_PROMISING_NEEDS_REFRAMING": 1
+  },
+  "formal_problem": {
+    "enabled": true,
+    "included_in_markdown": true,
+    "input": "stage10_formal_problem_formulations/formal_problem_formulations.jsonl",
+    "formalizations_loaded": 4,
+    "status": "PASS",
+    "fallback_formalization_count": 0,
+    "formalization_retry_used_count": 0,
+    "formalization_parse_error_count": 0
+  },
+  "extraction_quality": {},
+  "verification_gate": {
+    "enabled": true,
+    "mode": "survival_score",
+    "threshold": 0.6,
+    "reviewed_count": 16,
+    "passed_count": 12,
+    "failed_count": 4,
+    "passed_only": true,
+    "warning": ""
+  }
+}

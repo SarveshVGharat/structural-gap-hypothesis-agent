@@ -1,0 +1,143 @@
+project_name: structural_gap_hypothesis_agent
+code_root: .
+output_root: ${SGHA_OUTPUT_ROOT:-./runs}
+dataset_root: ${SGHA_DATA_ROOT:-./data}
+model_cache_root: ${SGHA_MODEL_CACHE:-./models}
+
+query: ""
+queries: []
+max_results: 25
+min_year: 2020
+allowed_categories: []
+anchor_terms: []
+polite_delay_seconds: 5.0
+request_timeout_seconds: 20
+
+retrieval:
+  enabled: true
+  sources:
+    - openreview
+  max_results_per_query: 50
+  max_raw_candidates: 500
+  max_expanded_queries: 10
+  final_k: 25
+  use_embeddings: false
+  use_paper_search_mcp: false
+  keep_threshold: 12.0
+
+llm:
+  model: ${SGHA_LLM_MODEL:-Qwen/Qwen3.5-9B}
+  base_url: ${SGHA_LLM_BASE_URL:-http://localhost:8000/v1}
+  api_key: ${SGHA_LLM_API_KEY:-EMPTY}
+  temperature: 0.1
+  max_tokens: 4096
+  retries: 3
+  timeout_seconds: 180
+  mock: ${SGHA_LLM_MOCK:-false}
+  models:
+    default:
+      base_url: ${SGHA_LLM_BASE_URL:-http://localhost:8000/v1}
+      model: ${SGHA_LLM_MODEL:-Qwen/Qwen3.5-9B}
+    resolution_extraction:
+      base_url: ${RESOLUTION_LLM_BASE_URL:-http://localhost:8000/v1}
+      model: ${RESOLUTION_LLM_MODEL:-Qwen/Qwen3.5-9B}
+    semantic_linker:
+      base_url: ${SEMANTIC_LINKER_LLM_BASE_URL:-http://localhost:8000/v1}
+      model: ${SEMANTIC_LINKER_LLM_MODEL:-Qwen/Qwen3.5-9B}
+    novelty:
+      base_url: ${NOVELTY_LLM_BASE_URL:-http://localhost:8000/v1}
+      model: ${NOVELTY_LLM_MODEL:-Qwen/Qwen3.5-9B}
+
+parse:
+  min_text_chars_ok: 1000
+
+graph:
+  normalize_labels: true
+  max_visualization_nodes: 500
+
+motifs:
+  min_shared_failure_methods: 2
+  min_repeated_limitation_papers: 2
+  sparse_evaluation_min_mentions: 2
+  sparse_evaluation_max_evaluations: 1
+
+verification:
+  skeptic_external_arxiv: false
+  retrieval_top_k: 6
+  survival_weights:
+    evidence_diversity: 0.20
+    failure_recurrence: 0.20
+    novelty_after_counterevidence: 0.20
+    experimentability: 0.15
+    mechanism_plausibility: 0.15
+    traceability: 0.10
+    already_solved_score: -0.25
+    extraction_uncertainty: -0.10
+
+verification_gate:
+  enabled: true
+  mode: survival_score
+  min_survival_score: 0.60
+  require_all_agents: true
+  require_critic_non_reject: true
+  min_critic_confidence: 0.50
+  fail_on_agent_parse_failure: true
+  allow_reviewed_only_fallback: false
+
+evolution:
+  generations: 8
+  population_size: 20
+  elite_fraction: 0.20
+  tournament_size: 3
+  random_seed: 13
+
+problem_formulation:
+  enabled: true
+  domain_profile: auto
+  max_formulations_per_gap: 8
+  max_total_formulations: 300
+  use_llm_axis_induction: true
+  use_graph_axis_induction: true
+  min_viability_score: 0.0
+
+personalization:
+  enabled: false
+
+reporting:
+  include_problem_abstracts: true
+  abstract_max_words: 220
+  abstract_min_words: 100
+  abstract_style: proposal
+  abstract_model_role: default
+
+extraction_quality:
+  min_extracted_fraction: 0.90
+  max_malformed_fraction: 0.30
+  min_avg_tuples_per_paper: 2.0
+  min_total_tuples: 400
+  enforcement: fail
+  allow_downstream_on_low_signal: false
+
+finalization:
+  mode: family_report
+  use_evolution: false
+
+final_report:
+  output_dir: final_sgha_family_report
+
+judge:
+  provider: openrouter
+  base_url: https://openrouter.ai/api/v1
+  api_key_env: OPENROUTER_API_KEY
+  model: anthropic/claude-sonnet-4
+  temperature: 0.0
+  max_tokens: 8192
+  timeout_seconds: 180
+  max_retries: 3
+  concurrency: 1
+
+evaluation:
+  scoring_mode: formulation_only_10pt
+  blind_methods: true
+  score_scale_min: 0
+  score_scale_max: 10

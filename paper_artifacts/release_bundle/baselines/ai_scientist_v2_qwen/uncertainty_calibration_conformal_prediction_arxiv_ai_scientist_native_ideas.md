@@ -1,0 +1,153 @@
+# Native AI-Scientist-v2 Ideas: Uncertainty Calibration / Conformal Prediction
+
+- requested: 6
+- generated: 6
+- kept: 6
+- model: `Qwen/Qwen3.5-9B`
+- Semantic Scholar enabled: true
+- external literature search enabled: true
+- full pipeline used: false
+
+## 1. Conformal Prediction Under Selective Sampling: Theory and Practice for Active Learning
+
+- Name: shift_conformal_active_learning
+
+### Short Hypothesis
+
+Conformal prediction's distribution-free calibration guarantees break down under selective sampling in active learning, but a principled correction term based on representation drift can restore near-guarantees with minimal overhead.
+
+### Related Work
+
+Existing conformal prediction literature assumes i.i.d. training and test distributions (Vovk et al. 2005; Angelopoulos et al. 2021). Active learning with uncertainty-based selection has been studied separately (Sener & Savarese 2018), but the interaction between selective sampling and CP calibration guarantees remains largely unexplored. Recent work on self-calibrating CP (2024) and federated CP (2023) addresses calibration in different settings but does not explicitly handle the distribution shift induced by selective sampling. Our proposal uniquely targets this intersection, proposing both theoretical analysis and practical algorithms.
+
+### Abstract
+
+Conformal prediction (CP) provides distribution-free uncertainty quantification with finite-sample coverage guarantees, making it attractive for high-stakes applications. However, CP assumes the training and test distributions are exchangeable—a condition frequently violated in active learning where models are trained on selectively sampled data. We hypothesize that while CP guarantees degrade under selective sampling, a simple correction based on representation shift estimation can restore calibration. We propose Shift-Conformal (SC), which adds a drift-aware correction term to CP p-values. We theoretically analyze how selective sampling affects CP coverage and empirically evaluate SC across image classification benchmarks under active learning protocols. Experiments include standard datasets (CIFAR-10, ImageNet-10) with stratified sampling, selective sampling, and real-world active learning scenarios. We measure coverage probability, set size efficiency, and selective prediction performance. Our work bridges a critical gap between CP theory and practical active learning deployment.
+
+### Experiments
+
+1. **Setup**: Implement baseline CP (standard split-conformal) and SC on CIFAR-10 and ImageNet-10. Use 3 active learning strategies: random sampling, uncertainty-based selection (margin/entropy), and query-by-committee. 2. **SC Algorithm**: Add a drift estimation module that computes representation shift between training and held-out calibration set using maximum mean discrepancy (MMD). Adjust CP thresholds by a factor derived from MMD score. 3. **Metrics**: Coverage probability (target 90%, measure at 80%, 95%, 99%), average set size, efficiency (coverage/size ratio), and selective prediction accuracy. 4. **Ablation**: Remove drift correction to verify efficacy, test with different representation layers (input vs. embedding). 5. **Control Experiments**: Compare with selective prediction baselines and self-calibrating CP variants.
+
+### Risk Factors and Limitations
+
+1. **Computational overhead**: MMD estimation adds inference-time cost. 2. **Representation choice**: Performance depends on selecting appropriate representation layer for drift estimation. 3. **Non-stationary shifts**: May not generalize to extreme distribution shifts. 4. **Theoretical bounds**: Our correction is heuristic; full theoretical guarantees may require additional assumptions. 5. **Dataset dependence**: May work best on certain data regimes. 6. **Baseline comparisons**: Need careful handling of baseline methods to ensure fair comparison.
+
+## 2. Conformal Prediction with Minimal Calibration: Theory and Algorithms for Data-Constrained Settings
+
+- Name: conformal_prediction_limited_calibration
+
+### Short Hypothesis
+
+Standard conformal prediction requires a substantial holdout calibration set to achieve coverage guarantees, but in practice, calibration data is often scarce or expensive. We hypothesize that by incorporating input-dependent non-conformity scoring and adaptive quantile selection, CP can maintain near-sure coverage with as few as 10-50 calibration samples.
+
+### Related Work
+
+Traditional conformal prediction (Vovk et al. 2005; Angelopoulos et al. 2021) assumes access to a calibration set comparable in size to the test set. Recent work on self-calibrating CP (2024) addresses calibration efficiency but still requires substantial data. Federated CP (2023) tackles data distribution issues but not calibration data scarcity. Our proposal uniquely targets the practical constraint of limited calibration data, which is common in medical imaging, rare disease diagnosis, and privacy-sensitive domains. We propose both theoretical analysis of coverage under limited calibration and practical algorithms that achieve coverage with minimal data.
+
+### Abstract
+
+Conformal prediction provides distribution-free uncertainty quantification with finite-sample coverage guarantees, making it ideal for high-stakes applications like medical diagnosis and autonomous systems. However, standard conformal prediction requires a holdout calibration set comparable in size to the test dataset—a luxury rarely available in practice. We observe that in many real-world deployments, calibration data is scarce due to privacy constraints, annotation costs, or data scarcity itself. We propose Limited-Calibration Conformal Prediction (LCCP), which achieves coverage guarantees with as few as 10-50 calibration samples through: (1) input-dependent non-conformity scoring that adapts to sample difficulty, (2) adaptive quantile selection that preserves coverage with minimal data, and (3) theoretical analysis showing how coverage degrades with calibration set size. We evaluate LCCP on image classification (CIFAR-10, ImageNet-10), medical imaging (MIMIC-CXR), and few-shot learning benchmarks. Experiments measure coverage probability, set size efficiency, and data efficiency (samples needed to achieve target coverage). Our work bridges a critical gap between CP theory and practical deployment in data-constrained settings.
+
+### Experiments
+
+1. **Setup**: Implement baseline split-conformal CP and LCCP on CIFAR-10, ImageNet-10, and MIMIC-CXR. Create calibration sets of varying sizes (10, 25, 50, 100, 200, 1000 samples). 2. **LCCP Algorithm**: (a) Compute input-dependent non-conformity scores using residual-based scoring; (b) Use adaptive quantile selection that scales with calibration set size; (c) Implement a data efficiency module that adjusts thresholds based on calibration set variance. 3. **Metrics**: Coverage probability at target levels (80%, 90%, 95%, 99%), average set size, data efficiency (minimum calibration samples to achieve 90% coverage), and set quality (average number of incorrect predictions). 4. **Ablation Studies**: Remove input-dependent scoring, remove adaptive quantile selection, test with fixed quantile selection. 5. **Control Experiments**: Compare with selective prediction baselines and test on out-of-distribution samples to verify robustness.
+
+### Risk Factors and Limitations
+
+1. **Coverage guarantees**: Theoretical coverage guarantees may be weaker with minimal calibration data; may require additional assumptions. 2. **Input-dependent scoring**: Effectiveness depends on finding appropriate scoring function that captures input difficulty. 3. **Computation overhead**: Input-dependent scoring may add inference-time cost. 4. **Generalization**: May not generalize to extreme distribution shifts or highly non-stationary settings. 5. **Baseline comparisons**: Need careful handling to ensure fair comparison with standard CP methods. 6. **Dataset dependence**: Performance may vary across domains with different data characteristics.
+
+## 3. Self-Adapting Conformal Prediction for Streaming Data with Concept Drift Detection
+
+- Name: streaming_conformal_drift
+
+### Short Hypothesis
+
+Standard conformal prediction assumes static i.i.d. conditions, but in streaming settings with concept drift, a dynamic thresholding mechanism that detects distribution shifts and adjusts conformal thresholds can maintain coverage guarantees with minimal overhead and better set efficiency than static CP.
+
+### Related Work
+
+Traditional conformal prediction (Vovk et al. 2005; Angelopoulos et al. 2021) assumes exchangeability and static thresholds. Recent work on self-calibrating CP (2024) addresses calibration efficiency but not temporal drift. Streaming/online conformal prediction has been studied (e.g., Barber et al. 2021) but typically requires full knowledge of drift characteristics. Our proposal uniquely targets the practical scenario where drift is unknown and must be detected adaptively with minimal computational overhead.
+
+### Abstract
+
+Conformal prediction provides distribution-free uncertainty quantification with finite-sample coverage guarantees, but standard implementations assume static i.i.d. conditions that rarely hold in real-world streaming applications. When concept drift occurs, CP's coverage guarantees degrade, leading to either overly conservative prediction sets (wasting resources) or unsafe predictions. We propose Stream-Adapting Conformal Prediction (SACP), which maintains coverage guarantees under unknown drift by (1) continuously monitoring prediction set quality on a sliding window, (2) detecting drift when coverage deviates from target, and (3) recalibrating thresholds adaptively. We theoretically analyze how drift magnitude affects coverage and empirically evaluate SACP on time series forecasting, network traffic prediction, and streaming classification benchmarks. Experiments measure coverage probability, set size efficiency, drift detection latency, and computational overhead. Our work bridges a critical gap between CP theory and practical streaming deployment.
+
+### Experiments
+
+1. **Setup**: Implement baseline static CP and SACP on three streaming benchmarks: (a) Network traffic prediction (UCI NSL-KDD), (b) Time series forecasting (ETT dataset), (c) Streaming classification (Adult dataset with temporal injection). 2. **SACP Algorithm**: (a) Maintain sliding window of recent predictions (size 500-1000); (b) Compute empirical coverage from window; (c) When coverage drops below threshold (e.g., 90%), trigger recalibration using recent calibration samples; (d) Use exponential moving average for smooth threshold updates. 3. **Metrics**: Coverage probability (target 90%, 95%, 99%), average set size, efficiency (coverage/size), drift detection latency (time to detect 10% drift), and computational cost per sample. 4. **Ablation Studies**: Test with different window sizes, different recalculation thresholds, and with/without drift detection. 5. **Control Experiments**: Compare with static CP, rolling window CP, and selective prediction baselines.
+
+### Risk Factors and Limitations
+
+1. **False drift detection**: May trigger recalibration too frequently, causing instability. 2. **Window size sensitivity**: Performance depends on choosing appropriate sliding window size. 3. **Non-stationary drift**: May struggle with rapid or catastrophic concept drift. 4. **Storage requirements**: Sliding window requires memory for recent predictions. 5. **Theoretical guarantees**: Coverage bounds may be weaker under unknown drift patterns. 6. **Baseline comparisons**: Need careful handling of streaming baselines that may also use dynamic methods.
+
+## 4. Black-Box Conformal Prediction via Knowledge Distillation: Efficient Uncertainty Quantification at Inference Time
+
+- Name: conformal_distillation_blackbox
+
+### Short Hypothesis
+
+Standard conformal prediction requires repeated model evaluations or complex non-conformity score computations at inference time, making it impractical for high-throughput applications. We hypothesize that knowledge distillation from a conformal teacher to a lightweight student can preserve finite-sample coverage guarantees while reducing inference cost by 10-100x, enabling practical deployment of uncertainty quantification in black-box settings.
+
+### Related Work
+
+Existing conformal prediction literature focuses on theoretical guarantees and algorithmic efficiency improvements (Vovk et al. 2005; Angelopoulos et al. 2021). Recent work on 'Credal Ensemble Distillation for Uncertainty Quantification (2025)' explores distillation for UQ but assumes access to ensemble outputs, not black-box models. Our proposal uniquely targets knowledge distillation specifically for conformal prediction mechanisms in black-box settings, where neither model internals nor calibration data are available for direct use. Unlike prior distillation work that targets accuracy transfer, we focus on preserving uncertainty calibration behavior.
+
+### Abstract
+
+Conformal prediction (CP) provides distribution-free uncertainty quantification with finite-sample coverage guarantees, making it ideal for high-stakes applications. However, standard CP implementations require repeated model evaluations or complex non-conformity score computations at inference time, creating prohibitive computational overhead for black-box models. We observe that while CP is theoretically sound, its practical adoption is limited by inference-time costs, particularly when models cannot be modified for efficient CP integration. We propose Distillation-Conformal (DC), which distills conformal prediction behavior from a teacher model to a lightweight student. The student learns to output calibrated prediction sets by mimicking the teacher's non-conformity score distributions and threshold selection behavior. Theoretically, we show that with sufficient teacher-student similarity, coverage guarantees can be preserved through learned quantile functions. We evaluate DC on image classification (CIFAR-10, ImageNet-10), time series forecasting (ETT, Weather datasets), and out-of-distribution detection benchmarks. Experiments measure coverage probability, inference speed improvement (target 10-100x), set size efficiency, and robustness to distribution shift. Our work bridges a critical gap between conformal prediction theory and practical deployment in resource-constrained black-box environments.
+
+### Experiments
+
+1. **Setup**: Create teacher-student pairs on CIFAR-10 and ImageNet-10. Teacher uses standard split-conformal CP; student is lightweight CNN (2-3x fewer parameters). 2. **DC Algorithm**: (a) Train student to match teacher's prediction set distributions using MSE on prediction set indicators; (b) Add coverage-aware loss that penalizes coverage violations on held-out calibration set; (c) Fine-tune student with knowledge distillation on non-conformity score distributions. 3. **Metrics**: Coverage probability at target levels (80%, 90%, 95%, 99%), inference time per sample (target <10ms), set size efficiency, and calibration error (absolute coverage minus target). 4. **Ablation Studies**: (a) Remove coverage-aware loss; (b) Train on different non-conformity score functions; (c) Compare with standard CP without distillation for fair baseline. 5. **Control Experiments**: Test on out-of-distribution samples (ImageNet-C, ImageNet-A), measure how coverage degradation differs between teacher, student, and DC. 6. **Theoretical Validation**: Verify coverage bounds hold empirically on test set with 1000 samples, ensuring no catastrophic under-coverage.
+
+### Risk Factors and Limitations
+
+1. **Coverage preservation**: Knowledge distillation may not perfectly preserve finite-sample coverage guarantees; requires careful loss design. 2. **Teacher-student compatibility**: Performance depends on architecture similarity and capacity gap. 3. **Calibration data requirement**: Still requires calibration set for initial teacher training and student fine-tuning. 4. **Distribution shift**: May not generalize to extreme domain shifts beyond training distribution. 5. **Computational overhead**: Distillation training adds upfront cost, though inference remains efficient. 6. **Baseline comparisons**: Need careful handling to distinguish DC from standard CP efficiency improvements vs. true distillation benefit.
+
+## 5. Fair Conformal Prediction: Subgroup-Aware Uncertainty Quantification with Coverage Guarantees
+
+- Name: fair_conformal_prediction
+
+### Short Hypothesis
+
+Standard conformal prediction provides marginal coverage guarantees that may fail for minority demographic groups due to dataset bias, but by incorporating subgroup-specific calibration thresholds and adaptive thresholding, we can achieve near-guaranteed coverage for all demographic groups while maintaining overall set efficiency with minimal computational overhead.
+
+### Related Work
+
+Standard conformal prediction (Vovk et al. 2005; Angelopoulos et al. 2021) provides marginal coverage guarantees but does not ensure subgroup coverage. Recent work on fairness in ML (Chouldechova 2017; Kleinberg et al. 2016) addresses fairness in decision-making but not uncertainty calibration. Our proposal uniquely targets the intersection of conformal prediction and demographic fairness, proposing both theoretical analysis and practical algorithms for subgroup-aware CP. Unlike prior work that focuses on point-prediction fairness, we address the gap in uncertainty quantification fairness, which is critical for high-stakes applications like medical diagnosis and criminal risk assessment.
+
+### Abstract
+
+Conformal prediction (CP) provides distribution-free uncertainty quantification with finite-sample coverage guarantees, making it ideal for high-stakes applications. However, standard CP assumes uniform coverage across all data points, which may fail for minority demographic groups due to dataset bias and representation imbalance. We hypothesize that by incorporating subgroup-specific calibration thresholds and adaptive thresholding, we can achieve near-guaranteed coverage for all demographic groups while maintaining overall set efficiency. We propose Fair-Conformal (FC), which maintains coverage guarantees for predefined demographic subgroups through: (1) subgroup-specific non-conformity score distributions estimated from stratified calibration sets, (2) adaptive threshold selection per subgroup based on subgroup coverage targets, and (3) theoretical analysis showing coverage guarantees for each subgroup under minimal assumptions. We evaluate FC on image classification (CIFAR-10 with demographic annotations), medical imaging (with demographic information from MIMIC-CXR), and fairness benchmarks. Experiments measure subgroup coverage probability (target 90% for each subgroup), overall coverage, average set size, fairness metrics (demographic parity, equal opportunity), and set quality. Our work bridges a critical gap between conformal prediction and demographic fairness in high-stakes AI systems, providing the first principled framework for subgroup-aware uncertainty quantification.
+
+### Experiments
+
+1. **Setup**: Implement baseline split-conformal CP and FC on CIFAR-10 (with template-based demographic annotations), ImageNet-10, and MIMIC-CXR (medical imaging with patient demographics). Create calibration sets stratified by demographic groups (race/gender when available). 2. **FC Algorithm**: (a) Compute subgroup-specific non-conformity score distributions using split-conformal on each subgroup; (b) Use adaptive threshold selection per subgroup based on subgroup coverage targets (90%, 95%, 99%); (c) Implement a fairness-aware quantile selection that balances subgroup and overall coverage via weighted quantile averaging; (d) Add a post-processing module to ensure minimum coverage for underrepresented subgroups. 3. **Metrics**: Subgroup coverage probability (target ≥90% for each subgroup), overall coverage, average set size, set size efficiency (coverage/size ratio), fairness metrics (demographic parity ratio, equal opportunity difference), and calibration error (absolute coverage minus target per subgroup). 4. **Ablation Studies**: (a) Remove subgroup-specific thresholds (uniform threshold baseline); (b) Test with different subgroup definitions (binary vs multi-class); (c) Remove fairness-aware quantile selection; (d) Test calibration set size sensitivity (100, 500, 1000, 5000 samples per subgroup). 5. **Control Experiments**: Compare with selective prediction baselines that reject predictions for minority groups; test on datasets with varying demographic imbalances to verify robustness. 6. **Theoretical Validation**: Verify coverage bounds hold empirically on test set with 10,000 samples per subgroup, ensuring no catastrophic under-coverage.
+
+### Risk Factors and Limitations
+
+1. **Subgroup definition sensitivity**: Performance depends on how subgroups are defined and stratified; may not generalize to all demographic settings. 2. **Calibration data requirement**: Need sufficient calibration samples per subgroup (rare subgroups may have insufficient data). 3. **Computational overhead**: Subgroup-specific computations increase inference time by 1.5-2x; may need optimization. 4. **Theoretical guarantees**: Coverage bounds may be weaker for rare subgroups with small calibration sets. 5. **Baseline comparisons**: Need careful handling to ensure fair comparison with standard CP methods that don't account for subgroup fairness. 6. **Dataset dependence**: May not generalize to all demographic settings and may require domain-specific subgroup definitions. 7. **Privacy concerns**: Subgroup-specific calibration may reveal sensitive demographic information in some contexts.
+
+## 6. Conformal Prediction After Model Compression: Uncertainty Calibration in Pruned and Quantized Neural Networks
+
+- Name: conformal_prediction_model_compression
+
+### Short Hypothesis
+
+Model compression techniques (pruning, quantization) degrade not only predictive accuracy but also uncertainty calibration in conformal prediction; however, by incorporating compression-induced representation distortion into non-conformity score design, we can restore near-guaranteed coverage with minimal computational overhead.
+
+### Related Work
+
+Standard conformal prediction assumes the model used for scoring is identical to the model trained on calibration data (Vovk et al. 2005; Angelopoulos et al. 2021). Recent work on model compression (Huang et al. 2019; Jacob et al. 2018) focuses on accuracy preservation, not uncertainty. While some UQ methods consider model uncertainty (e.g., deep ensembles), none systematically study how compression affects CP guarantees. Our proposal uniquely targets the intersection of model compression and conformal prediction, proposing both theoretical analysis of how compression distorts non-conformity distributions and practical algorithms that compensate for this distortion.
+
+### Abstract
+
+Conformal prediction (CP) provides distribution-free uncertainty quantification with finite-sample coverage guarantees, making it ideal for high-stakes applications like medical diagnosis and autonomous systems. However, CP assumes the model used for inference is identical to the model trained on calibration data—a luxury rarely available in practice where models are compressed for deployment (pruning, quantization) to reduce memory and computational costs. We hypothesize that compression-induced representation distortion breaks CP's coverage guarantees, but a simple correction based on compression-aware non-conformity score design can restore near-guaranteed coverage with minimal overhead. We propose Compression-Conformal (CCP), which incorporates compression-induced distortion estimation into CP thresholds. We theoretically analyze how pruning/quantization affects non-conformity score distributions and empirically evaluate CCP on image classification (CIFAR-10, ImageNet-10) with standard and compressed models. Experiments measure coverage probability, set size efficiency, and compression rate (target 2-4x reduction). Our work bridges a critical gap between CP theory and practical deployment of compressed models in resource-constrained environments.
+
+### Experiments
+
+1. **Setup**: Create teacher-student pairs using two compression techniques: (a) Structured pruning (prune 30%, 50%, 70% of weights), (b) Quantization (8-bit, 4-bit). Use ResNet-18, MobileNetV2, and ViT-Base. 2. **CCP Algorithm**: (a) Train standard split-conformal CP on uncompressed teacher model; (b) At inference, estimate compression-induced distortion using representation shift (MMD between teacher and compressed model outputs); (c) Adjust CP thresholds by a factor derived from distortion estimate; (d) Alternative: re-calibrate CP using a small subset of calibration data passed through compressed model. 3. **Metrics**: Coverage probability at target levels (80%, 90%, 95%, 99%), average set size, efficiency (coverage/size ratio), compression rate (FLOPs reduction, memory reduction), and accuracy degradation (ensure accuracy doesn't drop >5% from teacher). 4. **Ablation Studies**: (a) Remove distortion correction (baseline uncompressed CP with compressed model); (b) Test with different compression rates; (c) Compare representation shift vs. simple re-calibration; (d) Test on different architectures (CNN vs. Transformer). 5. **Control Experiments**: Compare with deep ensembles for UQ, test on out-of-distribution samples (ImageNet-C) to verify robustness, measure inference time overhead of CCP vs. standard CP.
+
+### Risk Factors and Limitations
+
+1. **Coverage preservation**: Compression-distortion correction may not perfectly restore finite-sample coverage guarantees; requires careful design. 2. **Compression technique dependence**: Performance depends on specific pruning/quantization strategy; may not generalize across all compression methods. 3. **Calibration data requirement**: May still need small calibration set to estimate distortion; defeats purpose of compression in extreme resource settings. 4. **Architectural dependence**: May work best on CNNs; need to verify on Transformer architectures. 5. **Theoretical bounds**: Coverage bounds may be weaker under extreme compression; may require additional assumptions. 6. **Baseline comparisons**: Need careful handling to distinguish CCP from standard CP efficiency vs. true compression benefit. 7. **Quantization sensitivity**: May not work well with aggressive quantization (4-bit) where model behavior changes fundamentally.

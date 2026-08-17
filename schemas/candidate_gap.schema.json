@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"CandidateGap","type":"object","required":["gap_id","motif_type","label"],"properties":{"gap_id":{"type":"string"},"motif_type":{"type":"string"},"label":{"type":"string"},"evidence":{"type":"array"},"score":{"type":"number"},"traceability":{"type":"object"}}}

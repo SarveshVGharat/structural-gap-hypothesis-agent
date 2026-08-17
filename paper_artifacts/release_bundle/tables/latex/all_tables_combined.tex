@@ -1,0 +1,389 @@
+% SGHA all results tables combined
+% MAIN PAPER TABLES
+
+% MAIN PAPER TABLES
+
+% Source: MAIN_PAPER_TABLES/TABLE_1_SGHA_PIPELINE_YIELD.tex
+\begin{table}[htbp]
+\centering
+\caption{SGHA pipeline yield across five domains. Verification-passed gaps are counted after the hard verification gate.}
+\label{tab:sgha\_pipeline\_yield}
+\begin{tabular}{lrrrrr}
+\toprule
+Domain & Extracted & Tuples & Verification-passed gaps & Final families & Formalized problems \\
+\midrule
+Bandits & 221 & 1554 & 6 & 3 & 3 \\
+In-context learning & 193 & 1559 & 12 & 4 & 4 \\
+Reasoning / test-time compute & 137 & 1139 & 7 & 1 & 1 \\
+Offline RL & 245 & 2176 & 2 & 1 & 1 \\
+Uncertainty / calibration / conformal prediction & 248 & 2206 & 12 & 6 & 6 \\
+TOTAL & 1044 & 8634 & 39 & 15 & 15 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: MAIN_PAPER_TABLES/TABLE_2_FORMULATION_QUALITY_MAIN.tex
+\begin{table}[t]
+\centering
+\small
+\caption{Formulation-quality scores averaged over five LLM judges from different providers. The Claude Opus row is a frontier-generator stress test. MOOSE-Star uses the released public HC model in HC-only mode with no training or fine-tuning. Scores are descriptive formulation-quality assessments, not external novelty proof; full 10-criterion scores are in the appendix.}
+\label{tab:formulation_quality_with_moose}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Method & Overall & Clarity & Well-posed & Boundary & Formal. & Scope & Grounding & Ambiguity \\
+\midrule
+SGHA & \textbf{5.99} & 6.77 & \textbf{5.77} & \textbf{6.45} & \textbf{5.51} & 5.36 & \textbf{7.43} & \textbf{7.61} \\
+AI-Scientist-v2 + Qwen & 4.55 & 5.59 & 3.53 & 3.61 & 3.68 & 5.73 & 5.11 & 2.81 \\
+AI-Scientist-v2 + Claude Opus & 5.84 & \textbf{7.15} & 4.88 & 4.75 & 5.21 & \textbf{6.19} & 2.97 & 3.57 \\
+MOOSE-Star & 2.00 & 1.85 & 1.52 & 1.37 & 1.51 & 3.07 & 3.75 & 1.48 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: MAIN_PAPER_TABLES/TABLE_3_STRUCTURAL_ARTIFACTS.tex
+\begin{table}[htbp]
+\centering
+\caption{Structural artifact completeness, reported as counts out of 15 candidates. Missing baseline fields are not fabricated.}
+\label{tab:structural\_artifacts}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Method & Formal problem & Setup/assumptions & Source grounding & Ambiguity flags & Evaluation plan & Risks/caveats & Complete artifact \\
+\midrule
+SGHA & 15/15 & 15/15 & 15/15 & 15/15 & 15/15 & 15/15 & 15/15 \\
+AI-Scientist-v2 + Qwen & 0/15 & 0/15 & 15/15 & 0/15 & 15/15 & 15/15 & 0/15 \\
+AI-Scientist-v2 + Claude Opus & 0/15 & 0/15 & 15/15 & 0/15 & 15/15 & 15/15 & 0/15 \\
+MOOSE-Star & 0/15 & 0/15 & 15/15 & 0/15 & 0/15 & 0/15 & 0/15 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% APPENDIX TABLES
+
+% Source: APPENDIX_TABLES/TABLE_A10_JUDGE_CAP_WARNINGS_AND_SENSITIVITY.tex
+\begin{table}[htbp]
+\centering
+\caption{Judge cap warnings after retry. Sensitivity analysis reported separately in text.}
+\label{tab:cap\_warnings}
+\begin{tabular}{lllllllll}
+\toprule
+domain & method & candidate\_id & title & violated cap rule & score field & score & severity & retry still violated \\
+\midrule
+Uncertainty / calibration / conformal prediction & SGHA\_FULL & Candidate 016 & Characterizing the Fragility Boundary of Distribution-Free Conformal Prediction Under Extreme Label Shift & many\_loose\_concepts\_but\_scope\_control\_above\_4 & scope\_control\_10 & 8 & MINOR & True \\
+Bandits & SGHA\_FULL & Candidate 020 & Characterizing the Non-Convex Failure Regime of Diffusion-Based Contextual Bandits & many\_loose\_concepts\_but\_scope\_control\_above\_4 & scope\_control\_10 & 6 & MODERATE & True \\
+Bandits & NATIVE\_AI\_SCIENTIST\_V2 & Candidate 023 & Bandits with Adversarial Arm Execution: Robust Learning When Your Choices Don't Match Reality & many\_loose\_concepts\_but\_scope\_control\_above\_4 & scope\_control\_10 & 7 & MODERATE & True \\
+Uncertainty / calibration / conformal prediction & NATIVE\_AI\_SCIENTIST\_V2 & Candidate 027 & Fair Conformal Prediction: Subgroup-Aware Uncertainty Quantification with Coverage Guarantees & many\_loose\_concepts\_but\_scope\_control\_above\_4 & scope\_control\_10 & 7 & MODERATE & True \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: APPENDIX_TABLES/TABLE_A1_FULL_PIPELINE_COUNTS.tex
+\begin{table}[htbp]
+\centering
+\caption{Full SGHA pipeline counts by domain.}
+\label{tab:full\_pipeline\_counts}
+\begin{tabular}{lrrrrrrrrrrrrl}
+\toprule
+Domain & Selected & Parsed & Extracted & Tuples & Candidate gaps / motif hits & Novelty survivors & Reviewed gaps & Verification-passed gaps & Direct formulations & Critic-passing variants & Final families & Formal problems & Finalization status \\
+\midrule
+Bandits & 250 & 221 & 221 & 1554 & 173 & 30 & 13 & 6 & 6 & 4 & 3 & 3 & PIPELINE\_COMPLETED\_PASS \\
+In-context learning & 250 & 193 & 193 & 1559 & 147 & 21 & 16 & 12 & 12 & 4 & 4 & 4 & PIPELINE\_COMPLETED\_PASS \\
+Reasoning / test-time compute & 250 & 137 & 137 & 1139 & 105 & 29 & 12 & 7 & 7 & 1 & 1 & 1 & PIPELINE\_COMPLETED\_PASS \\
+Offline RL & 250 & 248 & 245 & 2176 & 193 & 8 & 8 & 2 & 2 & 1 & 1 & 1 & PIPELINE\_COMPLETED\_PASS \\
+Uncertainty / calibration / conformal prediction & 250 & 250 & 248 & 2206 & 218 & 17 & 15 & 12 & 12 & 9 & 6 & 6 & PIPELINE\_COMPLETED\_PASS \\
+TOTAL & 1250 & 1049 & 1044 & 8634 & 836 & 105 & 64 & 39 & 39 & 19 & 15 & 15 &  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: APPENDIX_TABLES/TABLE_A2_FULL_10_CRITERION_FORMULATION_SCORES.tex
+\begin{table}[t]
+\centering
+\small
+\caption{Full 10-criterion formulation-only scores averaged over five LLM judges. Scores are descriptive formulation-quality assessments, not external novelty proof.}
+\label{tab:appendix_full_formulation_quality_with_moose}
+\begin{tabular}{lrrrrrrrrrr}
+\toprule
+Method & Problem definition clarity & Technical specificity & Well-posedness & Assumption/boundary clarity & Formalizability & Nontriviality & Scope control & Source-grounded specificity & Ambiguity hygiene & Overall formulation quality \\
+\midrule
+SGHA & 6.77 & 5.89 & \textbf{5.77} & \textbf{6.45} & \textbf{5.51} & 6.39 & 5.36 & \textbf{7.43} & \textbf{7.61} & \textbf{5.99} \\
+AI-Scientist-v2 + Qwen & 5.59 & 4.72 & 3.53 & 3.61 & 3.68 & 5.27 & 5.73 & 5.11 & 2.81 & 4.55 \\
+AI-Scientist-v2 + Claude Opus & \textbf{7.15} & \textbf{6.95} & 4.88 & 4.75 & 5.21 & \textbf{6.88} & \textbf{6.19} & 2.97 & 3.57 & 5.84 \\
+MOOSE-Star & 1.85 & 2.51 & 1.52 & 1.37 & 1.51 & 2.89 & 3.07 & 3.75 & 1.48 & 2.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: APPENDIX_TABLES/TABLE_A3_STRUCTURAL_ARTIFACTS_FULL.tex
+\begin{table}[htbp]
+\centering
+\caption{Full structural artifact completeness metrics.}
+\label{tab:structural\_artifacts\_full}
+\begin{tabular}{lrrrrrrrrrr}
+\toprule
+method & Method & Formal problem & Setup/assumptions & Source grounding & Ambiguity flags & Evaluation plan & Risks/caveats & Complete artifact & verification\_passed\_provenance & supporting\_papers \\
+\midrule
+SGHA\_FULL & SGHA & 15/15 & 15/15 & 15/15 & 15/15 & 15/15 & 15/15 & 15/15 & 15/15 & 15/15 \\
+NATIVE\_AI\_SCIENTIST\_V2\_QWEN & AI-Scientist-v2 + Qwen & 0/15 & 0/15 & 15/15 & 0/15 & 15/15 & 15/15 & 0/15 & 0/15 & 0/15 \\
+NATIVE\_AI\_SCIENTIST\_V2\_CLAUDE\_OPUS\_LATEST & AI-Scientist-v2 + Claude Opus & 0/15 & 0/15 & 15/15 & 0/15 & 15/15 & 15/15 & 0/15 & 0/15 & 0/15 \\
+MOOSE\_STAR\_PUBLIC\_MODEL & MOOSE-Star & 0/15 & 0/15 & 15/15 & 0/15 & 0/15 & 0/15 & 0/15 & 0/15 & 0/15 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: APPENDIX_TABLES/TABLE_A4_BASELINE_COUNTS_AND_STATUS.tex
+\begin{table}[htbp]
+\centering
+\caption{Baseline output counts and status. Blocked attempts are retained as diagnostics.}
+\label{tab:baseline\_counts\_status}
+\begin{tabular}{llllllllll}
+\toprule
+method & generator\_model & trained\_or\_training\_free & inference\_mode & output\_count & candidate\_count\_valid & domains\_completed & status & judge\_scores\_available & notes \\
+\midrule
+SGHA\_FULL & Qwen/Qwen3.5-9B & training-free generation pipeline & verified SGHA family-report pipeline & 15 & 15 & 5/5 & PASS & yes & Main system outputs; verified gate and formal problem stage included. \\
+Native AI-Scientist-v2 Qwen & Qwen/Qwen3.5-9B & training-free baseline & native AI-Scientist-v2 ideation-only / local Qwen & 15 & 15 & 5/5 & PASS & yes & No experiment execution, code execution, paper writing, or review loop. \\
+Native AI-Scientist-v2 Claude Opus & \textasciitilde{}anthropic/claude-opus-latest (resolved anthropic/claude-opus-5 observed) & training-free frontier generator & native AI-Scientist-v2 ideation-only via OpenRouter & 15 & 15 & 5/5 & PASS & yes & Output-count matched; not compute/information matched; Semantic Scholar native path enabled. \\
+MOOSE-Star & ZonglinY/MOOSE-Star-HC-R1D-7B & released trained public model & HC\_ONLY & 15 & 15 & 5/5 & PASS & yes & No additional training/fine-tuning; deterministic inspiration selection. \\
+Simple Qwen & Qwen/Qwen3.5-9B & training-free baseline & simple\_qwen & 15 & 15 & 5/5 & PASS & not in main four-method table & Baseline artifacts exist; formulation-only score status outside main table is not included here. \\
+Qwen+RAG & Qwen/Qwen3.5-9B & training-free baseline & qwen\_rag & 15 & 15 & 5/5 & PASS & not in main four-method table & Baseline artifacts exist; formulation-only score status outside main table is not included here. \\
+Native AI-Scientist-v2 GPT-5.5 attempted & openai/gpt-5.5 & training-free frontier generator & native AI-Scientist-v2 via OpenRouter & 0 & 0 & 0/5 & BLOCKED\_NETWORK\_UNREACHABLE & no & Model/probe succeeded; full compute-node generation failed with network unreachable. \\
+Native AI-Scientist-v2 Claude Opus blocked attempt & \textasciitilde{}anthropic/claude-opus-latest & training-free frontier generator & native AI-Scientist-v2 via OpenRouter & 0 & 0 & 0/5 & BLOCKED\_NETWORK\_UNREACHABLE & no & Superseded by SSO-authenticated successful attempt; no candidate set produced in blocked namespace. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: APPENDIX_TABLES/TABLE_A5_MULTI_JUDGE_ROBUSTNESS.tex
+\begin{table}[htbp]
+\centering
+\caption{Multi-judge robustness and sensitivity diagnostics.}
+\label{tab:multi\_judge\_robustness}
+\begin{tabular}{lrrrrrrrlll}
+\toprule
+judge\_model & candidates\_scored & parse\_errors & cap\_violations & SGHA\_overall\_formulation\_quality\_10 & Native\_AI\_Scientist\_v2\_overall\_formulation\_quality\_10 & SGHA\_minus\_Native\_delta & criteria\_SGHA\_wins & criteria\_Native\_wins & criteria\_ties & paper\_safe\_interpretation \\
+\midrule
+anthropic/claude-fable-5 & 30 & 0 & 1 & 5.8 & 4.6 & 1.2 & 9 & 1 & 0 & SGHA higher formulation-quality score for this calibrated judge; descriptive LLM-judge result, not novelty proof. \\
+x-ai/grok-4.5 & 30 & 0 & 0 & 5.8 & 4.7333 & 1.0667 & 9 & 1 & 0 & SGHA higher formulation-quality score for this calibrated judge; descriptive LLM-judge result, not novelty proof. \\
+moonshotai/kimi-k3 & 30 & 0 & 1 & 6.0667 & 5.0 & 1.0667 & 9 & 1 & 0 & SGHA higher formulation-quality score for this calibrated judge; descriptive LLM-judge result, not novelty proof. \\
+AGGREGATE\_CALIBRATED\_MODELS & 90 & 0 & 2 & 5.8889 & 4.7778 & 1.1111 & 9 & 1 & 0 & Across calibrated completed judges, SGHA has higher mean formulation-quality scores; interpret as robustness evidence for formulation structure, not external novelty proof. \\
+Claude Opus baseline excluding Anthropic judge & 60 & 0 & not\_reported & not\_applicable & 5.83 & not\_applicable & not\_applicable & not\_applicable & not\_applicable & Sensitivity check: Claude Opus generator score remains similar when same-provider Anthropic judge is excluded. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: APPENDIX_TABLES/TABLE_A6_BEST_CANDIDATES_BY_DOMAIN.tex
+\begin{table}[htbp]
+\centering
+\caption{Best SGHA and Native AI-Scientist-v2 Qwen candidates by domain from absolute-score diagnostics.}
+\label{tab:best\_candidates\_domain}
+\begin{tabular}{llllllllrrrrl}
+\toprule
+domain & method & candidate\_id & title & mean\_overall\_formulation\_quality & median\_overall\_formulation\_quality & max\_overall\_formulation\_quality & min\_overall\_formulation\_quality & std\_overall\_formulation\_quality & n\_judges & num\_judges\_ge\_7 & num\_judges\_ge\_8 & selected\_reason \\
+\midrule
+bandits & SGHA\_FULL & family:01 & Characterizing Identifiability Limits of Structured Bandits Under Piecewise Non-Stationarity & 6.25 & 6.0 & 7.0 & 6.0 & 0.5 & 4 & 1 & 0 & selected by highest mean\_overall\_formulation\_quality=6.25, median=6.0, max=7.0, tie\_break\_mean\_wellposed\_formal\_source\_ambiguity=6.75 \\
+bandits & NATIVE\_AI\_SCIENTIST\_V2 & native\_ai\_scientist\_v2\_002 & Bandits with Adversarial Arm Execution: Robust Learning When Your Choices Don't Match Reality & 5.0 & 5.0 & 5.0 & 5.0 & 0.0 & 4 & 0 & 0 & selected by highest mean\_overall\_formulation\_quality=5.0, median=5.0, max=5.0, tie\_break\_mean\_wellposed\_formal\_source\_ambiguity=4.4375 \\
+in\_context\_learning & SGHA\_FULL & family:01 & Characterizing the Depth-Window Phase Transition in Linear Attention Mechanisms & 6.75 & 7.0 & 7.0 & 6.0 & 0.5 & 4 & 3 & 0 & selected by highest mean\_overall\_formulation\_quality=6.75, median=7.0, max=7.0, tie\_break\_mean\_wellposed\_formal\_source\_ambiguity=7.1875 \\
+in\_context\_learning & NATIVE\_AI\_SCIENTIST\_V2 & native\_ai\_scientist\_v2\_004 & Teaching Models to Trust: Uncertainty-Aware In-Context Learning with Demonstration Reliability Signals & 4.75 & 5.0 & 5.0 & 4.0 & 0.5 & 4 & 0 & 0 & selected by highest mean\_overall\_formulation\_quality=4.75, median=5.0, max=5.0, tie\_break\_mean\_wellposed\_formal\_source\_ambiguity=3.9375 \\
+reasoning\_models\_test\_time\_compute & SGHA\_FULL & family:01 & Characterizing the Identifiability Boundary of Bootstrapped Reasoning under Unverifiable Feedback & 7.25 & 7.0 & 8.0 & 7.0 & 0.5 & 4 & 4 & 1 & selected by highest mean\_overall\_formulation\_quality=7.25, median=7.0, max=8.0, tie\_break\_mean\_wellposed\_formal\_source\_ambiguity=7.4375 \\
+reasoning\_models\_test\_time\_compute & NATIVE\_AI\_SCIENTIST\_V2 & native\_ai\_scientist\_v2\_001 & Adaptive Test-Time Compute: Dynamically Allocating Reasoning Effort Based on Problem Uncertainty & 4.75 & 5.0 & 5.0 & 4.0 & 0.5 & 4 & 0 & 0 & selected by highest mean\_overall\_formulation\_quality=4.75, median=5.0, max=5.0, tie\_break\_mean\_wellposed\_formal\_source\_ambiguity=3.6875 \\
+offline\_reinforcement\_learning\_arxiv & SGHA\_FULL & family:01 & Characterizing the Failure Regime of Q-Learning in Offline RL via Distributional Shift & 6.0 & 6.0 & 7.0 & 5.0 & 1.1547 & 4 & 2 & 0 & selected by highest mean\_overall\_formulation\_quality=6.0, median=6.0, max=7.0, tie\_break\_mean\_wellposed\_formal\_source\_ambiguity=6.6875 \\
+offline\_reinforcement\_learning\_arxiv & NATIVE\_AI\_SCIENTIST\_V2 & native\_ai\_scientist\_v2\_001 & Density-Adaptive Conservative Value Functions for Offline Reinforcement Learning & 5.0 & 5.0 & 5.0 & 5.0 & 0.0 & 4 & 0 & 0 & selected by highest mean\_overall\_formulation\_quality=5.0, median=5.0, max=5.0, tie\_break\_mean\_wellposed\_formal\_source\_ambiguity=4.25 \\
+uncertainty\_calibration\_conformal\_prediction\_arxiv & SGHA\_FULL & family:03 & Characterizing the Fragility Boundary of Distribution-Free Conformal Prediction Under Extreme Label Shift & 6.25 & 6.0 & 8.0 & 5.0 & 1.2583 & 4 & 1 & 1 & selected by highest mean\_overall\_formulation\_quality=6.25, median=6.0, max=8.0, tie\_break\_mean\_wellposed\_formal\_source\_ambiguity=7.0 \\
+uncertainty\_calibration\_conformal\_prediction\_arxiv & NATIVE\_AI\_SCIENTIST\_V2 & native\_ai\_scientist\_v2\_006 & Conformal Prediction After Model Compression: Uncertainty Calibration in Pruned and Quantized Neural Networks & 5.25 & 5.0 & 6.0 & 5.0 & 0.5 & 4 & 0 & 0 & selected by highest mean\_overall\_formulation\_quality=5.25, median=5.0, max=6.0, tie\_break\_mean\_wellposed\_formal\_source\_ambiguity=4.3125 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: APPENDIX_TABLES/TABLE_A7_PER_DOMAIN_FORMULATION_SCORES.tex
+\begin{table}[htbp]
+\centering
+\caption{Per-domain formulation-quality scores by method.}
+\label{tab:per\_domain\_scores}
+\begin{tabular}{llrrrrrr}
+\toprule
+Domain & Method & Candidates & Judges & Overall & Grounding & Formalizability & Ambiguity \\
+\midrule
+Bandits & SGHA & 3 & 5 & 5.93 & 7.33 & 5.20 & 7.80 \\
+Bandits & AI-Scientist-v2 + Qwen & 3 & 5 & 4.53 & 5.20 & 4.00 & 2.93 \\
+Bandits & AI-Scientist-v2 + Claude Opus & 3 & 5 & 5.87 & 2.80 & 5.07 & 3.47 \\
+Bandits & MOOSE-Star & 3 & 5 & 1.93 & 3.47 & 1.27 & 1.40 \\
+In-context learning & SGHA & 4 & 5 & 5.80 & 7.25 & 5.35 & 7.55 \\
+In-context learning & AI-Scientist-v2 + Qwen & 4 & 5 & 4.35 & 4.60 & 3.40 & 2.60 \\
+In-context learning & AI-Scientist-v2 + Claude Opus & 4 & 5 & 5.80 & 3.00 & 5.30 & 3.70 \\
+In-context learning & MOOSE-Star & 4 & 5 & 1.95 & 4.00 & 1.55 & 1.50 \\
+Offline RL & SGHA & 1 & 5 & 6.40 & 7.60 & 6.00 & 7.80 \\
+Offline RL & AI-Scientist-v2 + Qwen & 1 & 5 & 4.80 & 5.60 & 3.80 & 3.00 \\
+Offline RL & AI-Scientist-v2 + Claude Opus & 1 & 5 & 5.40 & 2.80 & 4.80 & 3.00 \\
+Offline RL & MOOSE-Star & 1 & 5 & 2.40 & 4.40 & 2.00 & 1.60 \\
+Reasoning / test-time compute & SGHA & 1 & 5 & 7.20 & 7.80 & 6.40 & 7.80 \\
+Reasoning / test-time compute & AI-Scientist-v2 + Qwen & 1 & 5 & 4.60 & 5.40 & 3.40 & 2.40 \\
+Reasoning / test-time compute & AI-Scientist-v2 + Claude Opus & 1 & 5 & 6.00 & 3.40 & 5.40 & 3.40 \\
+Reasoning / test-time compute & MOOSE-Star & 1 & 5 & 2.00 & 4.00 & 1.40 & 1.40 \\
+Uncertainty / calibration / conformal prediction & SGHA & 6 & 5 & 5.87 & 7.50 & 5.53 & 7.50 \\
+Uncertainty / calibration / conformal prediction & AI-Scientist-v2 + Qwen & 6 & 5 & 4.63 & 5.27 & 3.73 & 2.93 \\
+Uncertainty / calibration / conformal prediction & AI-Scientist-v2 + Claude Opus & 6 & 5 & 5.90 & 3.00 & 5.27 & 3.67 \\
+Uncertainty / calibration / conformal prediction & MOOSE-Star & 6 & 5 & 2.00 & 3.57 & 1.53 & 1.50 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: APPENDIX_TABLES/TABLE_A8_MOOSE_STAR_BASELINE_DETAILS.tex
+\begin{table}[htbp]
+\centering
+\caption{MOOSE-Star public-model baseline details.}
+\label{tab:moose\_details}
+\begin{tabular}{llllrrll}
+\toprule
+domain & model used & inference mode & training run & expected count & candidate count & status & caveat \\
+\midrule
+Bandits & ZonglinY/MOOSE-Star-HC-R1D-7B & HC\_ONLY & no & 3 & 3 & PASS & released public HC model; no additional training/fine-tuning; ML-domain setting \\
+In-context learning & ZonglinY/MOOSE-Star-HC-R1D-7B & HC\_ONLY & no & 4 & 4 & PASS & released public HC model; no additional training/fine-tuning; ML-domain setting \\
+Reasoning / test-time compute & ZonglinY/MOOSE-Star-HC-R1D-7B & HC\_ONLY & no & 1 & 1 & PASS & released public HC model; no additional training/fine-tuning; ML-domain setting \\
+Offline RL & ZonglinY/MOOSE-Star-HC-R1D-7B & HC\_ONLY & no & 1 & 1 & PASS & released public HC model; no additional training/fine-tuning; ML-domain setting \\
+Uncertainty / calibration / conformal prediction & ZonglinY/MOOSE-Star-HC-R1D-7B & HC\_ONLY & no & 6 & 6 & PASS & released public HC model; no additional training/fine-tuning; ML-domain setting \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: APPENDIX_TABLES/TABLE_A9_CLAUDE_OPUS_BASELINE_DETAILS.tex
+\begin{table}[htbp]
+\centering
+\caption{Native AI-Scientist-v2 Claude Opus baseline details.}
+\label{tab:claude\_opus\_details}
+\begin{tabular}{llllllll}
+\toprule
+domain & model requested & resolved model & candidate count & status & safe auth/network caveat & disabled paths & matching caveat \\
+\midrule
+Bandits & \textasciitilde{}anthropic/claude-opus-latest & anthropic/claude-opus-5 observed & 3 & PASS & compute-node API job after institutional network authentication; credentials excluded & no generated code, experiments, writeup, or review loop & output-count matched; not compute/information matched \\
+In-context learning & \textasciitilde{}anthropic/claude-opus-latest & anthropic/claude-opus-5 observed & 4 & PASS & compute-node API job after institutional network authentication; credentials excluded & no generated code, experiments, writeup, or review loop & output-count matched; not compute/information matched \\
+Reasoning / test-time compute & \textasciitilde{}anthropic/claude-opus-latest & anthropic/claude-opus-5 observed & 1 & PASS & compute-node API job after institutional network authentication; credentials excluded & no generated code, experiments, writeup, or review loop & output-count matched; not compute/information matched \\
+Offline RL & \textasciitilde{}anthropic/claude-opus-latest & anthropic/claude-opus-5 observed & 1 & PASS & compute-node API job after institutional network authentication; credentials excluded & no generated code, experiments, writeup, or review loop & output-count matched; not compute/information matched \\
+Uncertainty / calibration / conformal prediction & \textasciitilde{}anthropic/claude-opus-latest & anthropic/claude-opus-5 observed & 6 & PASS & compute-node API job after institutional network authentication; credentials excluded & no generated code, experiments, writeup, or review loop & output-count matched; not compute/information matched \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% DIAGNOSTIC TABLES
+
+% Source: DIAGNOSTIC_TABLES/TABLE_D1_PERSONALIZED_PIPELINE_COUNTS.tex
+\begin{table}[htbp]
+\centering
+\caption{Personalized SGHA pipeline counts.}
+\label{tab:personalized\_counts}
+\begin{tabular}{lrrrrrrrl}
+\toprule
+profile & parsed & extracted & tuples & verification-passed gaps & direct formulations & final families & formal problems & finalization status \\
+\midrule
+yann\_lecun & 150 & 148 & 1170 & 4 & 4 & 1 & 1 & PIPELINE\_COMPLETED\_PASS \\
+geoffrey\_hinton & 150 & 141 & 1191 & 1 & 1 & 1 & 1 & PIPELINE\_COMPLETED\_PASS \\
+michael\_i\_jordan & 150 & 150 & 1043 & 4 & 4 & 2 & 2 & PIPELINE\_COMPLETED\_PASS \\
+sutton\_barto\_rl & 0 & 0 & 0 & 0 & 0 & 0 & 0 & SKIPPED\_NO\_RUN \\
+yoshua\_bengio & 0 & 0 & 0 & 0 & 0 & 0 & 0 & SKIPPED\_NO\_RUN \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: DIAGNOSTIC_TABLES/TABLE_D2_PERSONALIZED_JUDGE_SCORES.tex
+\begin{table}[htbp]
+\centering
+\caption{Personalized profile-alignment judge scores.}
+\label{tab:personalized\_judge}
+\begin{tabular}{lllrrrrrll}
+\toprule
+profile & candidate\_title & candidate\_id & n\_judges & mean\_formulation\_quality & mean\_profile\_alignment & mean\_profile\_specificity & mean\_intellectual\_style\_match & mean\_personalization\_overall & recommended\_action\_majority & paper\_use\_recommendation \\
+\midrule
+Geoffrey Hinton & Characterizing the Convergence Failure Regime of Stochastic Gradient Approximations in Deep Generative Models & geoffrey\_hinton:family:01 & 6 & 5.6667 & 8.0 & 7.1667 & 6.8333 & 7.1667 & PROMISING\_NEEDS\_REFINEMENT & do\_not\_use\_as\_strong\_example \\
+Michael I. Jordan & Identifiability Boundaries of Filtering-Clustering Under Rank-Deficient Design Matrices & michael\_i\_jordan:family:01 & 6 & 6.0 & 6.5 & 5.8333 & 7.3333 & 6.3333 & PROMISING\_NEEDS\_REFINEMENT & appendix\_or\_qualitative\_discussion \\
+Michael I. Jordan & Characterizing Hierarchical Identifiability Limits in Variational Protein Annotation & michael\_i\_jordan:family:02 & 4 & 6.0 & 8.0 & 7.0 & 7.75 & 7.0 & PROMISING\_NEEDS\_REFINEMENT & appendix\_or\_qualitative\_discussion \\
+Yann LeCun & Characterizing the Fundamental Limits of Partition Function Approximation in High-Dimensional EBMs & yann\_lecun:family:01 & 6 & 6.1667 & 7.0 & 4.5 & 5.6667 & 5.3333 & PROMISING\_NEEDS\_REFINEMENT & do\_not\_use\_as\_strong\_example \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: DIAGNOSTIC_TABLES/TABLE_D3_MODEL_SCALING_COUNTS.tex
+\begin{table}[htbp]
+\centering
+\caption{Bandits model-scaling pipeline counts.}
+\label{tab:model\_scaling\_counts}
+\begin{tabular}{lrrrrrrrrrrl}
+\toprule
+model & selected & parsed & extracted & tuples & tuples per paper & verification-passed gaps & direct formulations & critic-passing variants & final families & formal problems & final status \\
+\midrule
+4B\_CURRENT\_FROM\_EXISTING\_EXTRACTION & 250 & 221 & 221 & 204 & 0.92 & 8 & 8 & 0 & 0 & 0 & PIPELINE\_COMPLETED\_LOW\_SIGNAL \\
+9B\_REPAIRED\_REFERENCE & 250 & 221 & 221 & 1554 & 7.03 & 6 & 6 & 4 & 3 & 3 & PIPELINE\_COMPLETED\_PASS \\
+27B\_CURRENT\_PIPELINE & 250 & 221 & 221 & 1570 & 7.10 & 19 & 19 & 3 & 1 & 1 & PIPELINE\_COMPLETED\_PASS \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: DIAGNOSTIC_TABLES/TABLE_D4_MODEL_SCALING_JUDGE.tex
+\begin{table}[htbp]
+\centering
+\caption{Bandits model-scaling formulation-quality judge diagnostics.}
+\label{tab:model\_scaling\_judge}
+\begin{tabular}{llllrrrrr}
+\toprule
+comparison item & kind & candidate\_id & title & n\_judges & mean overall & max overall & mean source grounding & mean formalizability \\
+\midrule
+current\_27b\_single\_family & 27b & Candidate 001 & Identifiability Limits of Greedy Strategies in Adversarial Stackelberg Games with Unknown Follower Types & 6 & 6.67 & 8.00 & 6.33 & 6.33 \\
+repaired\_9b\_bandits\_average\_3\_families & 9b\_avg &  &  & 4 per candidate & 5.92 & 7.00 & 7.42 & 5.25 \\
+repaired\_9b\_bandits\_best\_family & 9b\_best & family:01 & Characterizing Identifiability Limits of Structured Bandits Under Piecewise Non-Stationarity & 4 & 6.25 & 7.00 & 7.75 & 5.25 \\
+native\_ai\_scientist\_v2\_bandits\_best\_idea & native\_best & native\_ai\_scientist\_v2\_002 & Bandits with Adversarial Arm Execution: Robust Learning When Your Choices Don't Match Reality & 4 & 5.00 & 5.00 & 6.00 & 4.50 \\
+4B current-pipeline result & 4b & NOT\_AVAILABLE & No final families; critic-passing variants = 0 & 0 & NOT\_AVAILABLE & NOT\_AVAILABLE & NOT\_AVAILABLE & NOT\_AVAILABLE \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: DIAGNOSTIC_TABLES/TABLE_D5_PAPER_SCALING_COUNTS.tex
+\begin{table}[htbp]
+\centering
+\caption{Bandits paper-count scaling pipeline counts.}
+\label{tab:paper\_scaling\_counts}
+\begin{tabular}{lrrrrrrrrrl}
+\toprule
+paper count & parsed/extracted & tuples & candidate gaps & novelty survivors & verification-passed gaps & direct formulations & critic-passing variants & final families & formal problems & status \\
+\midrule
+50 & 50/50 & 339 & 27 & 2 & 1 & 1 & 0 & 0 & 0 & PIPELINE\_COMPLETED\_LOW\_SIGNAL \\
+100 & 100/100 & 706 & 71 & 18 & 4 & 4 & 3 & 2 & 2 & PIPELINE\_COMPLETED\_PASS \\
+150 & 150/150 & 1036 & 107 & 20 & 5 & 5 & 1 & 1 & 1 & PIPELINE\_COMPLETED\_PASS \\
+200 & 200/200 & 1392 & 152 & 30 & 10 & 10 & 6 & 5 & 5 & PIPELINE\_COMPLETED\_PASS \\
+250 & 221/221 & 1554 & 173 & 30 & 6 & 6 & 4 & 3 & 3 & PIPELINE\_COMPLETED\_PASS \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: DIAGNOSTIC_TABLES/TABLE_D6_PAPER_SCALING_JUDGE.tex
+\begin{table}[htbp]
+\centering
+\caption{Bandits paper-count scaling formulation-quality judge scores.}
+\label{tab:paper\_scaling\_judge}
+\begin{tabular}{lrrrrl}
+\toprule
+paper count & scoreable families & mean overall formulation quality & best overall formulation quality & mean source-grounded specificity & trend note \\
+\midrule
+50 & 0 &  &  &  & not scoreable \\
+100 & 2 & 5.8000 & 6.2000 & 7.3000 & see nonmonotonic audit; descriptive score only \\
+150 & 1 & 5.2000 & 5.2000 & 7.0000 & see nonmonotonic audit; descriptive score only \\
+200 & 5 & 6.1200 & 6.6000 & 7.2400 & see nonmonotonic audit; descriptive score only \\
+250 & 3 & 5.9333 & 6.4000 & 7.0667 & see nonmonotonic audit; descriptive score only \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Source: DIAGNOSTIC_TABLES/TABLE_D7_EVOLUTIONARY_EXPLORATION_COUNTS.tex
+\begin{table}[htbp]
+\centering
+\caption{Legacy evolutionary exploration branch availability and counts.}
+\label{tab:evolutionary\_exploration}
+\begin{tabular}{lllllllll}
+\toprule
+domain & evolution output path & input source if available & model & evolved candidates / hypotheses & selected or ranked hypotheses & judge scores available & status & caveat \\
+\midrule
+Bandits & [SANITIZED_PRIVATE_PATH] & evolution\_input\_provenance.json & not summarized & 603 & 32 & no & LEGACY\_AVAILABLE & Legacy/optional branch; not main report. \\
+In-context learning & [SANITIZED_PRIVATE_PATH] & evolution\_input\_provenance.json & not summarized & 472 & 32 & no & LEGACY\_AVAILABLE & Legacy/optional branch; not main report. \\
+Reasoning / test-time compute & [SANITIZED_PRIVATE_PATH] & evolution\_input\_provenance.json & not summarized & 502 & 32 & no & LEGACY\_AVAILABLE & Legacy/optional branch; not main report. \\
+Offline RL & [SANITIZED_PRIVATE_PATH] & evolution\_input\_provenance.json & not summarized & 594 & 32 & no & LEGACY\_AVAILABLE & Legacy/optional branch; not main report. \\
+Uncertainty / calibration / conformal prediction & [SANITIZED_PRIVATE_PATH] & evolution\_input\_provenance.json & not summarized & 737 & 32 & no & LEGACY\_AVAILABLE & Legacy/optional branch; not main report. \\
+\bottomrule
+\end{tabular}
+\end{table}

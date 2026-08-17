@@ -1,0 +1,5 @@
+Synthetic example paper. This text is not copied from any real paper.
+
+Title: Mock Feedback Loops for Robust Toy Learners
+
+We simulate a feedback loop where a toy learner receives occasional labels after deployment. Frequent feedback reduces drift error, while sparse feedback preserves compute but leaves stale calibration. The synthetic setup is intentionally small and exists only to demonstrate how SGHA reads local text records.

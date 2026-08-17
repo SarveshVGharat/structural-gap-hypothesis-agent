@@ -1,0 +1,222 @@
+{
+  "families": [
+    {
+      "family_id": "family:01",
+      "family_title": "Characterizing the Identifiability Boundary of Bootstrapped Reasoning under Unverifiable Feedback",
+      "member_variant_ids": [
+        "var:21"
+      ],
+      "member_ranks": [
+        1
+      ],
+      "representative_variant_id": "var:21",
+      "representative_title": "Characterizing the Identifiability Boundary of Bootstrapped Reasoning under Unverifiable Feedback",
+      "family_problem_statement": "Current self-improvement frameworks like STaR collapse when training data contains non-verifiable responses or negative examples, relying on an idealized assumption of ground-truth availability. This reliance prevents the generalization of learned reasoning strategies to out-of-distribution tasks where verification is impossible or ambiguous. The core failure is not merely a lack of robustness but a fundamental breakdown in the learning signal when the verifier itself is absent or unreliable.",
+      "representative_problem_statement": "Current self-improvement frameworks like STaR collapse when training data contains non-verifiable responses or negative examples, relying on an idealized assumption of ground-truth availability. This reliance prevents the generalization of learned reasoning strategies to out-of-distribution tasks where verification is impossible or ambiguous. The core failure is not merely a lack of robustness but a fundamental breakdown in the learning signal when the verifier itself is absent or unreliable.",
+      "proposal_style_abstract": "This project studies the theoretical limits of bootstrapped reasoning mechanisms when the assumption of verifiable ground truth is relaxed. The central question is identifying the precise boundary conditions under which self-improvement algorithms fail to converge or learn spurious patterns due to unverifiable feedback. A successful outcome would characterize the identifiability regime of reasoning bootstrapping, distinguishing between settings where robust learning is possible versus where it is fundamentally impossible without external verification. This work proposes a new evaluation class for reasoning methods that explicitly tests performance under unverifiable feedback regimes, moving beyond simple robustness checks to define the structural requirements for self-correction.",
+      "theorem_target": "Identify the necessary conditions on the verifier function for the bootstrapping process to converge to a correct reasoning policy in the absence of ground truth",
+      "algorithmic_target": "",
+      "empirical_target": "",
+      "main_risk": "Proving impossibility results requires rigorous formalization of 'verifiability' which may be ambiguous in LLM contexts",
+      "falsification_condition": "Demonstration of a bootstrapping algorithm that successfully learns correct reasoning policies in a setting proven theoretically impossible by this work",
+      "critic_reason": "The variant successfully elevates the specific STaR robustness gap into a general theoretical problem regarding identifiability under unverifiable feedback, moving beyond mere method evaluation to a fundamental boundary analysis supported by the source evidence.",
+      "critic_quality_label": "STRONG_NON_INCREMENTAL",
+      "critic_non_incrementality_score": 0.95,
+      "critic_fake_ambition_risk": 0.0,
+      "critic_supported_by_source": "strong",
+      "research_object": "LLM reasoning bootstrapping with mixed verifiable and non-verifiable few-shot examples including negative samples",
+      "problem_class": "Identifiability and convergence of self-supervised reasoning loops under partial observability",
+      "assumption_shift": "Relaxing the assumption of perfect verifiability to analyze learning under unverifiable feedback",
+      "failure_boundary_or_mechanism": "The boundary between convergent bootstrapping and spurious pattern formation when verification is impossible",
+      "constructive_or_evaluation_target": "A characterization of the identifiability boundary for bootstrapped reasoning systems",
+      "source_verified_gaps": [
+        "gap:53c659644ee3bbbe"
+      ],
+      "source_direct_formulations": [
+        "direct:07"
+      ],
+      "supporting_papers": [
+        "openreview:4Po8d9GAfQ",
+        "openreview:77gQUdQhE7",
+        "openreview:P6dwZJpJ4m",
+        "openreview:YUYJsHOf3c"
+      ],
+      "related_seed_papers": [],
+      "duplicate_status": "unique",
+      "merged_duplicate_variant_ids": [],
+      "main_risks": [
+        "Proving impossibility results requires rigorous formalization of 'verifiability' which may be ambiguous in LLM contexts"
+      ],
+      "contribution_types": {
+        "impossibility_boundary": 1
+      },
+      "evidence_grounding": "strong",
+      "non_incrementality": "strong",
+      "specificity": "strong",
+      "plausibility": "moderate",
+      "domain_fit": "strong",
+      "quality_label": "A_STRONG",
+      "recommended_action": "READ_FIRST",
+      "downgrade_reasons": [],
+      "label_rationale": "A_STRONG: evidence=strong, non_incrementality=strong, specificity=strong, plausibility=moderate, domain_fit=strong \u2014 strong on every required axis, not a duplicate cluster.",
+      "label_inconsistency_warning": false,
+      "maybe_recoverable_as": null,
+      "family_rank": 1,
+      "formal_problem_formulation": {
+        "family_id": "family:01",
+        "representative_variant_id": "var:21",
+        "family_title": "Characterizing the Identifiability Boundary of Bootstrapped Reasoning under Unverifiable Feedback",
+        "plain_language_problem": "Self-improving reasoning systems (like STaR) fail when they encounter training data containing non-verifiable responses or negative examples because they rely on an assumption that all feedback is ground-truth correct. The problem is to define the precise conditions under which these systems can still learn correctly without external verification, or to prove that learning is impossible in the absence of such verification.",
+        "formal_problem_statement": "We seek to characterize the identifiability boundary of bootstrapped reasoning mechanisms operating under partial observability. Specifically, we aim to determine the necessary and sufficient conditions on the verifier function and the distribution of training examples such that the self-supervised bootstrapping process converges to a correct reasoning policy, distinguishing between regimes where robust learning is possible and those where it is fundamentally impossible due to unverifiable feedback.",
+        "mathematical_setup": {
+          "entities": [
+            "Reasoning Policy",
+            "Verifier Function",
+            "Training Data Distribution",
+            "Feedback Signal",
+            "Ground Truth"
+          ],
+          "variables": [
+            {
+              "symbol": "\u03c0",
+              "meaning": "The reasoning policy being learned",
+              "type": "process",
+              "source": "introduced for formalization"
+            },
+            {
+              "symbol": "V",
+              "meaning": "The verifier function mapping responses to correctness labels",
+              "type": "function",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "D",
+              "meaning": "The distribution of training examples (queries and responses)",
+              "type": "distribution",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "y",
+              "meaning": "The feedback signal generated by V",
+              "type": "scalar",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "y*",
+              "meaning": "The ground truth correctness label",
+              "type": "scalar",
+              "source": "from evidence"
+            },
+            {
+              "symbol": "P",
+              "meaning": "The target correct reasoning policy",
+              "type": "process",
+              "source": "introduced for formalization"
+            }
+          ],
+          "data_or_observations": "A sequence of queries and responses where the correctness of responses is determined by V, but V may be absent or unreliable for some examples.",
+          "feedback_or_measurement_model": "The feedback model is defined by the verifier V. The measurement is y = V(response). The model is partial because y* (ground truth) is not always observable or verifiable by V.",
+          "decision_variables_or_outputs": "The policy \u03c0 is updated based on the feedback y to minimize the divergence from the target policy P.",
+          "objective": "To identify the set of conditions C such that if (V, D) satisfies C, then the bootstrapping process converges to P; otherwise, the process converges to a spurious pattern or fails.",
+          "constraints": "The system operates without access to y* for a subset of the data distribution.",
+          "success_criterion": "Convergence of \u03c0 to P in the limit, or a formal proof of impossibility (non-convergence to P) for specific configurations of V and D."
+        },
+        "assumptions": [
+          {
+            "name": "Verifiability of Training Data",
+            "description": "The assumption that all training responses are verifiably correct.",
+            "status": "relaxed",
+            "source_evidence": [
+              "Current self-improvement frameworks like STaR collapse when training data contains non-verifiable responses or negative examples, relying on an idealized assumption of ground-truth availability.",
+              "The assumption that training responses are verifiably correct breaks under task-specific few-shot examples and negative samples"
+            ]
+          },
+          {
+            "name": "Existence of Ground Truth",
+            "description": "The existence of a unique ground truth y* for every query.",
+            "status": "kept",
+            "source_evidence": [
+              "The core failure is not merely a lack of robustness but a fundamental breakdown in the learning signal when the verifier itself is absent or unreliable."
+            ]
+          },
+          {
+            "name": "Convergence of Bootstrapping",
+            "description": "The assumption that the iterative process will eventually stabilize.",
+            "status": "questioned",
+            "source_evidence": [
+              "The central question is identifying the precise boundary conditions under which self-improvement algorithms fail to converge or learn spurious patterns due to unverifiable feedback."
+            ]
+          }
+        ],
+        "open_question": "What are the necessary conditions on the verifier function V and the data distribution D that guarantee the identifiability of the correct reasoning policy P in the absence of direct ground truth access?",
+        "possible_result_types": {
+          "theorem": "A characterization of the identifiability boundary separating convergent bootstrapping from spurious pattern formation.",
+          "algorithm": "A modified bootstrapping algorithm robust to unverifiable feedback (not explicitly targeted in the source evidence).",
+          "empirical_or_benchmark": "A new evaluation class for reasoning methods testing performance under unverifiable feedback regimes."
+        },
+        "evaluation_protocol": "Theoretical analysis of the convergence properties of the bootstrapping loop under varying degrees of verifier reliability and data ambiguity.",
+        "ambiguity_flags": [
+          {
+            "term": "Unverifiable Feedback",
+            "why_ambiguous": "The term is used to describe both the absence of a verifier and the presence of a verifier that is unreliable or ambiguous.",
+            "what_user_must_define": "The precise mathematical definition of 'unverifiable' (e.g., probability of error > 0, or complete absence of V)."
+          },
+          {
+            "term": "Spurious Pattern",
+            "why_ambiguous": "The source evidence mentions learning spurious patterns but does not define the structural properties of these patterns.",
+            "what_user_must_define": "A formal definition of what constitutes a 'spurious pattern' in the context of reasoning policies."
+          },
+          {
+            "term": "boundary",
+            "why_ambiguous": "This term may hide multiple operational meanings in the source family.",
+            "what_user_must_define": "Specify the measurable object, boundary, or condition denoted by this term."
+          }
+        ],
+        "source_grounding": {
+          "source_verified_gaps": [
+            "gap:53c659644ee3bbbe"
+          ],
+          "supporting_papers": [
+            "openreview:4Po8d9GAfQ",
+            "openreview:77gQUdQhE7",
+            "openreview:P6dwZJpJ4m",
+            "openreview:YUYJsHOf3c"
+          ],
+          "representative_formulation": "var:21",
+          "critic_reason": "The variant successfully elevates the specific STaR robustness gap into a general theoretical problem regarding identifiability under unverifiable feedback, moving beyond mere method evaluation to a fundamental boundary analysis supported by the source evidence."
+        },
+        "formalization_confidence": "medium",
+        "formalization_risk": "Proving impossibility results requires rigorous formalization of 'verifiability' which may be ambiguous in LLM contexts.",
+        "requires_human_definition": true,
+        "formalization_is_fallback": false,
+        "formalization_retry_used": false,
+        "formalization_parse_error": "",
+        "formalization_retry_error": ""
+      }
+    }
+  ],
+  "counts": {
+    "A_STRONG": 1
+  },
+  "formal_problem": {
+    "enabled": true,
+    "included_in_markdown": true,
+    "input": "stage10_formal_problem_formulations/formal_problem_formulations.jsonl",
+    "formalizations_loaded": 1,
+    "status": "PASS",
+    "fallback_formalization_count": 0,
+    "formalization_retry_used_count": 0,
+    "formalization_parse_error_count": 0
+  },
+  "extraction_quality": {},
+  "verification_gate": {
+    "enabled": true,
+    "mode": "survival_score",
+    "threshold": 0.6,
+    "reviewed_count": 12,
+    "passed_count": 7,
+    "failed_count": 5,
+    "passed_only": true,
+    "warning": ""
+  }
+}

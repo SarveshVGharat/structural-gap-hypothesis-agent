@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"ProjectFamily","type":"object","required":["family_id","title","member_ids"],"properties":{"family_id":{"type":"string"},"title":{"type":"string"},"summary":{"type":"string"},"member_ids":{"type":"array","items":{"type":"string"}},"representative_id":{"type":"string"},"audit":{"type":"object"}}}

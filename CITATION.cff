@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying arXiv paper when available."
+title: "Structural Gap Hypothesis Agent"
+type: software
+authors:
+  - family-names: "TODO"
+    given-names: "TODO"
+abstract: "Auditable structural gap detection system for generating research hypotheses from scientific papers."
+version: "0.1.0"
+date-released: "2026-08-17"
+repository-code: "https://github.com/TODO/structural-gap-hypothesis-agent"
+license: "Apache-2.0"
+preferred-citation:
+  type: article
+  title: "TODO: final arXiv paper title"
+  authors:
+    - family-names: "TODO"
+      given-names: "TODO"
+  year: 2026
+  doi: "TODO"
+  identifiers:
+    - type: other
+      value: "arXiv:TODO"
+      description: "TODO: final arXiv identifier"

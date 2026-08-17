@@ -1,0 +1,5 @@
+Synthetic example paper. This text is not copied from any real paper.
+
+Title: Synthetic Calibration Adapters for Toy Drift
+
+We study a toy classifier that sees small shifts in a two-feature input space. A calibration adapter improves confidence estimates on mild shifts but fails when the synthetic drift changes both features at once. The example highlights a simple limitation: adaptation and calibration are often tested separately, leaving the combined setting under-specified.

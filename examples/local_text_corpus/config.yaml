@@ -1,0 +1,32 @@
+project_name: local_text_corpus_demo
+output_root: .
+dataset_root: .
+model_cache_root: ./models
+query: "synthetic toy robustness papers"
+max_results: 3
+
+corpus:
+  manifest_path: papers.jsonl
+  papers_dir: papers
+  text_field: text_path
+
+retrieval:
+  enabled: false
+  final_k: 3
+
+llm:
+  mock: true
+  base_url: ${SGHA_LLM_BASE_URL:-http://localhost:8000/v1}
+  model: ${SGHA_LLM_MODEL:-local-openai-compatible-model}
+  api_key: ${SGHA_LLM_API_KEY:-EMPTY}
+
+verification:
+  skeptic_external_arxiv: false
+
+finalization:
+  mode: family_report
+  use_evolution: false
+
+offline_demo:
+  enabled: true
+  note: "Synthetic local text example; no network or LLM calls."

@@ -1,0 +1,86 @@
+# Final Family Report — Quality Audit
+
+- finalization status: PIPELINE_COMPLETED_PASS
+- families included: 4
+- family count: 4
+- low-signal reason: NONE
+- direct formulation input source: verification_passed_gaps
+- verification backed only: True
+- verification passed only: True
+- verification gate enabled: True
+- verification gate mode: survival_score
+- verification gate threshold: 0.6
+- verification reviewed count: 16
+- verification passed count: 12
+- verification failed count: 4
+- verification gate warning: NONE
+- direct formulation provenance counts: {'VERIFICATION_PASSED': 12}
+- novelty-only direct formulation IDs in default mode: []
+- reviewed-only direct formulation IDs in default mode: []
+- formal problem enabled: True
+- formalizations loaded: 4
+- missing formalizations: NONE
+- invented formalization family IDs: NONE
+- formalization confidence counts: {'medium': 4}
+- formalization ambiguity flags: 12
+- fallback formalization count: 0
+- formalization retry used count: 0
+- formalization parse error count: 0
+- extraction quality status: UNKNOWN
+- low_extraction_signal: False
+- extraction tuple count: None
+- extraction avg tuples/paper: None
+- extraction quality enforcement: None
+- allow downstream on low signal: None
+- extraction quality warning: NONE
+- visible internal-label tokens in Markdown: NONE
+
+- families_present_or_low_signal_recorded: PASS
+- every_representative_abstract_present: PASS
+- every_source_verified_gap_present: PASS
+- every_supporting_paper_present: PASS
+- direct_formulation_input_source_recorded: PASS
+- verification_backed_only_recorded: PASS
+- verification_gate_enabled_recorded: PASS
+- verification_gate_counts_recorded: PASS
+- verification_passed_only_recorded: PASS
+- direct_formulation_count_matches_records: PASS
+- direct_provenance_counts_match_records: PASS
+- no_novelty_only_direct_formulations_in_default_mode: PASS
+- no_reviewed_only_direct_formulations_in_default_mode: PASS
+- all_default_direct_formulations_passed_verification_gate: PASS
+- selected_stage8_direct_formulations_resolve: PASS
+- selected_stage8_trace_to_verification_passed_direct_formulations_in_default_mode: PASS
+- final_family_direct_formulations_resolve: PASS
+- final_families_trace_to_verification_passed_direct_formulations_in_default_mode: PASS
+- formal_problem_formulations_jsonl_exists_when_enabled: PASS
+- every_family_has_formal_problem_statement_when_enabled: PASS
+- every_formalization_has_source_grounding: PASS
+- formalization_family_ids_resolve: PASS
+- no_new_hypotheses_generated_during_formalization: PASS
+- no_old_evolved_or_ad_hoc_outputs_used_by_formalization: PASS
+- low_extraction_signal_warning_preserved: PASS
+- no_visible_internal_labels_in_markdown: PASS
+- internal_labels_preserved_in_json: PASS
+- abstracts_verbatim_from_records: PASS
+- representatives_resolve: PASS
+- final_report_md_exists: PASS
+- final_report_polished_exists: PASS
+- final_report_html_exists: PASS
+- final_project_families_json_exists: PASS
+- final_project_families_json_valid: PASS
+- no_malformed_outputs_detected: PASS
+- no_crash_recorded: PASS
+- no_graph_modification_by_renderer: PASS
+
+ALL: PASS
+
+## Provenance
+- no new hypotheses generated during rendering (problem statements + abstracts copied verbatim).
+- old evolved report / ad-hoc outputs NOT used; external search NOT used.
+- internal A/B/C/D + action labels kept only in final_project_families.json / this audit / run_metadata.json.
+## Internal labels (not shown in the Markdown report)
+- family:01 Characterizing the Depth-Window Phase Transition in Linear Attention Mechanisms: A_STRONG / READ_FIRST
+- family:02 Characterizing the Fundamental Robustness Boundary of Autoregressive and Masked In-Context Learning: A_STRONG / READ_FIRST
+- family:04 Robustness Phase Transitions in In-Context Learning Under Adversarial Feedback: A_STRONG / READ_FIRST
+- family:03 Characterizing the Failure Regime of Linear Intervention Methods Under Neural Superposition: B_PROMISING_NEEDS_REFRAMING / REFRAME

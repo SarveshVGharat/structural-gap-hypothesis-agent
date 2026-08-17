@@ -1,0 +1,17 @@
+# Paper Artifacts
+
+This directory contains the curated public artifact bundle for reproducing paper tables and inspecting examples:
+
+```text
+release_bundle/
+```
+
+Raw PDFs, parsed full texts, model weights, private logs, and secrets are excluded from this repository and from the artifact bundle.
+
+Generated tables, candidate packets, score files, and derived summaries are intended for research reuse under CC-BY-4.0 unless otherwise specified.
+
+Figures are not included in this artifact bundle unless explicitly added later for the camera-ready/arXiv source.
+
+Third-party source papers remain under their original licenses and are not redistributed here.
+
+Start with `release_bundle/README.md`, `release_bundle/MANIFEST.csv`, `release_bundle/CHECKSUMS.sha256`, and `release_bundle/SECRET_LEAKAGE_CHECK.md`.

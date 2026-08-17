@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "structural-gap-hypothesis-agent"
+version = "0.1.0"
+description = "Auditable structural gap detection system for generating research hypotheses from scientific papers."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "arxiv",
+  "requests",
+  "pandas",
+  "numpy",
+  "pydantic>=2",
+  "networkx",
+  "pyyaml",
+  "tenacity",
+  "rich",
+  "tqdm",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+dev = ["pytest", "ruff"]
+judge = ["requests", "pyyaml"]
+retrieval = ["scikit-learn", "sentence-transformers"]
+baselines = ["openai", "transformers", "torch"]
+serve = ["vllm", "torch"]
+
+[project.scripts]
+sgha = "sgha.cli:main"
+
+[project.urls]
+Repository = "https://github.com/TODO/structural-gap-hypothesis-agent"
+Paper = "https://arxiv.org/abs/TODO"
+Issues = "https://github.com/TODO/structural-gap-hypothesis-agent/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["sgha*", "retrieval*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]
+addopts = "-q"

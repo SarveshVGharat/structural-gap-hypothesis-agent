@@ -1,0 +1,11 @@
+criterion,sgha_full_mean,native_ai_scientist_v2_mean,sgha_minus_native,winner
+problem_definition_clarity_10,7.4,6.6,0.8,SGHA_FULL
+technical_specificity_10,6.5333,5.4667,1.0666,SGHA_FULL
+well_posedness_10,6.3333,3.9333,2.4,SGHA_FULL
+assumption_boundary_clarity_10,7.4667,4.4667,3.0,SGHA_FULL
+formalizability_10,6.3333,4.4667,1.8666,SGHA_FULL
+nontriviality_10,7.0,6.7333,0.2667,SGHA_FULL
+scope_control_10,5.8667,6.8,-0.9333,NATIVE_AI_SCIENTIST_V2
+source_grounded_specificity_10,7.9333,4.3333,3.6,SGHA_FULL
+ambiguity_hygiene_10,7.5333,3.8,3.7333,SGHA_FULL
+overall_formulation_quality_10,6.4,4.9333,1.4667,SGHA_FULL

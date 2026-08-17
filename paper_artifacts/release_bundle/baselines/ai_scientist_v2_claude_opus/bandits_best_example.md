@@ -1,0 +1,50 @@
+# Bandits Best AI-Scientist-v2 Claude Opus Example
+
+Selection note: Selected from tied top Bandits Claude Opus candidates in the available score table.
+
+## candidate_id
+native_ai_scientist_v2_claude_opus_latest_bandits_001
+
+## method
+NATIVE_AI_SCIENTIST_V2_CLAUDE_OPUS_LATEST
+
+## domain
+bandits
+
+## title
+Exploration Is a Broadcast Channel: Property Inference from Bandit Action Logs and the Regret-Secrecy Frontier
+
+## problem_statement
+The sequence of arms pulled by a bandit algorithm -- with no reward information whatsoever -- is nearly a sufficient statistic for the reward means the algorithm has learned, so any low-regret algorithm necessarily broadcasts its private conclusions to any passive observer; there is a quantifiable Pareto frontier between regret and 'aggregate secrecy' that differential privacy for bandits does not address at all.
+
+## motivation_or_abstract
+Bandit algorithms are usually analyzed as if their action stream were a private byproduct of learning. In practice the action stream is the most public thing about a deployed system: displayed prices, shown ads, recommended items, and prescribed treatments are all observable, while rewards are not. We ask a simple question: how much does a bandit algorithm reveal to an observer who sees only which arm was pulled at each round? We formalize a passive eavesdropper performing property inference on the action log, with two targets: identifying the optimal arm and estimating the gap vector. First, we show that action logs are startlingly informative. Beyond a naive argmax-of-counts attack, we derive algorithm-aware likelihood attacks that invert the deterministic index dynamics of UCB and successive elimination: the times at which the played arm switches pin down the empirical means, letting an observer estimate gaps at a rate within a constant factor of an observer who saw all the rewards. A sequential Monte Carlo attack extends this to Thompson Sampling and EXP3. Second, we prove this leakage is unavoidable: via a Fano/change-of-measure argument, any algorithm with regret R_T admits an attacker whose best-arm error probability is O(R_T / (Delta T)), so epsilon-secrecy forces linear regret with an explicit constant, yielding a matching regret-secrecy frontier. We then design decoy-set and count-symmetrization wrappers that attain this frontier, and show that DP-bandit algorithms sit far from it. Finally we flip the attack into an algorithm: a second agent that merely watches a UCB agent achieves near-optimal regret with zero exploration cost, making exploration a public good. Experiments on synthetic bandits and real recommendation logs quantify per-algorithm leakage.
+
+## formal_problem_statement
+not provided
+
+## source_context_or_grounding
+native AI-Scientist-v2 workshop file: [MAIN_PAPER_RUN_NAMESPACE]/native_ai_scientist_v2_claude_opus_latest_sso_hardcoded_retry_20260726_051057/configs/workshop_files/bandits.md
+
+## assumptions_or_problem_setup
+not provided
+
+## proposed_direction
+The sequence of arms pulled by a bandit algorithm -- with no reward information whatsoever -- is nearly a sufficient statistic for the reward means the algorithm has learned, so any low-regret algorithm necessarily broadcasts its private conclusions to any passive observer; there is a quantifiable Pareto frontier between regret and 'aggregate secrecy' that differential privacy for bandits does not address at all.
+
+## expected_contribution
+Three lines are adjacent but distinct. (1) Differential privacy in bandits (Mishra & Thakurta; Shariff & Sheffet; joint-DP contextual bandits; recent 'Faster Rates for Private Adversarial Bandits') protects an *individual* reward observation from an adversary who sees the action stream; by design it still permits -- indeed guarantees -- learning and hence revealing the *population-level* conclusion (which arm is best, what the gaps are). We study exactly this orthogonal, aggregate leakage, analogous to property/distribution-inference attacks in supervised learning (Ateniese et al.; Suri & Evans) which have never been formulated for sequential decision making. (2) Inverse/structural estimation of decision makers: 'Learning from a Learner' (Jacq et al., 2019) and inverse RL recover rewards from a learning agent's policies, and econometric dynamic-discrete-choice work estimates payoffs from choices; these aim to build an imitator and assume rich access (policies, states, sometimes rewards). We instead treat the action log as a side channel, give algorithm-aware maximum-likelihood attacks that exploit the *deterministic index structure* of UCB/elimination (switch times encode empirical means), and prove attacker-side sample-complexity guarantees plus algorithm-side impossibility results. (3) Adversarial attacks on bandits (reward poisoning, attacks on cooperative multi-agent bandits) and free-riding/communication in multi-agent bandits assume reward or message channels; our observer is strictly weaker (actions only, no rewards, no communication), which makes both the attack and the free-riding result surprising. To our knowledge no prior work defines an information-theoretic secrecy notion for the *identity of the optimal arm*, nor characterizes its price in regret.
+
+## evaluation_plan
+1) Attack implementation and evaluation (synthetic K-armed Bernoulli/Gaussian bandits, K in {5,10,50}, T up to 1e5, gap profiles from easy to hard). Observers see only a_1..a_T. Attacks: (a) Count-argmax; (b) Switch-time MLE for UCB1/KL-UCB/Successive Elimination: given the known algorithm and observed actions, solve for the set of empirical-mean trajectories consistent with 'played arm had the largest index at every round', via a constrained least-squares / interval-propagation estimator on index crossings, outputting a gap estimate; (c) Sequential importance sampling ('particle inversion') for Thompson Sampling and EXP3, where each particle carries a hypothesized reward history reweighted by the probability the algorithm would have chosen the observed action. Metrics vs. round t: best-arm identification accuracy, L2 error of gap estimates, and the *leakage ratio* = attacker error divided by the error of an oracle observer who sees all rewards; also empirical mutual information I(argmax arm ; a_1..t) estimated by Monte Carlo over random instances. Prediction to test: leakage ratio is O(1) for deterministic index algorithms and grows for randomized ones.
+2) Leakage audit across algorithms: UCB1, KL-UCB, Successive Elimination, ETC, Thompson Sampling, EXP3, epsilon-greedy, and DP variants (DP-SE, private UCB at eps in {0.1,1,10}). Report 'leakage time' tau_0.9 = first round the best attack reaches 90% best-arm accuracy, alongside regret. Key comparison: DP algorithms should not increase tau_0.9 much, empirically demonstrating that DP does not buy aggregate secrecy.
+3) Lower bound validation: instantiate the theoretical bound epsilon-secrecy => regret >= c*eps*Delta*T on 2- and 3-armed instances by grid-searching over parameterized algorithms (mixtures of committed policies) and plotting achieved (regret, attacker error) pairs against the theoretical frontier.
+4) Frontier algorithms: implement (i) Decoy-m: run successive elimination but stop eliminating once m candidates remain and thereafter play the survivors with symmetrized counts in a randomly permuted round-robin; (ii) Count-symmetrization wrapper: given any base algorithm, play its recommendation but maintain a randomized 'shadow budget' that forces the play-count vector of the top-m arms to be exchangeable; (iii) Delayed-commit: postpone commitment past a leakage budget. Measure regret vs. best-achievable attacker accuracy, and verify the predicted Pareto shape; compare against the lower bound.
+5) Real data: Open Bandit Dataset and MovieLens-1M converted to a K-armed / linear bandit via replay. Run UCB and TS, run the attacks on the action logs, and report attacker accuracy in identifying the top item and in ranking items (Kendall tau vs. true means). Linear-bandit extension: attacker estimates theta direction from the action log of LinUCB; metric = cosine similarity to true theta over time.
+6) The dual 'free-riding' experiment: agent B observes only agent A's actions (A runs UCB, B pulls arms in its own copy of the environment and gets rewards but no exploration budget beyond following B's inferred belief). Compare B's regret to (a) running its own UCB, (b) an oracle told the best arm. Also test the adversarial converse: does running a frontier algorithm from (4) measurably slow the free-rider, and at what cost to the leader's own regret?
+
+## risks_or_caveats
+(1) The headline impossibility result may be viewed as intuitive: exploiting the best arm necessarily reveals it. We mitigate this by making the statement quantitative (an explicit constant-level frontier with matching upper and lower bounds) and by focusing the surprise on the *gap-estimation* attack, where the claim that action-only observation matches reward-level observation up to constants is non-obvious. (2) Algorithm-aware inversion of randomized algorithms (TS, EXP3) may be statistically or computationally hard; particle degeneracy could weaken those results, in which case the finding 'randomization is a cheap partial defense' becomes the contribution. (3) The MLE/interval-propagation attack assumes knowledge of the algorithm and its parameters; we will report degradation under algorithm mismatch, but a fully algorithm-agnostic attack may be much weaker. (4) Formal secrecy definitions (mutual information vs. attacker error probability) may not be interchangeable; we will report both and prove relations only where clean. (5) Real-data replay evaluation of bandits is noisy and off-policy; conclusions there are indicative rather than definitive. (6) Non-stationary, contextual, or delayed-feedback settings may substantially change the leakage picture and are left partly to future work.
+
+## ambiguity_or_missing_definitions
+not provided

@@ -1,0 +1,5 @@
+candidate_id,profile,title,n_judges,READ_FIRST,PROMISING_NEEDS_REFINEMENT,NEEDS_REFRAMING,DROP_OR_DEPRIORITIZE,majority_action
+geoffrey_hinton:family:01,Geoffrey Hinton,Characterizing the Convergence Failure Regime of Stochastic Gradient Approximations in Deep Generative Models,6,0,4,2,0,PROMISING_NEEDS_REFINEMENT
+michael_i_jordan:family:01,Michael I. Jordan,Identifiability Boundaries of Filtering-Clustering Under Rank-Deficient Design Matrices,6,0,4,2,0,PROMISING_NEEDS_REFINEMENT
+michael_i_jordan:family:02,Michael I. Jordan,Characterizing Hierarchical Identifiability Limits in Variational Protein Annotation,4,0,3,1,0,PROMISING_NEEDS_REFINEMENT
+yann_lecun:family:01,Yann LeCun,Characterizing the Fundamental Limits of Partition Function Approximation in High-Dimensional EBMs,6,0,5,1,0,PROMISING_NEEDS_REFINEMENT

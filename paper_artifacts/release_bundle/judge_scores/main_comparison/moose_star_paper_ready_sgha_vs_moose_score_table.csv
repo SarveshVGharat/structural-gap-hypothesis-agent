@@ -1,0 +1,6 @@
+judge_model,sgha_overall_formulation_quality_10,moose_overall_formulation_quality_10,delta_sgha_minus_moose,criteria_won_by_sgha,criteria_won_by_moose,criteria_tied
+anthropic/claude-sonnet-4,5.6,2.0,3.6,10,0,0
+openai/gpt-5.6-sol-pro,5.2667,2.0,3.2667,10,0,0
+x-ai/grok-4.5,5.5333,2.3333,3.2,10,0,0
+moonshotai/kimi-k3,5.6667,2.4667,3.2,10,0,0
+google/gemini-3.6-flash,5.6667,1.2,4.4667,10,0,0
