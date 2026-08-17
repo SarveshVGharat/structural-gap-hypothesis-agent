@@ -10,6 +10,9 @@ This bundle contains curated, sanitized artifacts for inspecting and reproducing
 - `judge_scores/`: score tables and summaries for main comparison, profile-conditioned generation, evolutionary exploration, and sensitivity analyses.
 - `tables/`: paper-ready CSV, LaTeX, and Markdown tables.
 - `profile_conditioned/`, `evolutionary/`, and `sensitivity/`: focused artifact subsets for those paper sections.
+- `paper_examples/`: curated actual generated examples from the paper runs, including SGHA, baseline, profile-conditioned, and evolutionary examples.
+- `paper_run_configs/`: sanitized public YAML configs approximating the paper setup without private paths, raw corpora, raw prompts, or credentials.
+- `main_results/`: compact copies of the key result CSVs and an index of qualitative examples.
 
 ## Quick Checks
 
@@ -31,7 +34,7 @@ The paper-facing tables are available directly under `tables/csv/`, with matchin
 
 ## Inspecting Candidates
 
-Use `candidate_packets/unblinded_sanitized/` for method-labeled candidate text and `candidate_packets/blinded/` for reviewer-facing packets. Qualitative examples are provided in the method-specific directories.
+Use `paper_examples/` for the easiest reader-facing qualitative examples. Use `candidate_packets/unblinded_sanitized/` for method-labeled candidate text and `candidate_packets/blinded/` for reviewer-facing packets. Toy examples for trying the code live outside this bundle under `examples/local_text_corpus/`.
 
 ## Citation
 

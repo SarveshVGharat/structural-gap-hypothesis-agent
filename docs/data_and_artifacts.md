@@ -21,6 +21,9 @@ Public paper artifacts under `paper_artifacts/release_bundle/` include:
 - candidate packets
 - score files
 - markdown summaries
+- curated actual generated examples from the paper runs
+- sanitized paper-run config templates
+- compact main-result CSV copies
 - manifests
 - checksums
 - high-level status matrices
@@ -35,3 +38,5 @@ The release audit script checks for common forbidden artifact classes.
 Artifact-only reproduction should not call LLMs, download papers, or run the full SGHA pipeline. It should verify checksums and inspect or regenerate table views from curated CSV and summary files.
 
 For a no-network usability path, use `examples/local_text_corpus/` and `sgha smoke-test`. That example contains only short synthetic text files and writes a mock output tree for learning SGHA's stage layout. For local user corpora, provide your own `papers.jsonl` with `text_path` entries and keep source papers outside public commits unless redistribution is permitted.
+
+Toy examples are for trying the code. `paper_artifacts/release_bundle/paper_examples/` contains actual generated examples from the paper runs, while `paper_artifacts/release_bundle/paper_run_configs/` contains sanitized documentation configs for reproducing the setup with user-managed corpora and model endpoints.

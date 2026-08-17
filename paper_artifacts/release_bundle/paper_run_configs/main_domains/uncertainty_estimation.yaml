@@ -1,0 +1,50 @@
+# Sanitized public config approximating the paper run for Uncertainty / calibration / conformal prediction.
+# This file documents paper-run settings without private paths or raw paper text.
+run:
+  name: "paper_uncertainty_estimation"
+  domain: "uncertainty_calibration_conformal_prediction_arxiv"
+  source_type: "arXiv"
+  selected_paper_budget: 250
+  output_root: "./outputs/paper_runs/uncertainty_estimation"
+
+corpus:
+  source_query_summary: "Topic-keyword retrieval for Uncertainty / calibration / conformal prediction papers. User must provide or retrieve papers independently."
+  topic_keywords:
+    - "uncertainty calibration"
+    - "conformal prediction"
+    - "distribution shift"
+    - "coverage guarantees"
+  papers_manifest: "./data/uncertainty_estimation/papers.jsonl"
+  raw_pdfs_included: false
+  parsed_full_texts_included: false
+
+model:
+  provider: "openai_compatible"
+  base_url_env: "SGHA_LLM_BASE_URL"
+  model_env: "SGHA_LLM_MODEL"
+  default_model_name: "Qwen/Qwen3.5-9B"
+  api_key_env: "SGHA_LLM_API_KEY"
+
+stages:
+  - "parse_or_load_existing_text"
+  - "extract_structural_tuples"
+  - "build_evidence_graph"
+  - "mine_candidate_gaps"
+  - "verify_gaps"
+  - "stage7_direct_formulations"
+  - "stage8_ambition_expansion"
+  - "stage9_family_quality"
+  - "stage10_formal_problem_formulations"
+  - "final_sgha_family_report"
+
+verification_gate:
+  require_source_grounding: true
+  require_specific_failure_or_assumption: true
+  require_non_incremental_problem_framing: true
+  keep_verification_passed_only_for_stage7: true
+
+release_notes:
+  sanitized_config: true
+  private_paths_removed: true
+  raw_papers_and_full_text_excluded: true
+  use_existing_bundle_for_paper_values: "paper_artifacts/release_bundle/tables/csv/"

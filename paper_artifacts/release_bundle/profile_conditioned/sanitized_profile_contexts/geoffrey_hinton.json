@@ -1,0 +1,70 @@
+{
+  "direct_formulations": "1",
+  "extracted_papers": "141",
+  "finalization_status": "PIPELINE_COMPLETED_PASS",
+  "formalizations": "1",
+  "generated_profile_summary": {
+    "family_problem_class": "The convergence and identifiability of stochastic gradient approximations in non-convex, high-dimensional generative modeling.",
+    "family_research_object": "Training Restricted Boltzmann Machines and Deep Boltzmann Machines on diverse datasets using stochastic gradient heuristics versus full Maximum Likelihood Estimation.",
+    "profile_inferred_topic": "deep learning, neural networks, representation learning, generative models, Boltzmann machines, capsules"
+  },
+  "high_level_keyphrases": [
+    "deep learning",
+    "neural networks",
+    "representation learning",
+    "generative models",
+    "Boltzmann machines",
+    "capsules"
+  ],
+  "paper_ready": "yes",
+  "parsed_papers": "150",
+  "profile_level_scores": {
+    "mean_ambiguity_hygiene_10": "7.1667",
+    "mean_assumption_boundary_clarity_10": "6.6667",
+    "mean_formalizability_10": "5.6667",
+    "mean_intellectual_style_match_10": "6.8333",
+    "mean_nontriviality_10": "5.6667",
+    "mean_overall_formulation_quality_10": "5.6667",
+    "mean_personalization_overall_10": "7.1667",
+    "mean_problem_definition_clarity_10": "7.0",
+    "mean_profile_alignment_10": "8.0",
+    "mean_profile_novelty_fit_10": "6.5",
+    "mean_profile_specificity_10": "7.1667",
+    "mean_scope_control_10": "4.6667",
+    "mean_source_grounded_specificity_10": "6.1667",
+    "mean_technical_specificity_10": "6.0",
+    "mean_well_posedness_10": "6.1667",
+    "n_candidates": "1",
+    "n_scores": "6",
+    "profile": "Geoffrey Hinton"
+  },
+  "profile_name": "Geoffrey Hinton",
+  "profile_slug": "geoffrey_hinton",
+  "project_families": "1",
+  "related_seed_paper_ids": [
+    "profile_pdf:a_fast_learning_algorithm_for_deep_belief_nets",
+    "profile_pdf:electronic_edition_auai.org_open_access",
+    "profile_pdf:electronic_edition_esann.org_open_access",
+    "profile_pdf:electronic_edition_ucl.ac.uk_open_access",
+    "profile_pdf:reducing_the_dimensionality_of_data_with_neural_networks",
+    "profile_pdf:transforming_auto-encoders"
+  ],
+  "reviewed_gaps": "5",
+  "sanitization_note": "Contains only counts, high-level generated profile descriptors, seed-paper titles/IDs, and aggregate score metadata. Cached profile pages, raw PDFs, parsed full texts, raw prompts, raw model responses, logs, caches, and private paths are excluded.",
+  "seed_count": "33",
+  "seed_paper_title_sample": [
+    "Distributed representations (1984; high)",
+    "The wake-sleep algorithm for unsupervised neural networks (1995; high)",
+    "A fast learning algorithm for deep belief nets (2006; high)",
+    "Reducing the dimensionality of data with neural networks (2006; high)",
+    "Deep Boltzmann Machines (2009; high)",
+    "Learning multiple layers of representation (2007; high)",
+    "Imagenet classification with deep convolutional neural networks (2012; high)",
+    "Improving neural networks by preventing co-adaptation of feature detectors (2012; high)",
+    "Dropout: A simple way to prevent neural networks from overfitting (2014; high)",
+    "Distilling the knowledge in a neural network (2015; high)"
+  ],
+  "selected_papers": "150",
+  "tuple_count": "1191",
+  "verified_gaps": "1"
+}

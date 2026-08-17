@@ -1,0 +1,22 @@
+# Sanitized public config for the AI-Scientist-v2 + Qwen baseline.
+baseline:
+  name: "ai_scientist_v2_qwen"
+  upstream_dependency: "AI-Scientist-v2 (user-managed external dependency)"
+  model_name: "Qwen/Qwen3.5-9B"
+  inference_mode: "idea_generation_only"
+  output_count_per_domain: "matched to SGHA final-family count"
+  generated_code_execution: false
+  training_or_finetuning: false
+  output_root: "./outputs/baselines/ai_scientist_v2_qwen"
+
+authentication:
+  provider: "openai_compatible"
+  base_url_env: "SGHA_LLM_BASE_URL"
+  model_env: "SGHA_LLM_MODEL"
+  api_key_env: "SGHA_LLM_API_KEY"
+  api_key_included: false
+
+release_notes:
+  private_paths_removed: true
+  raw_prompts_and_responses_included: false
+  inspect_existing_outputs: "paper_artifacts/release_bundle/baselines/ai_scientist_v2_qwen/"

@@ -2,6 +2,11 @@
 
 ## Files Changed
 
+- Added `paper_artifacts/release_bundle/paper_examples/` with curated actual paper-run examples for SGHA, AI-Scientist-v2 Qwen, AI-Scientist-v2 Claude Opus, MOOSE-Star, profile-conditioned generation, and evolutionary exploration.
+- Added `paper_artifacts/release_bundle/paper_run_configs/` with sanitized public YAML templates for the five main domains, profile-conditioned runs, judges, and baselines.
+- Added `paper_artifacts/release_bundle/main_results/` with compact copies of key CSV result tables plus a qualitative example overview.
+- Added `paper_artifacts/release_bundle/profile_conditioned/sanitized_profile_contexts/` and compact profile summary/score/count CSV copies.
+- Updated artifact-bundle docs, source notes, license note, manifest, secret-leakage note, and checksums for the new curated examples and configs.
 - Reworked `README.md` into a concise public-facing quickstart.
 - Added `examples/local_text_corpus/` with synthetic text files, `papers.jsonl`, config, and expected-output notes.
 - Added `docs/quickstart.md`, `docs/run_on_your_own_papers.md`, and `docs/output_structure.md`.
@@ -30,6 +35,7 @@
 - Local text staging for model-backed stages: `sgha prepare-local-corpus <config_path> --run-id <name>`.
 - Output inspection helper: `sgha summarize-run <run_dir>` and `python scripts/summarize_run_outputs.py --run-dir <run_dir>`.
 - External-user dry run from temporary directories covering base editable install, `.[dev]` editable install, README quickstart commands, example initialization, config validation, local corpus prep, run summaries, and script help.
+- Paper-result usability layer covering actual paper examples, sanitized run configs, profile contexts, main-result CSVs, manifest navigation, and checksum verification.
 
 ## Validation
 
@@ -38,6 +44,8 @@
 - `pytest -q`: passed, 21 tests passed.
 - `python scripts/audit_release.py`: passed with 0 findings.
 - `sha256sum -c CHECKSUMS.sha256` from `paper_artifacts/release_bundle/`: passed.
+- Explicit scan of new `paper_examples/` and `paper_run_configs/` for private paths, key-shaped strings, SSO credential hints, raw PDF filenames, raw LLM output names, and private host patterns: passed with 0 findings.
+- Bundle file count after curated-example/config additions: 295 files; manifest rows: 295; checksum entries: 294, excluding `CHECKSUMS.sha256`.
 - `find . -type f -size +25M`: passed, no files found.
 - Simulated in-repo `.venv/pyvenv.cfg` with a private-looking absolute path: audit and pytest passed; fake `.venv/` was removed.
 - Offline smoke, local example initialization, config validation, local corpus prep, and run summary commands passed using temporary output directories.

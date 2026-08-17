@@ -1,0 +1,39 @@
+# Sanitized public config for profile-conditioned judging.
+run:
+  name: "personalized_profile_alignment_judge"
+  blinded_packets: true
+  candidate_packet: "paper_artifacts/release_bundle/candidate_packets/blinded/profile_conditioned_candidates_blinded.jsonl"
+  output_root: "./outputs/judging/profile_conditioned"
+
+models:
+  - "anthropic/claude-sonnet-4"
+  - "openai/gpt-5.6-sol-pro"
+  - "x-ai/grok-4.5"
+  - "moonshotai/kimi-k3"
+  - "google/gemini-3.6-flash"
+  - "meta-llama/llama-3.1-405b-instruct"
+
+authentication:
+  provider: "OpenRouter"
+  api_key_env: "OPENROUTER_API_KEY"
+  api_key_included: false
+
+rubric_criteria:
+  - problem_definition_clarity_10
+  - technical_specificity_10
+  - well_posedness_10
+  - assumption_boundary_clarity_10
+  - formalizability_10
+  - nontriviality_10
+  - profile_alignment_10
+  - profile_specificity_10
+  - intellectual_style_match_10
+  - personalization_overall_10
+
+external_novelty_check:
+  enabled: false
+
+release_notes:
+  public_bundle_contains_scores: true
+  rerunning_judges_requires_user_api_key: true
+  raw_judge_prompts_and_responses_included: false

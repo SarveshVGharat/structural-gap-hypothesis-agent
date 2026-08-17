@@ -1,0 +1,62 @@
+{
+  "direct_formulations": "4",
+  "extracted_papers": "148",
+  "finalization_status": "PIPELINE_COMPLETED_PASS",
+  "formalizations": "1",
+  "generated_profile_summary": {
+    "family_problem_class": "Theoretical limits of density estimation and normalization in high-dimensional non-convex energy landscapes.",
+    "family_research_object": "High-dimensional image data modeling using Deep Energy-Based Models",
+    "profile_inferred_topic": "self-supervised learning, representation learning, energy-based models, computer vision, deep learning"
+  },
+  "high_level_keyphrases": [
+    "self-supervised learning",
+    "representation learning",
+    "energy-based models",
+    "computer vision",
+    "deep learning"
+  ],
+  "paper_ready": "yes",
+  "parsed_papers": "150",
+  "profile_level_scores": {
+    "mean_ambiguity_hygiene_10": "7.5",
+    "mean_assumption_boundary_clarity_10": "6.8333",
+    "mean_formalizability_10": "5.6667",
+    "mean_intellectual_style_match_10": "5.6667",
+    "mean_nontriviality_10": "7.1667",
+    "mean_overall_formulation_quality_10": "6.1667",
+    "mean_personalization_overall_10": "5.3333",
+    "mean_problem_definition_clarity_10": "7.3333",
+    "mean_profile_alignment_10": "7.0",
+    "mean_profile_novelty_fit_10": "6.1667",
+    "mean_profile_specificity_10": "4.5",
+    "mean_scope_control_10": "7.3333",
+    "mean_source_grounded_specificity_10": "6.1667",
+    "mean_technical_specificity_10": "6.1667",
+    "mean_well_posedness_10": "6.0",
+    "n_candidates": "1",
+    "n_scores": "6",
+    "profile": "Yann LeCun"
+  },
+  "profile_name": "Yann LeCun",
+  "profile_slug": "yann_lecun",
+  "project_families": "1",
+  "related_seed_paper_ids": [],
+  "reviewed_gaps": "4",
+  "sanitization_note": "Contains only counts, high-level generated profile descriptors, seed-paper titles/IDs, and aggregate score metadata. Cached profile pages, raw PDFs, parsed full texts, raw prompts, raw model responses, logs, caches, and private paths are excluded.",
+  "seed_count": "11",
+  "seed_paper_title_sample": [
+    "Gradient-based learning applied to document recognition (1998; high)",
+    "Backpropagation applied to handwritten zip code recognition (1989; high)",
+    "Learning algorithms for classification: A comparison on handwritten digit recognition (1995; medium)",
+    "Object recognition with gradient-based learning (2004; high)",
+    "Optimal brain damage (1989; high)",
+    "Energy-based models in document recognition and computer vision (2006; high)",
+    "A tutorial on energy-based learning (2006; high)",
+    "Dimensionality reduction by learning an invariant mapping (2006; high)",
+    "Learning methods for generic object recognition with invariance to pose and lighting (2007; medium)",
+    "VICReg: Variance-Invariance-Covariance Regularization for Self-Supervised Learning (2021; high)"
+  ],
+  "selected_papers": "150",
+  "tuple_count": "1170",
+  "verified_gaps": "4"
+}

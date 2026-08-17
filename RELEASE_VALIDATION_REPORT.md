@@ -1,6 +1,6 @@
 # Release Validation Report
 
-Status: PASS for the public staging metadata, artifact bundle, usability layer, external-user dry run, and post-clone release fix.
+Status: PASS for the public staging metadata, artifact bundle, curated paper examples/configs, usability layer, external-user dry run, and post-clone release fix.
 
 ## Metadata and Licensing
 
@@ -15,10 +15,14 @@ Status: PASS for the public staging metadata, artifact bundle, usability layer, 
 ## Paper Artifact Bundle
 
 - `paper_artifacts/release_bundle/`: curated public artifact bundle is present.
-- Bundle file count: 260 files.
-- Manifest rows: 260, with no MISSING rows.
+- Bundle file count: 295 files.
+- Manifest rows: 295, with no MISSING rows.
 - Figure artifacts are not part of the current public artifact bundle.
-- `CHECKSUMS.sha256`: regenerated for 259 LF-normalized bundle files, excluding the checksum file itself, and verified with `sha256sum -c CHECKSUMS.sha256`.
+- `paper_examples/`: curated actual generated examples from the paper runs are present for main SGHA, baselines, profile-conditioned generation, and evolutionary exploration.
+- `paper_run_configs/`: sanitized YAML templates are present for main domains, profile-conditioned runs, judging, and baselines.
+- `main_results/`: compact result CSVs and qualitative example overview are present.
+- `profile_conditioned/sanitized_profile_contexts/`: compact public-safe profile context JSON files are present.
+- `CHECKSUMS.sha256`: regenerated for 294 LF-normalized bundle files, excluding the checksum file itself, and verified with `sha256sum -c CHECKSUMS.sha256`.
 - `SECRET_LEAKAGE_CHECK.md`: passed with no findings.
 - Source-paper PDFs, parsed full texts, generated figure files, raw model responses, private logs, secrets, caches, and full run directories are excluded.
 
@@ -46,6 +50,7 @@ Model-backed SGHA stage examples in the docs were not executed because they requ
 - `pytest -q`: passed, 21 tests passed.
 - `python scripts/audit_release.py`: passed with 0 findings.
 - Artifact bundle checksum verification: passed.
+- Explicit scan of new `paper_examples/` and `paper_run_configs/` for private paths, private host patterns, key-shaped strings, SSO credential hints, raw PDF filenames, and raw LLM output names: passed with 0 findings.
 - Large-file scan with `find . -type f -size +25M`: passed, no files found.
 - Cache/raw artifact scan: passed, no `__pycache__`, `.pytest_cache`, raw PDFs, parsed full-text directories, runtime logs, `.env` files, or nested Git directories found in the staging tree.
 - In-repository local virtualenv simulation: passed. A fake `.venv/pyvenv.cfg` with a private-looking absolute path was ignored by the release audit and tests, then removed.

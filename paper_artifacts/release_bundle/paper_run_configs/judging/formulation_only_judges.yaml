@@ -1,0 +1,38 @@
+# Sanitized public config for formulation-only judging.
+run:
+  name: "formulation_only_judges"
+  blinded_packets: true
+  candidate_packet_glob: "paper_artifacts/release_bundle/candidate_packets/blinded/*.jsonl"
+  output_root: "./outputs/judging/formulation_only"
+
+models:
+  - "anthropic/claude-sonnet-4"
+  - "openai/gpt-5.6-sol-pro"
+  - "x-ai/grok-4.5"
+  - "moonshotai/kimi-k3"
+  - "google/gemini-3.6-flash"
+
+authentication:
+  provider: "OpenRouter"
+  api_key_env: "OPENROUTER_API_KEY"
+  api_key_included: false
+
+rubric_criteria:
+  - problem_definition_clarity_10
+  - technical_specificity_10
+  - well_posedness_10
+  - assumption_boundary_clarity_10
+  - formalizability_10
+  - nontriviality_10
+  - scope_control_10
+  - source_grounded_specificity_10
+  - ambiguity_hygiene_10
+  - overall_formulation_quality_10
+
+external_novelty_check:
+  enabled: false
+
+release_notes:
+  public_bundle_contains_scores: true
+  rerunning_judges_requires_user_api_key: true
+  raw_judge_prompts_and_responses_included: false

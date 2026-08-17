@@ -1,0 +1,66 @@
+{
+  "direct_formulations": "4",
+  "extracted_papers": "150",
+  "finalization_status": "PIPELINE_COMPLETED_PASS",
+  "formalizations": "2",
+  "generated_profile_summary": {
+    "family_problem_class": "Structured prediction with hierarchical constraints under approximate inference.",
+    "family_research_object": "Variational inference for structured prediction over tree-structured label spaces (specifically Gene Ontology).",
+    "profile_inferred_topic": "probabilistic modeling, graphical models, statistical machine learning, variational inference, Bayesian nonparametrics, optimization"
+  },
+  "high_level_keyphrases": [
+    "probabilistic modeling",
+    "graphical models",
+    "statistical machine learning",
+    "variational inference",
+    "Bayesian nonparametrics",
+    "optimization"
+  ],
+  "paper_ready": "yes",
+  "parsed_papers": "150",
+  "profile_level_scores": {
+    "mean_ambiguity_hygiene_10": "7.6",
+    "mean_assumption_boundary_clarity_10": "7.0",
+    "mean_formalizability_10": "5.5",
+    "mean_intellectual_style_match_10": "7.5",
+    "mean_nontriviality_10": "7.2",
+    "mean_overall_formulation_quality_10": "6.0",
+    "mean_personalization_overall_10": "6.6",
+    "mean_problem_definition_clarity_10": "6.8",
+    "mean_profile_alignment_10": "7.1",
+    "mean_profile_novelty_fit_10": "6.7",
+    "mean_profile_specificity_10": "6.3",
+    "mean_scope_control_10": "4.3",
+    "mean_source_grounded_specificity_10": "6.6",
+    "mean_technical_specificity_10": "6.3",
+    "mean_well_posedness_10": "5.7",
+    "n_candidates": "2",
+    "n_scores": "10",
+    "profile": "Michael I. Jordan"
+  },
+  "profile_name": "Michael I. Jordan",
+  "profile_slug": "michael_i_jordan",
+  "project_families": "2",
+  "related_seed_paper_ids": [
+    "profile_pdf:a_variational_principle_for_graphical_models",
+    "profile_pdf:genome-scale_phylogenetic_function_annotation_of_large_and_diverse_protein_families"
+  ],
+  "reviewed_gaps": "12",
+  "sanitization_note": "Contains only counts, high-level generated profile descriptors, seed-paper titles/IDs, and aggregate score metadata. Cached profile pages, raw PDFs, parsed full texts, raw prompts, raw model responses, logs, caches, and private paths are excluded.",
+  "seed_count": "262",
+  "seed_paper_title_sample": [
+    "An Introduction to Variational Methods for Graphical Models (1999; high)",
+    "Learning in Graphical Models (1998; high)",
+    "Graphical models (2004; high)",
+    "Latent Dirichlet Allocation (2003; high)",
+    "Hierarchical Dirichlet processes (2006; high)",
+    "Variational inference for Dirichlet process mixtures (2006; high)",
+    "A variational principle for graphical models (1998; high)",
+    "On spectral clustering: Analysis and an algorithm (2002; high)",
+    "Kernel independent component analysis (2002; medium)",
+    "Learning the kernel matrix with semidefinite programming (2004; medium)"
+  ],
+  "selected_papers": "150",
+  "tuple_count": "1043",
+  "verified_gaps": "4"
+}

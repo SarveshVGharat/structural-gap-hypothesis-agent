@@ -15,3 +15,5 @@ Figures are not included in this artifact bundle unless explicitly added later f
 Third-party source papers remain under their original licenses and are not redistributed here.
 
 Start with `release_bundle/README.md`, `release_bundle/MANIFEST.csv`, `release_bundle/CHECKSUMS.sha256`, and `release_bundle/SECRET_LEAKAGE_CHECK.md`.
+
+Inside the bundle, `paper_examples/` contains actual generated examples used in the paper, `paper_run_configs/` contains sanitized public configs approximating the paper setup, and `main_results/` collects the key result CSVs in one place. Toy examples for trying the code are separate and live under `examples/local_text_corpus/`.

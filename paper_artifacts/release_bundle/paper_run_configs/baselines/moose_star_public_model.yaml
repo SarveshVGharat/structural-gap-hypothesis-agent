@@ -1,0 +1,19 @@
+# Sanitized public config for the MOOSE-Star public-model baseline.
+baseline:
+  name: "moose_star_public_model"
+  upstream_dependency: "MOOSE-Star public model and user-managed inference stack"
+  model_name: "ZonglinY/MOOSE-Star-HC-R1D-7B"
+  inference_mode: "HC_ONLY"
+  output_count_per_domain: "matched to SGHA final-family count"
+  generated_code_execution: false
+  training_or_finetuning: false
+  output_root: "./outputs/baselines/moose_star"
+
+authentication:
+  provider: "user-managed local model access"
+  api_key_included: false
+
+release_notes:
+  private_paths_removed: true
+  raw_prompts_and_responses_included: false
+  inspect_existing_outputs: "paper_artifacts/release_bundle/baselines/moose_star/"

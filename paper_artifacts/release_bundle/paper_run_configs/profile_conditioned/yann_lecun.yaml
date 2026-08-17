@@ -1,0 +1,45 @@
+# Sanitized public config approximating the profile-conditioned paper run for Yann LeCun.
+run:
+  name: "profile_conditioned_yann_lecun"
+  profile_name: "Yann LeCun"
+  output_root: "./outputs/profile_conditioned/yann_lecun"
+
+profile_context:
+  source: "user-provided seed-paper metadata and sanitized profile descriptors"
+  seed_count: 11
+  selected_paper_budget: 150
+  inferred_topic: "self-supervised learning, representation learning, energy-based models, computer vision, deep learning"
+  fields_used:
+    - profile_name
+    - high_level_keyphrases
+    - seed_paper_title_sample
+    - selected_paper_ids
+    - aggregate_profile_counts
+
+model:
+  provider: "openai_compatible"
+  base_url_env: "SGHA_LLM_BASE_URL"
+  model_env: "SGHA_LLM_MODEL"
+  default_model_name: "Qwen/Qwen3.5-9B"
+  api_key_env: "SGHA_LLM_API_KEY"
+
+downstream_sgha_stages:
+  - "extract_structural_tuples"
+  - "build_evidence_graph"
+  - "mine_candidate_gaps"
+  - "verify_gaps"
+  - "stage7_direct_formulations"
+  - "stage8_ambition_expansion"
+  - "stage9_family_quality"
+  - "stage10_formal_problem_formulations"
+  - "final_sgha_family_report"
+
+verification_gate:
+  keep_verification_passed_only_for_stage7: true
+  require_profile_alignment_evidence: true
+  require_source_grounding: true
+
+release_notes:
+  cached_profile_pages_included: false
+  raw_papers_and_full_text_excluded: true
+  private_paths_removed: true

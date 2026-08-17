@@ -20,13 +20,13 @@ cd ../..
 python scripts/summarize_sgha_evidence_counts_for_supplement.py --help
 ```
 
-Paper-ready CSV tables are under `paper_artifacts/release_bundle/tables/csv/`. Matching LaTeX tables are under `paper_artifacts/release_bundle/tables/latex/` where available, and candidate packets are under `paper_artifacts/release_bundle/candidate_packets/`.
+Paper-ready CSV tables are under `paper_artifacts/release_bundle/tables/csv/`, with compact main-result copies under `paper_artifacts/release_bundle/main_results/`. Matching LaTeX tables are under `paper_artifacts/release_bundle/tables/latex/` where available, candidate packets are under `paper_artifacts/release_bundle/candidate_packets/`, and curated actual generated examples are under `paper_artifacts/release_bundle/paper_examples/`.
 
 ## Full Pipeline Reproduction
 
 This path may require network access, paper downloads, an OpenAI-compatible model endpoint, and substantial compute. It should be documented separately from the artifact-only path.
 
-Before final release, add exact commands, expected runtime, model versions, dependency extras, and known nondeterminism notes.
+Sanitized paper-run config templates are provided under `paper_artifacts/release_bundle/paper_run_configs/`. They document domain budgets, model placeholders, enabled stages, verification gates, baseline modes, and judge settings without private paths. Before final release, add exact upstream baseline install details, expected runtime, dependency extras, and known nondeterminism notes.
 
 ## Usability Smoke Test
 
