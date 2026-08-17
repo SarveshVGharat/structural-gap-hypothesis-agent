@@ -53,6 +53,10 @@ export SGHA_LLM_API_KEY=EMPTY
 
 Detailed workflow: `docs/run_on_your_own_papers.md`.
 
+## Using An AI Coding Assistant
+
+You can ask Codex, Claude Code, or a similar coding assistant to inspect the repo, run the offline smoke test, inspect paper artifacts, or prepare a local-corpus config. Start with `AGENTS.md` for general agent guidance, `CLAUDE.md` for Claude Code-oriented notes, and `docs/ai_reproduction_guide.md` for copy-paste prompts. The default assistant workflow should stay offline-safe; model-backed SGHA stages and LLM judging require explicit user-provided endpoints or API keys.
+
 ## Main Commands
 
 ```bash
@@ -80,6 +84,7 @@ Artifact reproduction: `docs/reproducing_paper_results.md`.
 ## Docs
 
 - `docs/quickstart.md`
+- `docs/ai_reproduction_guide.md`
 - `docs/run_on_your_own_papers.md`
 - `docs/output_structure.md`
 - `docs/configuration.md`

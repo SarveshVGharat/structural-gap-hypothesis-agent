@@ -2,6 +2,9 @@
 
 ## Files Changed
 
+- Added root-level AI-agent guidance files: `AGENTS.md` and `CLAUDE.md`.
+- Added `docs/ai_reproduction_guide.md` with offline-safe copy-paste prompts for Codex, Claude Code, and similar coding agents.
+- Updated `README.md` to link the AI-agent guidance files and explain the default offline assistant workflow.
 - Added `paper_artifacts/release_bundle/paper_examples/` with curated actual paper-run examples for SGHA, AI-Scientist-v2 Qwen, AI-Scientist-v2 Claude Opus, MOOSE-Star, profile-conditioned generation, and evolutionary exploration.
 - Added `paper_artifacts/release_bundle/paper_run_configs/` with sanitized public YAML templates for the five main domains, profile-conditioned runs, judges, and baselines.
 - Added `paper_artifacts/release_bundle/main_results/` with compact copies of key CSV result tables plus a qualitative example overview.
@@ -36,6 +39,7 @@
 - Output inspection helper: `sgha summarize-run <run_dir>` and `python scripts/summarize_run_outputs.py --run-dir <run_dir>`.
 - External-user dry run from temporary directories covering base editable install, `.[dev]` editable install, README quickstart commands, example initialization, config validation, local corpus prep, run summaries, and script help.
 - Paper-result usability layer covering actual paper examples, sanitized run configs, profile contexts, main-result CSVs, manifest navigation, and checksum verification.
+- AI-assistant usability layer with offline-safe prompts for repo inspection, smoke tests, local text-corpus examples, paper artifact inspection, optional local model endpoints, and optional OpenRouter judging.
 
 ## Validation
 
@@ -45,6 +49,9 @@
 - `python scripts/audit_release.py`: passed with 0 findings.
 - `sha256sum -c CHECKSUMS.sha256` from `paper_artifacts/release_bundle/`: passed.
 - Explicit scan of new `paper_examples/` and `paper_run_configs/` for private paths, key-shaped strings, SSO credential hints, raw PDF filenames, raw LLM output names, and private host patterns: passed with 0 findings.
+- Explicit scan of `AGENTS.md`, `CLAUDE.md`, `docs/ai_reproduction_guide.md`, and `README.md` for private paths, key-shaped strings, raw PDF filenames, parsed full-text paths, raw LLM output names, and private host patterns: passed with 0 findings.
+- `sgha smoke-test`: passed after refreshing the local editable install to point at the staging repo.
+- Fresh temporary clone smoke test: passed with clean virtualenv install, `sgha smoke-test`, `pytest -q`, `python scripts/audit_release.py`, and release-bundle checksum verification.
 - Bundle file count after curated-example/config additions: 295 files; manifest rows: 295; checksum entries: 294, excluding `CHECKSUMS.sha256`.
 - `find . -type f -size +25M`: passed, no files found.
 - Simulated in-repo `.venv/pyvenv.cfg` with a private-looking absolute path: audit and pytest passed; fake `.venv/` was removed.
