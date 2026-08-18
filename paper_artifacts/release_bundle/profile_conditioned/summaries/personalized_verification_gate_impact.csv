@@ -1,6 +1,0 @@
-profile,classification,run_dir,verification_reviewed_count,verification_passed_count,verification_failed_count,gate_mode,threshold,gate_source,low_signal_expected
-yann_lecun,REPAIRABLE_HAS_VERIFICATION,[SANITIZED_PRIVATE_PATH],4,4,0,survival_score,0.6,verification_summary.json+support_agent_results.jsonl+skeptic_agent_results.jsonl+feasibility_agent_results.jsonl+mechanism_agent_results.jsonl+critic_results.jsonl,False
-geoffrey_hinton,REPAIRABLE_HAS_VERIFICATION,[SANITIZED_PRIVATE_PATH],5,1,4,survival_score,0.6,verification_summary.json+support_agent_results.jsonl+skeptic_agent_results.jsonl+feasibility_agent_results.jsonl+mechanism_agent_results.jsonl+critic_results.jsonl,False
-sutton_barto_rl,SKIPPED_NO_RUN,[SANITIZED_PRIVATE_PATH],0,0,0,survival_score,0.6,missing,False
-michael_i_jordan,REPAIRABLE_HAS_VERIFICATION,[SANITIZED_PRIVATE_PATH],12,4,8,survival_score,0.6,verification_summary.json+support_agent_results.jsonl+skeptic_agent_results.jsonl+feasibility_agent_results.jsonl+mechanism_agent_results.jsonl+critic_results.jsonl,False
-yoshua_bengio,SKIPPED_NO_RUN,[SANITIZED_PRIVATE_PATH],0,0,0,survival_score,0.6,missing,False

@@ -7,4 +7,3 @@ Remaining decisions before public GitHub release:
 - Document third-party baseline reproduction with upstream repository URLs, commit hashes, licenses, and user-provided model/checkpoint requirements:
   - AI-Scientist-v2 upstream repository URL, commit hash, license, expected install command, and any required local patch.
   - MOOSE-Star upstream repository or package source, public model identifier/path, license, hardware expectation, and validation-only command.
-  - Simple Qwen and Qwen RAG model endpoint assumptions, prompt/config versions, and expected output schema.

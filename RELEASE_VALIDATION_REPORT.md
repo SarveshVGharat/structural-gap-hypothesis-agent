@@ -1,6 +1,6 @@
 # Release Validation Report
 
-Status: PASS for the public staging metadata, artifact bundle, curated paper examples/configs, AI-assistant guidance layer, usability layer, external-user dry run, and post-clone release fix.
+Status: PASS for the public staging metadata, scrubbed paper artifact bundle, curated paper examples/configs, AI-assistant guidance layer, usability layer, external-user dry run, and post-clone release fix.
 
 ## Metadata and Licensing
 
@@ -18,14 +18,15 @@ Status: PASS for the public staging metadata, artifact bundle, curated paper exa
 ## Paper Artifact Bundle
 
 - `paper_artifacts/release_bundle/`: curated public artifact bundle is present.
-- Bundle file count: 295 files.
-- Manifest rows: 295, with no MISSING rows.
+- Bundle file count: 253 files.
+- Manifest rows: 253, with no MISSING rows.
+- Public artifact scrub completed: staging status matrices, review/audit scratch files, partial completion diagnostics, combined draft tables, non-paper baseline attempts, skipped profile rows, and runtime provenance placeholders were removed or sanitized.
 - Figure artifacts are not part of the current public artifact bundle.
 - `paper_examples/`: curated actual generated examples from the paper runs are present for main SGHA, baselines, profile-conditioned generation, and evolutionary exploration.
 - `paper_run_configs/`: sanitized YAML templates are present for main domains, profile-conditioned runs, judging, and baselines.
 - `main_results/`: compact result CSVs and qualitative example overview are present.
 - `profile_conditioned/sanitized_profile_contexts/`: compact public-safe profile context JSON files are present.
-- `CHECKSUMS.sha256`: regenerated for 294 LF-normalized bundle files, excluding the checksum file itself, and verified with `sha256sum -c CHECKSUMS.sha256`.
+- `CHECKSUMS.sha256`: regenerated for 252 LF-normalized bundle files, excluding the checksum file itself, and verified with `sha256sum -c CHECKSUMS.sha256`.
 - `SECRET_LEAKAGE_CHECK.md`: passed with no findings.
 - Source-paper PDFs, parsed full texts, generated figure files, raw model responses, private logs, secrets, caches, and full run directories are excluded.
 
@@ -48,11 +49,12 @@ Model-backed SGHA stage examples in the docs were not executed because they requ
 
 ## Static and Test Checks
 
-- `python -m py_compile` on all staged Python files: passed.
-- `pytest --collect-only -q`: passed, 21 tests collected.
-- `pytest -q`: passed, 21 tests passed.
+- `python -m py_compile` on all staged Python files: passed, 80 Python files compiled.
+- `pytest --collect-only -q`: passed, 24 tests collected.
+- `pytest -q`: passed, 24 tests passed.
 - `python scripts/audit_release.py`: passed with 0 findings.
 - Artifact bundle checksum verification: passed.
+- Explicit release-bundle search for Sutton/Barto skipped-profile markers, internal note phrases, private absolute paths, key-shaped strings, and runtime provenance placeholders: passed. The only `unsuccessful` matches are public exclusion-policy sentences in bundle docs.
 - Explicit scan of new `paper_examples/` and `paper_run_configs/` for private paths, private host patterns, key-shaped strings, SSO credential hints, raw PDF filenames, and raw LLM output names: passed with 0 findings.
 - Explicit scan of `AGENTS.md`, `CLAUDE.md`, `docs/ai_reproduction_guide.md`, and `README.md` for private paths, key-shaped strings, raw PDF filenames, parsed full-text paths, raw LLM output names, and private host patterns: passed with 0 findings.
 - `sgha smoke-test`: passed after refreshing the current editable install to point at the staging repo.
@@ -73,6 +75,7 @@ Model-backed SGHA stage examples in the docs were not executed because they requ
 - `python scripts/audit_release.py`: passed.
 - Findings: 0.
 - Report: `RELEASE_AUDIT_REPORT.md`.
+- The release audit now fails on internal-note leakage, skipped-profile markers, blocked/skipped run labels, runtime provenance placeholders, and cluster/runtime log references inside `paper_artifacts/release_bundle/`, while still allowing legitimate release-planning text outside the bundle.
 
 ## Remaining Blockers
 

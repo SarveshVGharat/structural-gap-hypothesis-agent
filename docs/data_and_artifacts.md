@@ -26,10 +26,11 @@ Public paper artifacts under `paper_artifacts/release_bundle/` include:
 - compact main-result CSV copies
 - manifests
 - checksums
-- high-level status matrices
 - small source identifiers such as paper IDs when allowed
 
 Figures are not included in this artifact bundle unless explicitly added later for the camera-ready/arXiv source.
+
+Discarded examples, blocked or skipped run rows, staging status matrices, review notes, runtime path provenance, raw logs, and raw model outputs are not included in the public bundle.
 
 Generated tables, candidate packets, score files, and derived summaries are intended for research reuse under CC-BY-4.0 unless otherwise specified in `paper_artifacts/README.md`. Third-party source papers remain under their original licenses and are not redistributed here.
 

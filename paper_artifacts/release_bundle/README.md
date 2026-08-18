@@ -22,7 +22,7 @@ From this directory:
 sha256sum -c CHECKSUMS.sha256
 ```
 
-Use `MANIFEST.csv` as the navigation index. It lists each relative path, artifact type, paper section, sanitized source note, and whether the artifact contains generated text, scores, or limited third-party text snippets.
+Use `MANIFEST.csv` as the navigation index. It lists each relative path, artifact type, sanitized source note, and whether the artifact contains generated text, scores, table data, profile artifacts, evolutionary artifacts, or sensitivity artifacts.
 
 ## Exclusions
 
@@ -43,3 +43,9 @@ Please cite the accompanying SGHA arXiv paper when final metadata is available. 
 ## License
 
 Generated tables, candidate packets, score files, and derived summaries in this bundle are intended for research reuse under CC-BY-4.0 unless otherwise specified. Code remains Apache-2.0. Third-party source papers are not redistributed and remain under their original licenses.
+
+## Public scrub note
+
+This bundle is limited to paper-result artifacts: candidate packets, final outputs, score tables, table CSV/LaTeX files, qualitative examples, profile/evolution/sensitivity artifacts, manifests, and checksums.
+Discarded examples, unsuccessful internal runs, staging status matrices, review notes, raw logs, raw LLM outputs, raw PDFs, parsed full texts, and runtime path provenance are excluded.
+Figures are not included in this artifact bundle unless explicitly added later for the camera-ready or arXiv source.

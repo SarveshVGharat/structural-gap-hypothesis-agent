@@ -29,6 +29,11 @@
 - Updated `.gitignore` and release-audit skip logic so normal local development directories such as `.venv/`, `venv/`, `.tox/`, `.nox/`, `.mypy_cache/`, `.ruff_cache/`, `build/`, `dist/`, and `*.egg-info/` are ignored.
 - Forced LF normalization for release text artifacts and regenerated bundle checksums so fresh clones pass `sha256sum -c CHECKSUMS.sha256`.
 - Added release-audit tests for ignored local virtualenvs, nested Git rejection, and `.env` rejection.
+- Removed non-paper public-bundle artifacts, including staging status matrices, review/audit scratch files, partial completion diagnostics, combined draft tables, and blocked/non-paper baseline rows.
+- Sanitized public-bundle profile tables to keep only Yann LeCun, Geoffrey Hinton, and Michael I. Jordan profile-conditioned results.
+- Sanitized candidate packets, judge reports, baseline summaries, and source notes to remove runtime provenance placeholders and internal paper-use labels while preserving paper-facing generated text and scores.
+- Added `PUBLIC_ARTIFACT_SCRUB_REPORT.md` with finding categories, actions, removed files, sanitized files, row-level changes, and remaining public-facing caveats.
+- Strengthened `scripts/audit_release.py` and added `tests/test_public_artifact_bundle_clean.py` to catch internal-note leakage and skipped-profile markers inside `paper_artifacts/release_bundle/`.
 
 ## Usability Added
 
@@ -44,15 +49,16 @@
 ## Validation
 
 - `python -m py_compile` on all staged Python files: passed.
-- `pytest --collect-only -q`: passed, 21 tests collected.
-- `pytest -q`: passed, 21 tests passed.
+- `pytest --collect-only -q`: passed, 24 tests collected.
+- `pytest -q`: passed, 24 tests passed.
 - `python scripts/audit_release.py`: passed with 0 findings.
 - `sha256sum -c CHECKSUMS.sha256` from `paper_artifacts/release_bundle/`: passed.
 - Explicit scan of new `paper_examples/` and `paper_run_configs/` for private paths, key-shaped strings, SSO credential hints, raw PDF filenames, raw LLM output names, and private host patterns: passed with 0 findings.
 - Explicit scan of `AGENTS.md`, `CLAUDE.md`, `docs/ai_reproduction_guide.md`, and `README.md` for private paths, key-shaped strings, raw PDF filenames, parsed full-text paths, raw LLM output names, and private host patterns: passed with 0 findings.
 - `sgha smoke-test`: passed after refreshing the local editable install to point at the staging repo.
 - Fresh temporary clone smoke test: passed with clean virtualenv install, `sgha smoke-test`, `pytest -q`, `python scripts/audit_release.py`, and release-bundle checksum verification.
-- Bundle file count after curated-example/config additions: 295 files; manifest rows: 295; checksum entries: 294, excluding `CHECKSUMS.sha256`.
+- Bundle file count after public artifact scrub: 253 files; manifest rows: 253; checksum entries: 252, excluding `CHECKSUMS.sha256`.
+- Explicit release-bundle search for Sutton/Barto skipped-profile markers, internal note phrases, key-shaped strings, private absolute paths, and runtime provenance placeholders: passed. The only `unsuccessful` matches are public exclusion-policy sentences in bundle docs.
 - `find . -type f -size +25M`: passed, no files found.
 - Simulated in-repo `.venv/pyvenv.cfg` with a private-looking absolute path: audit and pytest passed; fake `.venv/` was removed.
 - Offline smoke, local example initialization, config validation, local corpus prep, and run summary commands passed using temporary output directories.

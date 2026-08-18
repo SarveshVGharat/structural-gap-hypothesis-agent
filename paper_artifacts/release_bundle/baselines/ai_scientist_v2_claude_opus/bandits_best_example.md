@@ -24,7 +24,6 @@ Bandit algorithms are usually analyzed as if their action stream were a private 
 not provided
 
 ## source_context_or_grounding
-native AI-Scientist-v2 workshop file: [MAIN_PAPER_RUN_NAMESPACE]/native_ai_scientist_v2_claude_opus_latest_sso_hardcoded_retry_20260726_051057/configs/workshop_files/bandits.md
 
 ## assumptions_or_problem_setup
 not provided

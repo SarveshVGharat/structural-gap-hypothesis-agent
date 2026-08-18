@@ -81,7 +81,7 @@ The sanitized example notes moderate source grounding and requires human definit
 - mean_intellectual_style_match: 7.75
 - mean_personalization_overall: 7.0
 - recommended_action_majority: PROMISING_NEEDS_REFINEMENT
-- paper_use_recommendation: appendix_or_qualitative_discussion
+- paper_use_recommendation: reported_profile_result
 
 ## Profile Alignment Evidence
 

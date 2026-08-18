@@ -34,6 +34,39 @@ LOCAL_DEV_DIR_NAMES = {
     "build",
     "dist",
 }
+PUBLIC_BUNDLE_INTERNAL_PATTERNS = {
+    "do not show": "internal visibility note",
+    "don't show": "internal visibility note",
+    "not for paper": "internal paper-use note",
+    "bad example": "discarded-example note",
+    "failed run": "unsuccessful run note",
+    "unsuccessful run": "unsuccessful run note",
+    "add this in appendix": "internal paper-planning note",
+    "coauthor note": "internal collaboration note",
+    "coauthor results packet": "internal collaboration provenance",
+    "coauthor result tables": "internal collaboration provenance",
+    "blocked_network_unreachable": "blocked run status",
+    "skipped_no_run": "skipped run status",
+    "do_not_use_as_strong_example": "internal paper-use label",
+    "appendix_or_qualitative_discussion": "internal paper-use label",
+    "sso_hardcoded": "internal credential/workaround label",
+    "sanitized_private_path": "runtime provenance placeholder",
+    "main_paper_run_namespace": "runtime provenance placeholder",
+    "coauthor_results_packet": "runtime provenance placeholder",
+    "profile_conditioned_run_namespace": "runtime provenance placeholder",
+    "sanitized_internal_host": "runtime host placeholder",
+    "original_research_repo": "runtime repository placeholder",
+    "removed runtime source pointer": "runtime provenance placeholder",
+    "raw_stdout_stderr.log": "raw runtime log reference",
+    "semantic_scholar_usage_log.md": "runtime usage-log reference",
+    "quality_audit.md": "internal quality-audit reference",
+    "comparison_audit.md": "internal comparison-audit reference",
+    "slurm job": "cluster runtime detail",
+    "sutton-barto rl profile": "unreported skipped profile",
+    "sutton_barto_rl": "unreported skipped profile",
+    "yoshua bengio: skipped": "unreported skipped profile",
+    "yoshua_bengio": "unreported skipped profile",
+}
 
 
 @dataclass
@@ -78,6 +111,10 @@ def read_text_safely(path: Path) -> str:
         return ""
 
 
+def _inside_release_bundle(rel: Path) -> bool:
+    return len(rel.parts) >= 2 and rel.parts[:2] == ("paper_artifacts", "release_bundle")
+
+
 def audit(root: Path, *, max_bytes: int = DEFAULT_MAX_BYTES) -> list[Finding]:
     findings: list[Finding] = []
     root = root.resolve()
@@ -117,6 +154,11 @@ def audit(root: Path, *, max_bytes: int = DEFAULT_MAX_BYTES) -> list[Finding]:
         for label, pattern in SECRET_PATTERNS.items():
             if pattern.search(text):
                 findings.append(Finding("possible_secret", rel, label))
+        if _inside_release_bundle(rel):
+            lowered = text.lower()
+            for pattern, reason in PUBLIC_BUNDLE_INTERNAL_PATTERNS.items():
+                if pattern in lowered:
+                    findings.append(Finding("internal_bundle_note", rel, reason))
 
     return findings
 

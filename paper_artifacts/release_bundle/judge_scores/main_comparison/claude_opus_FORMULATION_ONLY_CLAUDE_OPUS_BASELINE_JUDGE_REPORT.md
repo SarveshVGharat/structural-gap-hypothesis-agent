@@ -84,7 +84,6 @@
 - pairwise comparison disabled: true
 - weighted composite score avoided: true
 - secret leakage check: PASS
-- secret leakage check path: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_ai_scientist_v2_claude_opus_latest_sso_hardcoded_comparison_20260726_070917/formulation_only_llm_judge_20260726_071613/summaries/SECRET_LEAKAGE_CHECK.md`
 
 ## Caveats
 - LLM-judge scores are descriptive and do not establish external novelty.

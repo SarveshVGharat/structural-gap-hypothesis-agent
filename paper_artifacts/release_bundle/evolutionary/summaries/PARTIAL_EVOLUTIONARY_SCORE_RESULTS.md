@@ -60,8 +60,3 @@ Live scoring was stopped early at user request. These are partial results from c
 - recommended actions: {'NEEDS_REFRAMING': 53, 'PROMISING_NEEDS_REFINEMENT': 2}
 
 ## Paths
-
-- partial score rows: `[MAIN_PAPER_RUN_NAMESPACE]/evolutionary_exploration_formulation_judge_20260801_165429/postprocess/partial_evolutionary_scores_by_candidate_judge.csv`
-- partial method means: `[MAIN_PAPER_RUN_NAMESPACE]/evolutionary_exploration_formulation_judge_20260801_165429/postprocess/partial_evolutionary_scores_by_method.csv`
-- partial domain means: `[MAIN_PAPER_RUN_NAMESPACE]/evolutionary_exploration_formulation_judge_20260801_165429/postprocess/partial_evolutionary_scores_by_domain.csv`
-- candidate aggregates: `[MAIN_PAPER_RUN_NAMESPACE]/evolutionary_exploration_formulation_judge_20260801_165429/postprocess/partial_evolutionary_candidate_aggregates.csv`

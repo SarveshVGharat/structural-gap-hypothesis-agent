@@ -1,7 +1,6 @@
 # Formulation-Only Score Summary
 
 - created_at_utc: 2026-07-22T19:44:01.014726+00:00
-- evaluation directory: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_native_ai_scientist_v2_final_comparison/formulation_only_evaluation_20260723_010323`
 - OpenRouter model: `anthropic/claude-sonnet-4`
 - candidates scored: 30
 - SGHA_FULL candidates: 15
@@ -35,10 +34,6 @@
 
 ## Files
 
-- scores by method: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_native_ai_scientist_v2_final_comparison/formulation_only_evaluation_20260723_010323/postprocess/formulation_only_scores_by_method.csv`
-- unblinded scores: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_native_ai_scientist_v2_final_comparison/formulation_only_evaluation_20260723_010323/postprocess/formulation_only_scores_unblinded.csv`
-- paper-ready table: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_native_ai_scientist_v2_final_comparison/formulation_only_evaluation_20260723_010323/paper_tables/PAPER_READY_FORMULATION_ONLY_SCORE_TABLE.md`
-- deltas CSV: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_native_ai_scientist_v2_final_comparison/formulation_only_evaluation_20260723_010323/paper_tables/formulation_only_sgha_vs_native_deltas.csv`
 
 ## Caveats
 

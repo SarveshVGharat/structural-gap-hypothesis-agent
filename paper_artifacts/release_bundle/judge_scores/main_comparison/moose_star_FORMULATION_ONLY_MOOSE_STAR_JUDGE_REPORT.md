@@ -1,9 +1,6 @@
 # Formulation-Only MOOSE-Star Judge Report
 
 - created_at: `2026-07-25T21:47:02.876961+00:00`
-- evaluation_dir: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_moose_star_public_model_comparison_20260726_012538/formulation_only_llm_judge_20260726_013946`
-- candidate packet: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_moose_star_public_model_comparison_20260726_012538/formulation_only_llm_judge_20260726_013946/candidates/sgha_vs_moose_candidates_blinded.jsonl`
-- unblinded source packet: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_moose_star_public_model_comparison_20260726_012538/formulation_only_llm_judge_20260726_013946/candidates/sgha_vs_moose_candidates_unblinded.jsonl`
 - scoring mode: `formulation_only_10pt`
 - weighted composite: not computed
 - pairwise comparison: not run
@@ -45,8 +42,6 @@ Scores are descriptive OpenRouter LLM-judge formulation-only assessments on a 0-
 
 # Three-Method Formulation-Only Comparison Summary
 
-- SGHA/MOOSE evaluation: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_moose_star_public_model_comparison_20260726_012538/formulation_only_llm_judge_20260726_013946`
-- Native source evaluation: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_native_ai_scientist_v2_final_comparison/openai_gemini_judge_prompt_frozen_repair_20260723_054649/postprocess`
 - main judges: anthropic/claude-sonnet-4, openai/gpt-5.6-sol-pro, x-ai/grok-4.5, moonshotai/kimi-k3, google/gemini-3.6-flash
 - excluded from main table: anthropic/claude-fable-5
 - weighted composite: not computed
@@ -62,9 +57,3 @@ Scores are descriptive OpenRouter LLM-judge formulation-only assessments on a 0-
 
 
 ## Key Artifacts
-
-- SGHA vs MOOSE candidate/judge scores: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_moose_star_public_model_comparison_20260726_012538/formulation_only_llm_judge_20260726_013946/postprocess/sgha_vs_moose_scores_by_candidate_judge.csv`
-- SGHA vs MOOSE by-method scores: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_moose_star_public_model_comparison_20260726_012538/formulation_only_llm_judge_20260726_013946/postprocess/sgha_vs_moose_scores_by_method.csv`
-- paper-ready SGHA vs MOOSE CSV: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_moose_star_public_model_comparison_20260726_012538/formulation_only_llm_judge_20260726_013946/postprocess/paper_ready_sgha_vs_moose_score_table.csv`
-- combined three-method by-method scores: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_moose_star_public_model_comparison_20260726_012538/formulation_only_llm_judge_20260726_013946/postprocess/combined_three_method_scores_by_method.csv`
-- combined three-method structure metrics: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_moose_star_public_model_comparison_20260726_012538/formulation_only_llm_judge_20260726_013946/postprocess/combined_three_method_structural_metrics.csv`

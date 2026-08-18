@@ -1,6 +1,5 @@
 # Formulation-Only Evolutionary Exploration Judge Report
 
-Evaluation namespace: `[MAIN_PAPER_RUN_NAMESPACE]/evolutionary_exploration_formulation_judge_20260801_165429`
 
 Status: candidate packet prepared; scoring pending.
 

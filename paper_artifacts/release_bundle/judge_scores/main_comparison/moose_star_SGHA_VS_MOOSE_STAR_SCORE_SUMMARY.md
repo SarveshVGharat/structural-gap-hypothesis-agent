@@ -1,6 +1,5 @@
 # SGHA vs MOOSE-Star Formulation-Only Score Summary
 
-- evaluation_dir: `[MAIN_PAPER_RUN_NAMESPACE]/sgha_vs_moose_star_public_model_comparison_20260726_012538/formulation_only_llm_judge_20260726_013946`
 - judge models: five main OpenRouter judges from different providers
 - candidates: 15 SGHA + 15 MOOSE-Star, scored independently by each judge
 - weighted composite: not computed

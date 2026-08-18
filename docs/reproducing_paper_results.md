@@ -2,7 +2,7 @@
 
 The public staging copy includes a curated paper artifact bundle under `paper_artifacts/release_bundle/`. Reproduction has two tracks.
 
-The bundle includes generated tables, candidate packets, manifests, checksums, score outputs, and summaries. It does not include figures unless explicitly added later for the camera-ready/arXiv source, raw PDFs, parsed full texts, model weights, raw prompts, raw responses, private logs, secrets, or full run directories.
+The bundle includes generated tables, candidate packets, manifests, checksums, score outputs, curated qualitative examples, and summaries. It does not include figures unless explicitly added later for the camera-ready/arXiv source, raw PDFs, parsed full texts, model weights, raw prompts, raw responses, runtime path provenance, staging review notes, discarded examples, blocked or skipped run rows, private logs, secrets, or full run directories.
 
 Generated tables, candidate packets, score files, and derived summaries are intended for research reuse under CC-BY-4.0 unless otherwise specified in `paper_artifacts/README.md`. Third-party source papers remain under their original licenses and are not redistributed here.
 
@@ -26,7 +26,7 @@ Paper-ready CSV tables are under `paper_artifacts/release_bundle/tables/csv/`, w
 
 This path may require network access, paper downloads, an OpenAI-compatible model endpoint, and substantial compute. It should be documented separately from the artifact-only path.
 
-Sanitized paper-run config templates are provided under `paper_artifacts/release_bundle/paper_run_configs/`. They document domain budgets, model placeholders, enabled stages, verification gates, baseline modes, and judge settings without private paths. Before final release, add exact upstream baseline install details, expected runtime, dependency extras, and known nondeterminism notes.
+Sanitized paper-run config templates are provided under `paper_artifacts/release_bundle/paper_run_configs/`. They document domain budgets, model placeholders, enabled stages, verification gates, baseline modes, and judge settings without private paths. The paper-facing baseline artifacts in this bundle cover SGHA, Native AI-Scientist-v2, and MOOSE-Star comparisons. Before final release, add exact upstream baseline install details, expected runtime, dependency extras, and known nondeterminism notes.
 
 ## Usability Smoke Test
 

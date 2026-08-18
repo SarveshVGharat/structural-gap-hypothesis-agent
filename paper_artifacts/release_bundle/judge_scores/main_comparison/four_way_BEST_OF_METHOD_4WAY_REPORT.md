@@ -2,7 +2,6 @@
 
 ## Trial
 
-- evaluation directory: `[MAIN_PAPER_RUN_NAMESPACE]/llm_judge/best_of_method_4way_ranked_20260721_154633`
 - OpenRouter model: `openai/gpt-4o-mini`
 - domains judged: 5
 - parse errors: 0
