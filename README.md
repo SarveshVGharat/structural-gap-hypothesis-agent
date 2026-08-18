@@ -73,7 +73,7 @@ The full research pipeline commands are also exposed through `sgha --help`. Comm
 
 ## Paper Artifacts
 
-The curated artifact bundle is in `paper_artifacts/release_bundle/`. It contains paper-result artifacts such as candidate packets, final outputs, canonical score tables, qualitative examples, manifests, source notes, and checksums.
+The curated artifact bundle is in `paper_artifacts/release_bundle/`. It contains paper-result artifacts such as candidate packets, final outputs, score tables, CSV/LaTeX tables, qualitative examples, manifests, source notes, and checksums.
 
 For paper inspection, start with `paper_artifacts/release_bundle/main_results/` for key CSVs, `paper_artifacts/release_bundle/paper_examples/` for actual generated examples used in the paper, and `paper_artifacts/release_bundle/paper_run_configs/` for sanitized paper-run config templates. The toy corpus under `examples/local_text_corpus/` is only for trying the code offline.
 

@@ -34,9 +34,6 @@
 - Sanitized candidate packets, judge reports, baseline summaries, and source notes to remove runtime provenance placeholders and internal paper-use labels while preserving paper-facing generated text and scores.
 - Added `PUBLIC_ARTIFACT_SCRUB_REPORT.md` with finding categories, actions, removed files, sanitized files, row-level changes, and remaining public-facing caveats.
 - Strengthened `scripts/audit_release.py` and added `tests/test_public_artifact_bundle_clean.py` to catch internal-note leakage and skipped-profile markers inside `paper_artifacts/release_bundle/`.
-- Added `PUBLIC_TABLE_ALLOWLIST_CLEANUP_REPORT.md` and pruned public table artifacts to a strict paper-facing allowlist, removing broad `tables/` dumps, duplicate profile/evolution/sensitivity score mirrors, partial evolutionary diagnostics, and uncertain appendix/status tables.
-- Collapsed `paper_artifacts/release_bundle/tables/` to a navigation README that points to canonical section-level table locations.
-- Strengthened the release audit and tests to reject table-allowlist note markers such as add/show/cleanup/blocked/legacy/coauthor/status language inside retained public table artifacts.
 
 ## Usability Added
 
@@ -52,17 +49,16 @@
 ## Validation
 
 - `python -m py_compile` on all staged Python files: passed.
-- `pytest --collect-only -q`: passed, 25 tests collected.
-- `pytest -q`: passed, 25 tests passed.
+- `pytest --collect-only -q`: passed, 24 tests collected.
+- `pytest -q`: passed, 24 tests passed.
 - `python scripts/audit_release.py`: passed with 0 findings.
 - `sha256sum -c CHECKSUMS.sha256` from `paper_artifacts/release_bundle/`: passed.
 - Explicit scan of new `paper_examples/` and `paper_run_configs/` for private paths, key-shaped strings, SSO credential hints, raw PDF filenames, raw LLM output names, and private host patterns: passed with 0 findings.
 - Explicit scan of `AGENTS.md`, `CLAUDE.md`, `docs/ai_reproduction_guide.md`, and `README.md` for private paths, key-shaped strings, raw PDF filenames, parsed full-text paths, raw LLM output names, and private host patterns: passed with 0 findings.
 - `sgha smoke-test`: passed after refreshing the local editable install to point at the staging repo.
 - Fresh temporary clone smoke test: passed with clean virtualenv install, `sgha smoke-test`, `pytest -q`, `python scripts/audit_release.py`, and release-bundle checksum verification.
-- Bundle file count after table allowlist cleanup: 160 files; manifest rows: 160; checksum entries: 159, excluding `CHECKSUMS.sha256`.
-- Table-like file count using the cleanup report's file-only pattern: 197 before, 104 after.
-- Explicit release-bundle table-artifact audit for add/show/cleanup/blocked/legacy/coauthor/status markers: passed with 0 audit findings. Broad phrase search still finds terms such as `blocked` only inside generated candidate text, not retained table artifacts.
+- Bundle file count after public artifact scrub: 253 files; manifest rows: 253; checksum entries: 252, excluding `CHECKSUMS.sha256`.
+- Explicit release-bundle search for Sutton/Barto skipped-profile markers, internal note phrases, key-shaped strings, private absolute paths, and runtime provenance placeholders: passed. The only `unsuccessful` matches are public exclusion-policy sentences in bundle docs.
 - `find . -type f -size +25M`: passed, no files found.
 - Simulated in-repo `.venv/pyvenv.cfg` with a private-looking absolute path: audit and pytest passed; fake `.venv/` was removed.
 - Offline smoke, local example initialization, config validation, local corpus prep, and run summary commands passed using temporary output directories.

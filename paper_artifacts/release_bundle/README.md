@@ -7,8 +7,8 @@ This bundle contains curated, sanitized artifacts for inspecting and reproducing
 - `main_sgha/`: final SGHA project families, formal problem statements, final reports, pipeline counts, and qualitative SGHA examples.
 - `baselines/`: generated AI-Scientist-v2 Qwen, AI-Scientist-v2 Claude Opus, and MOOSE-Star candidate outputs and summaries.
 - `candidate_packets/`: blinded packets and unblinded sanitized packets used for judging.
-- `judge_scores/`: retained main-comparison score aggregates, summaries, and judging rubric material.
-- `tables/`: a minimal navigation README that points to the canonical section-level table locations.
+- `judge_scores/`: score tables and summaries for main comparison, profile-conditioned generation, evolutionary exploration, and sensitivity analyses.
+- `tables/`: paper-ready CSV, LaTeX, and Markdown tables.
 - `profile_conditioned/`, `evolutionary/`, and `sensitivity/`: focused artifact subsets for those paper sections.
 - `paper_examples/`: curated actual generated examples from the paper runs, including SGHA, baseline, profile-conditioned, and evolutionary examples.
 - `paper_run_configs/`: sanitized public YAML configs approximating the paper setup without private paths, raw corpora, raw prompts, or credentials.
@@ -30,7 +30,7 @@ This bundle intentionally excludes figures unless explicitly added later for the
 
 ## Reproducing Tables
 
-The canonical paper-facing tables are kept near the results they describe: `main_results/`, `profile_conditioned/`, `evolutionary/scores/`, `sensitivity/model_size/`, and `sensitivity/corpus_size/`. Retained main-comparison score aggregates live under `judge_scores/main_comparison/`. The `tables/` directory is only a navigation pointer. To inspect table values, load the retained CSV files with Python, R, or a spreadsheet tool. The bundle itself is artifact-only and should not call LLMs, OpenRouter, paper downloads, or full SGHA runs.
+The paper-facing tables are available directly under `tables/csv/`, with matching LaTeX copies under `tables/latex/` when available. To inspect or regenerate table views, load the CSV files with Python, R, a spreadsheet tool, or the paper scripts in the repository. The bundle itself is artifact-only and should not call LLMs, OpenRouter, paper downloads, or full SGHA runs.
 
 ## Inspecting Candidates
 
@@ -46,6 +46,6 @@ Generated tables, candidate packets, score files, and derived summaries in this 
 
 ## Public scrub note
 
-This bundle is limited to paper-result artifacts: candidate packets, final outputs, canonical score tables, qualitative examples, profile/evolution/sensitivity artifacts, manifests, and checksums.
-Discarded examples, non-paper run rows, staging review material, raw logs, raw LLM outputs, raw PDFs, parsed full texts, and runtime path provenance are excluded.
+This bundle is limited to paper-result artifacts: candidate packets, final outputs, score tables, table CSV/LaTeX files, qualitative examples, profile/evolution/sensitivity artifacts, manifests, and checksums.
+Discarded examples, unsuccessful internal runs, staging status matrices, review notes, raw logs, raw LLM outputs, raw PDFs, parsed full texts, and runtime path provenance are excluded.
 Figures are not included in this artifact bundle unless explicitly added later for the camera-ready or arXiv source.

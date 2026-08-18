@@ -1,0 +1,6 @@
+domain,n,completed_judges,mean_problem_definition_clarity_10,std_problem_definition_clarity_10,mean_technical_specificity_10,std_technical_specificity_10,mean_well_posedness_10,std_well_posedness_10,mean_assumption_boundary_clarity_10,std_assumption_boundary_clarity_10,mean_formalizability_10,std_formalizability_10,mean_nontriviality_10,std_nontriviality_10,mean_scope_control_10,std_scope_control_10,mean_source_grounded_specificity_10,std_source_grounded_specificity_10,mean_ambiguity_hygiene_10,std_ambiguity_hygiene_10,mean_overall_formulation_quality_10,std_overall_formulation_quality_10
+bandits,12,4,4.1667,0.7177,3.9167,0.6686,2.8333,0.7177,3.5833,0.6686,2.5833,0.5149,4.75,0.7538,3.5833,0.793,5.1667,1.3371,2.25,0.6216,3.75,0.6216
+in_context_learning,14,4,3.7143,0.7263,4.4286,0.6462,2.7143,0.6112,3.7857,0.5789,2.6429,0.4972,5.1429,0.5345,3.9286,1.4392,5.2857,1.5407,2.1429,0.663,3.6429,0.6333
+offline_reinforcement_learning_arxiv,4,4,3.5,0.5774,3.5,0.5774,2.5,0.5774,3.5,0.5774,2.25,0.5,5.25,0.5,4.25,0.5,5.25,1.2583,1.75,0.5,3.75,0.5
+reasoning_models_test_time_compute,4,4,4.75,0.5,4.5,0.5774,3.5,0.5774,4.75,0.5,3.0,0.0,6.0,0.0,5.0,1.4142,5.75,1.2583,2.75,0.5,4.5,0.5774
+uncertainty_calibration_conformal_prediction_arxiv,21,4,4.3333,0.483,4.0,0.8367,2.7619,0.539,2.8095,0.8136,2.6667,0.483,4.9524,0.5896,5.0476,1.1609,5.5714,1.1212,2.1905,0.7496,3.8571,0.5732

@@ -48,4 +48,4 @@ release_notes:
   sanitized_config: true
   private_paths_removed: true
   raw_papers_and_full_text_excluded: true
-  use_existing_bundle_for_paper_values: "paper_artifacts/release_bundle/main_results/"
+  use_existing_bundle_for_paper_values: "paper_artifacts/release_bundle/tables/csv/"

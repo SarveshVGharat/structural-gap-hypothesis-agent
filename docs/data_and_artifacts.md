@@ -17,7 +17,7 @@ Do not commit:
 
 Public paper artifacts under `paper_artifacts/release_bundle/` include:
 
-- canonical CSV and Markdown table artifacts
+- CSV and TeX tables
 - candidate packets
 - score files
 - markdown summaries
@@ -30,13 +30,13 @@ Public paper artifacts under `paper_artifacts/release_bundle/` include:
 
 Figures are not included in this artifact bundle unless explicitly added later for the camera-ready/arXiv source.
 
-Discarded examples, non-paper run rows, staging review material, broad duplicate table dumps, runtime path provenance, raw logs, and raw model outputs are not included in the public bundle.
+Discarded examples, blocked or skipped run rows, staging status matrices, review notes, runtime path provenance, raw logs, and raw model outputs are not included in the public bundle.
 
 Generated tables, candidate packets, score files, and derived summaries are intended for research reuse under CC-BY-4.0 unless otherwise specified in `paper_artifacts/README.md`. Third-party source papers remain under their original licenses and are not redistributed here.
 
 The release audit script checks for common forbidden artifact classes.
 
-Artifact-only reproduction should not call LLMs, download papers, or run the full SGHA pipeline. It should verify checksums and inspect table values from the canonical CSV and summary files in `main_results/`, `profile_conditioned/`, `evolutionary/`, and `sensitivity/`.
+Artifact-only reproduction should not call LLMs, download papers, or run the full SGHA pipeline. It should verify checksums and inspect or regenerate table views from curated CSV and summary files.
 
 For a no-network usability path, use `examples/local_text_corpus/` and `sgha smoke-test`. That example contains only short synthetic text files and writes a mock output tree for learning SGHA's stage layout. For local user corpora, provide your own `papers.jsonl` with `text_path` entries and keep source papers outside public commits unless redistribution is permitted.
 

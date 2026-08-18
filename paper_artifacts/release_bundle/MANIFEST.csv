@@ -60,11 +60,28 @@ evolutionary/scores/formulation_only_scores_by_domain.csv,evolutionary_result,ev
 evolutionary/scores/formulation_only_scores_by_domain_method.csv,evolutionary_result,evolutionary ablation paper-result artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
 evolutionary/scores/formulation_only_scores_by_method.csv,evolutionary_result,evolutionary ablation paper-result artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
 evolutionary/scores/formulation_only_scores_unblinded.csv,evolutionary_result,evolutionary ablation paper-result artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
+evolutionary/scores/partial_evolutionary_candidate_aggregates.csv,evolutionary_result,evolutionary ablation paper-result artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
+evolutionary/scores/partial_evolutionary_scores_by_candidate.csv,evolutionary_result,evolutionary ablation paper-result artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
+evolutionary/scores/partial_evolutionary_scores_by_candidate_judge.csv,evolutionary_result,evolutionary ablation paper-result artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
+evolutionary/scores/partial_evolutionary_scores_by_domain.csv,evolutionary_result,evolutionary ablation paper-result artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
+evolutionary/scores/partial_evolutionary_scores_by_method.csv,evolutionary_result,evolutionary ablation paper-result artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
 evolutionary/selected_candidates/evolutionary_candidates_unblinded_sanitized.jsonl,evolutionary_result,evolutionary ablation paper-result artifact,true,false,false,false,true,false,false,false,included in public paper artifact bundle
 evolutionary/selected_candidates/evolutionary_selected_candidates_index.csv,evolutionary_result,evolutionary ablation paper-result artifact,true,false,true,false,true,false,false,false,included in public paper artifact bundle
 evolutionary/selected_candidates/top_evolutionary_example.md,evolutionary_result,evolutionary ablation paper-result artifact,true,false,false,false,true,false,false,false,included in public paper artifact bundle
 evolutionary/summaries/FORMULATION_ONLY_EVOLUTIONARY_EXPLORATION_JUDGE_REPORT.md,evolutionary_result,evolutionary ablation paper-result artifact,false,false,false,false,true,false,false,false,included in public paper artifact bundle
+evolutionary/summaries/PARTIAL_EVOLUTIONARY_SCORE_RESULTS.md,evolutionary_result,evolutionary ablation paper-result artifact,false,false,false,false,true,false,false,false,included in public paper artifact bundle
 judge_scores/README.md,judge_score,paper judge score artifact,false,true,false,false,false,false,false,false,included in public paper artifact bundle
+judge_scores/evolutionary/FORMULATION_ONLY_EVOLUTIONARY_EXPLORATION_JUDGE_REPORT.md,judge_score,paper judge score artifact,false,true,false,false,true,false,false,false,included in public paper artifact bundle
+judge_scores/evolutionary/PARTIAL_EVOLUTIONARY_SCORE_RESULTS.md,judge_score,paper judge score artifact,false,true,false,false,true,false,false,false,included in public paper artifact bundle
+judge_scores/evolutionary/formulation_only_scores_by_domain.csv,judge_score,paper judge score artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
+judge_scores/evolutionary/formulation_only_scores_by_domain_method.csv,judge_score,paper judge score artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
+judge_scores/evolutionary/formulation_only_scores_by_method.csv,judge_score,paper judge score artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
+judge_scores/evolutionary/formulation_only_scores_unblinded.csv,judge_score,paper judge score artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
+judge_scores/evolutionary/partial_evolutionary_candidate_aggregates.csv,judge_score,paper judge score artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
+judge_scores/evolutionary/partial_evolutionary_scores_by_candidate.csv,judge_score,paper judge score artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
+judge_scores/evolutionary/partial_evolutionary_scores_by_candidate_judge.csv,judge_score,paper judge score artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
+judge_scores/evolutionary/partial_evolutionary_scores_by_domain.csv,judge_score,paper judge score artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
+judge_scores/evolutionary/partial_evolutionary_scores_by_method.csv,judge_score,paper judge score artifact,false,true,true,false,true,false,false,false,included in public paper artifact bundle
 judge_scores/main_comparison/ai_scientist_v2_qwen_FORMULATION_ONLY_RUBRIC.md,judge_score,paper judge score artifact,false,true,false,false,false,false,false,false,included in public paper artifact bundle
 judge_scores/main_comparison/ai_scientist_v2_qwen_FORMULATION_ONLY_SCORE_SUMMARY.md,judge_score,paper judge score artifact,false,true,false,false,false,false,false,false,included in public paper artifact bundle
 judge_scores/main_comparison/ai_scientist_v2_qwen_all_individual_formulation_scores_readable.csv,judge_score,paper judge score artifact,false,true,true,false,false,false,false,false,included in public paper artifact bundle
@@ -96,11 +113,22 @@ judge_scores/main_comparison/moose_star_paper_ready_sgha_vs_moose_score_table.cs
 judge_scores/main_comparison/moose_star_sgha_vs_moose_candidate_aggregates.csv,judge_score,paper judge score artifact,false,true,true,false,false,false,false,false,included in public paper artifact bundle
 judge_scores/main_comparison/moose_star_sgha_vs_moose_scores_by_domain_method.csv,judge_score,paper judge score artifact,false,true,true,false,false,false,false,false,included in public paper artifact bundle
 judge_scores/main_comparison/moose_star_sgha_vs_moose_scores_by_method.csv,judge_score,paper judge score artifact,false,true,true,false,false,false,false,false,included in public paper artifact bundle
-main_results/README.md,main_result_table,canonical main paper table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
-main_results/formulation_quality_scores.csv,main_result_table,canonical main paper table artifact,false,true,true,false,false,false,false,false,included in public paper artifact bundle
-main_results/pipeline_yield.csv,main_result_table,canonical main paper table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
-main_results/qualitative_example_overview.csv,main_result_table,canonical main paper table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
-main_results/structural_artifact_coverage.csv,main_result_table,canonical main paper table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+judge_scores/profile_conditioned/PERSONALIZED_PROFILE_ALIGNMENT_JUDGE_REPORT.md,judge_score,paper judge score artifact,false,true,false,true,false,false,false,false,included in public paper artifact bundle
+judge_scores/profile_conditioned/paper_ready_personalized_score_table.csv,judge_score,paper judge score artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+judge_scores/profile_conditioned/personalized_candidate_aggregates.csv,judge_score,paper judge score artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+judge_scores/profile_conditioned/personalized_scores_by_candidate_judge.csv,judge_score,paper judge score artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+judge_scores/profile_conditioned/personalized_scores_by_model.csv,judge_score,paper judge score artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+judge_scores/profile_conditioned/personalized_scores_by_profile.csv,judge_score,paper judge score artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+judge_scores/profile_conditioned/recommended_actions_by_candidate.csv,judge_score,paper judge score artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+judge_scores/sensitivity/table_d3_model_scaling_counts.csv,judge_score,paper judge score artifact,false,true,true,false,false,true,false,false,included in public paper artifact bundle
+judge_scores/sensitivity/table_d4_model_scaling_judge.csv,judge_score,paper judge score artifact,false,true,true,false,false,true,false,false,included in public paper artifact bundle
+judge_scores/sensitivity/table_d5_paper_scaling_counts.csv,judge_score,paper judge score artifact,false,true,true,false,false,true,false,false,included in public paper artifact bundle
+judge_scores/sensitivity/table_d6_paper_scaling_judge.csv,judge_score,paper judge score artifact,false,true,true,false,false,true,false,false,included in public paper artifact bundle
+main_results/README.md,support_file,public release support artifact,false,false,false,false,false,false,false,false,included in public paper artifact bundle
+main_results/formulation_quality_scores.csv,support_file,public release support artifact,false,true,true,false,false,false,false,false,included in public paper artifact bundle
+main_results/pipeline_yield.csv,support_file,public release support artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+main_results/qualitative_example_overview.csv,support_file,public release support artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+main_results/structural_artifact_coverage.csv,support_file,public release support artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
 main_sgha/final_project_families/bandits_final_project_families.json,main_sgha_result,main SGHA paper-result artifact,true,false,false,false,false,false,false,false,included in public paper artifact bundle
 main_sgha/final_project_families/bandits_final_report_polished.md,main_sgha_result,main SGHA paper-result artifact,true,false,false,false,false,false,false,false,included in public paper artifact bundle
 main_sgha/final_project_families/in_context_learning_final_project_families.json,main_sgha_result,main SGHA paper-result artifact,true,false,false,false,false,false,false,false,included in public paper artifact bundle
@@ -116,6 +144,8 @@ main_sgha/formal_problem_statements/in_context_learning_formal_problem_formulati
 main_sgha/formal_problem_statements/offline_reinforcement_learning_arxiv_formal_problem_formulations.jsonl,main_sgha_result,main SGHA paper-result artifact,false,false,false,false,false,false,false,false,included in public paper artifact bundle
 main_sgha/formal_problem_statements/reasoning_models_test_time_compute_formal_problem_formulations.jsonl,main_sgha_result,main SGHA paper-result artifact,false,false,false,false,false,false,false,false,included in public paper artifact bundle
 main_sgha/formal_problem_statements/uncertainty_calibration_conformal_prediction_arxiv_formal_problem_formulations.jsonl,main_sgha_result,main SGHA paper-result artifact,false,false,false,false,false,false,false,false,included in public paper artifact bundle
+main_sgha/pipeline_counts/table_1_sgha_pipeline_yield.csv,main_sgha_result,main SGHA paper-result artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+main_sgha/pipeline_counts/table_3_structural_artifacts.csv,main_sgha_result,main SGHA paper-result artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
 main_sgha/pipeline_counts/table_a1_full_pipeline_counts.csv,main_sgha_result,main SGHA paper-result artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
 main_sgha/qualitative_examples/bandits_best_sgha_example.md,main_sgha_result,main SGHA paper-result artifact,false,false,false,false,false,false,false,false,included in public paper artifact bundle
 paper_examples/README.md,qualitative_example,curated qualitative paper example,true,false,false,false,false,false,false,false,included in public paper artifact bundle
@@ -150,6 +180,13 @@ profile_conditioned/profile_summary_table.csv,profile_conditioned_result,profile
 profile_conditioned/sanitized_profile_contexts/geoffrey_hinton.json,profile_conditioned_result,profile-conditioned paper-result artifact,false,false,false,true,false,false,false,false,included in public paper artifact bundle
 profile_conditioned/sanitized_profile_contexts/michael_i_jordan.json,profile_conditioned_result,profile-conditioned paper-result artifact,false,false,false,true,false,false,false,false,included in public paper artifact bundle
 profile_conditioned/sanitized_profile_contexts/yann_lecun.json,profile_conditioned_result,profile-conditioned paper-result artifact,false,false,false,true,false,false,false,false,included in public paper artifact bundle
+profile_conditioned/scores/paper_ready_personalized_score_table.csv,profile_conditioned_result,profile-conditioned paper-result artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+profile_conditioned/scores/personalized_candidate_aggregates.csv,profile_conditioned_result,profile-conditioned paper-result artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+profile_conditioned/scores/personalized_scores_by_candidate_judge.csv,profile_conditioned_result,profile-conditioned paper-result artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+profile_conditioned/scores/personalized_scores_by_model.csv,profile_conditioned_result,profile-conditioned paper-result artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+profile_conditioned/scores/personalized_scores_by_profile.csv,profile_conditioned_result,profile-conditioned paper-result artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+profile_conditioned/scores/recommended_actions_by_candidate.csv,profile_conditioned_result,profile-conditioned paper-result artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+profile_conditioned/summaries/profile_summary_table.csv,profile_conditioned_result,profile-conditioned paper-result artifact,false,false,true,true,false,false,false,false,included in public paper artifact bundle
 sensitivity/corpus_size/paper_scaling_counts.md,sensitivity_result,sensitivity analysis paper-result artifact,false,false,false,false,false,true,false,false,included in public paper artifact bundle
 sensitivity/corpus_size/paper_scaling_judge.md,sensitivity_result,sensitivity analysis paper-result artifact,false,false,false,false,false,true,false,false,included in public paper artifact bundle
 sensitivity/corpus_size/table_d5_paper_scaling_counts.csv,sensitivity_result,sensitivity analysis paper-result artifact,false,false,true,false,false,true,false,false,included in public paper artifact bundle
@@ -158,4 +195,60 @@ sensitivity/model_size/model_scaling_counts.md,sensitivity_result,sensitivity an
 sensitivity/model_size/model_scaling_judge.md,sensitivity_result,sensitivity analysis paper-result artifact,false,false,false,false,false,true,false,false,included in public paper artifact bundle
 sensitivity/model_size/table_d3_model_scaling_counts.csv,sensitivity_result,sensitivity analysis paper-result artifact,false,false,true,false,false,true,false,false,included in public paper artifact bundle
 sensitivity/model_size/table_d4_model_scaling_judge.csv,sensitivity_result,sensitivity analysis paper-result artifact,false,false,true,false,false,true,false,false,included in public paper artifact bundle
-tables/README.md,table_index,public table navigation reference,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/README.md,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_1_sgha_pipeline_yield.csv,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_2_formulation_quality_main.csv,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_3_structural_artifacts.csv,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_a10_judge_cap_warnings_and_sensitivity.csv,paper_table,paper-ready table artifact,false,false,true,false,false,true,false,false,included in public paper artifact bundle
+tables/csv/table_a1_full_pipeline_counts.csv,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_a2_full_10_criterion_formulation_scores.csv,paper_table,paper-ready table artifact,false,true,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_a4_baseline_counts_and_status.csv,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_a5_multi_judge_robustness.csv,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_a6_best_candidates_by_domain.csv,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_a7_per_domain_formulation_scores.csv,paper_table,paper-ready table artifact,false,true,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_a8_moose_star_baseline_details.csv,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_a9_claude_opus_baseline_details.csv,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_d1_personalized_pipeline_counts.csv,paper_table,paper-ready table artifact,false,false,true,true,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_d2_personalized_judge_scores.csv,paper_table,paper-ready table artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_d3_model_scaling_counts.csv,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_d4_model_scaling_judge.csv,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_d5_paper_scaling_counts.csv,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_d6_paper_scaling_judge.csv,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/csv/table_d7_evolutionary_exploration_counts.csv,paper_table,paper-ready table artifact,false,false,true,false,true,false,false,false,included in public paper artifact bundle
+tables/latex/table_1_sgha_pipeline_yield.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_2_formulation_quality_main.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_3_structural_artifacts.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_a10_judge_cap_warnings_and_sensitivity.tex,paper_table,paper-ready table artifact,false,false,true,false,false,true,false,false,included in public paper artifact bundle
+tables/latex/table_a1_full_pipeline_counts.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_a2_full_10_criterion_formulation_scores.tex,paper_table,paper-ready table artifact,false,true,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_a3_structural_artifacts_full.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_a4_baseline_counts_and_status.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_a5_multi_judge_robustness.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_a6_best_candidates_by_domain.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_a7_per_domain_formulation_scores.tex,paper_table,paper-ready table artifact,false,true,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_a8_moose_star_baseline_details.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_a9_claude_opus_baseline_details.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_d1_personalized_pipeline_counts.tex,paper_table,paper-ready table artifact,false,false,true,true,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_d2_personalized_judge_scores.tex,paper_table,paper-ready table artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_d3_model_scaling_counts.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_d4_model_scaling_judge.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_d5_paper_scaling_counts.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_d6_paper_scaling_judge.tex,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/latex/table_d7_evolutionary_exploration_counts.tex,paper_table,paper-ready table artifact,false,false,true,false,true,false,false,false,included in public paper artifact bundle
+tables/markdown/baseline_counts_and_status.md,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/markdown/best_candidates_by_domain.md,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/markdown/claude_opus_baseline_details.md,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/markdown/evolutionary_exploration_counts.md,paper_table,paper-ready table artifact,false,false,true,false,true,false,false,false,included in public paper artifact bundle
+tables/markdown/judge_cap_warnings_and_sensitivity.md,paper_table,paper-ready table artifact,false,false,true,false,false,true,false,false,included in public paper artifact bundle
+tables/markdown/model_scaling_counts.md,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/markdown/model_scaling_judge.md,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/markdown/moose_star_details.md,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/markdown/multi_judge_robustness.md,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/markdown/paper_scaling_counts.md,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/markdown/paper_scaling_judge.md,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/markdown/personalized_judge_scores.md,paper_table,paper-ready table artifact,false,true,true,true,false,false,false,false,included in public paper artifact bundle
+tables/markdown/personalized_pipeline_counts.md,paper_table,paper-ready table artifact,false,false,true,true,false,false,false,false,included in public paper artifact bundle
+tables/markdown/table_1_sgha_pipeline_yield.md,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/markdown/table_2_formulation_quality_main.md,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/markdown/table_3_structural_artifacts.md,paper_table,paper-ready table artifact,false,false,true,false,false,false,false,false,included in public paper artifact bundle
+tables/markdown/table_a2_full_10_criterion_formulation_scores.md,paper_table,paper-ready table artifact,false,true,true,false,false,false,false,false,included in public paper artifact bundle
