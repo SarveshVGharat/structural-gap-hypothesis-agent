@@ -2,7 +2,7 @@
 
 The public staging copy includes a curated paper artifact bundle under `paper_artifacts/release_bundle/`. Reproduction has two tracks.
 
-The bundle includes generated tables, candidate packets, manifests, checksums, score outputs, curated qualitative examples, and summaries. It does not include figures unless explicitly added later for the camera-ready/arXiv source, raw PDFs, parsed full texts, model weights, raw prompts, raw responses, runtime path provenance, staging review notes, discarded examples, blocked or skipped run rows, private logs, secrets, or full run directories.
+The bundle includes canonical generated tables, candidate packets, manifests, checksums, score outputs, curated qualitative examples, and summaries. It does not include figures unless explicitly added later for the camera-ready/arXiv source, raw PDFs, parsed full texts, model weights, raw prompts, raw responses, runtime path provenance, staging review notes, discarded examples, non-paper run rows, broad duplicate table dumps, private logs, secrets, or full run directories.
 
 Generated tables, candidate packets, score files, and derived summaries are intended for research reuse under CC-BY-4.0 unless otherwise specified in `paper_artifacts/README.md`. Third-party source papers remain under their original licenses and are not redistributed here.
 
@@ -20,7 +20,7 @@ cd ../..
 python scripts/summarize_sgha_evidence_counts_for_supplement.py --help
 ```
 
-Paper-ready CSV tables are under `paper_artifacts/release_bundle/tables/csv/`, with compact main-result copies under `paper_artifacts/release_bundle/main_results/`. Matching LaTeX tables are under `paper_artifacts/release_bundle/tables/latex/` where available, candidate packets are under `paper_artifacts/release_bundle/candidate_packets/`, and curated actual generated examples are under `paper_artifacts/release_bundle/paper_examples/`.
+Paper-facing tables are under canonical section directories: `paper_artifacts/release_bundle/main_results/`, `paper_artifacts/release_bundle/profile_conditioned/`, `paper_artifacts/release_bundle/evolutionary/scores/`, `paper_artifacts/release_bundle/sensitivity/model_size/`, and `paper_artifacts/release_bundle/sensitivity/corpus_size/`. Retained main-comparison judging aggregates are under `paper_artifacts/release_bundle/judge_scores/main_comparison/`. The `tables/` directory is only a navigation pointer. Candidate packets are under `paper_artifacts/release_bundle/candidate_packets/`, and curated actual generated examples are under `paper_artifacts/release_bundle/paper_examples/`.
 
 ## Full Pipeline Reproduction
 

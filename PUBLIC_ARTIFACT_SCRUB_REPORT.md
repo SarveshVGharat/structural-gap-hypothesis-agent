@@ -1,5 +1,7 @@
 # Public Artifact Scrub Report
 
+Note: a later table-specific allowlist pass further pruned public table artifacts. See `PUBLIC_TABLE_ALLOWLIST_CLEANUP_REPORT.md` for current table counts and retained table locations.
+
 Date: 2026-08-18
 
 Scope: `paper_artifacts/release_bundle/` in the public SGHA staging repository, with public docs checked for consistency.

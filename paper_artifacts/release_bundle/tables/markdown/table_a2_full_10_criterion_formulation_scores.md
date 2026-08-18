@@ -1,8 +1,0 @@
-# Appendix Full 10-Criterion Table With MOOSE
-
-|Method|Problem definition clarity|Technical specificity|Well-posedness|Assumption/boundary clarity|Formalizability|Nontriviality|Scope control|Source-grounded specificity|Ambiguity hygiene|Overall formulation quality|
-|---|---|---|---|---|---|---|---|---|---|---|
-|SGHA|6.77|5.89|5.77|6.45|5.51|6.39|5.36|7.43|7.61|5.99|
-|AI-Scientist-v2 + Qwen|5.59|4.72|3.53|3.61|3.68|5.27|5.73|5.11|2.81|4.55|
-|AI-Scientist-v2 + Claude Opus|7.15|6.95|4.88|4.75|5.21|6.88|6.19|2.97|3.57|5.84|
-|MOOSE-Star|1.85|2.51|1.52|1.37|1.51|2.89|3.07|3.75|1.48|2.00|

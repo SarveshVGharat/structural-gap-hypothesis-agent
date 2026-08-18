@@ -67,6 +67,19 @@ PUBLIC_BUNDLE_INTERNAL_PATTERNS = {
     "yoshua bengio: skipped": "unreported skipped profile",
     "yoshua_bengio": "unreported skipped profile",
 }
+PUBLIC_BUNDLE_TABLE_PATTERNS = {
+    "add this": "paper-planning note in table artifact",
+    "add to appendix": "paper-planning note in table artifact",
+    "do not show": "internal visibility note in table artifact",
+    "clean later": "cleanup note in table artifact",
+    "blocked": "blocked run marker in table artifact",
+    "failed run": "failed run marker in table artifact",
+    "unsuccessful": "unsuccessful run marker in table artifact",
+    "legacy": "legacy marker in table artifact",
+    "optional diagnostic": "optional diagnostic marker in table artifact",
+    "coauthor": "internal collaboration marker in table artifact",
+    "status matrix": "status matrix marker in table artifact",
+}
 
 
 @dataclass
@@ -115,6 +128,22 @@ def _inside_release_bundle(rel: Path) -> bool:
     return len(rel.parts) >= 2 and rel.parts[:2] == ("paper_artifacts", "release_bundle")
 
 
+def _is_public_bundle_table_artifact(rel: Path) -> bool:
+    if not _inside_release_bundle(rel) or len(rel.parts) < 3:
+        return False
+    bundle_parts = rel.parts[2:]
+    name = rel.name.lower()
+    if name in {"readme.md", "artifact_license.md", "secret_leakage_check.md", "source_notes_sanitized.md"}:
+        return False
+    if rel.suffix.lower() in {".csv", ".tex"}:
+        return True
+    if rel.suffix.lower() != ".md":
+        return False
+    if bundle_parts[0] in {"tables", "main_results", "sensitivity"}:
+        return True
+    return any(token in name for token in {"score", "table", "summary", "report"})
+
+
 def audit(root: Path, *, max_bytes: int = DEFAULT_MAX_BYTES) -> list[Finding]:
     findings: list[Finding] = []
     root = root.resolve()
@@ -159,6 +188,10 @@ def audit(root: Path, *, max_bytes: int = DEFAULT_MAX_BYTES) -> list[Finding]:
             for pattern, reason in PUBLIC_BUNDLE_INTERNAL_PATTERNS.items():
                 if pattern in lowered:
                     findings.append(Finding("internal_bundle_note", rel, reason))
+            if _is_public_bundle_table_artifact(rel):
+                for pattern, reason in PUBLIC_BUNDLE_TABLE_PATTERNS.items():
+                    if pattern in lowered:
+                        findings.append(Finding("table_allowlist_note", rel, reason))
 
     return findings
 

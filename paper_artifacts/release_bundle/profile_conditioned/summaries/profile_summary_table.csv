@@ -1,4 +1,0 @@
-profile,seed_count,parsed_papers,extracted_papers,tuple_count,reviewed_gaps,verified_gaps,direct_formulations,ambition_finals,project_families,formalizations,finalization_status,paper_ready,main_report_path,notes
-yann_lecun,11,150,148,1170,4,4,4,1,1,1,PIPELINE_COMPLETED_PASS,yes,,
-geoffrey_hinton,33,150,141,1191,5,1,1,1,1,1,PIPELINE_COMPLETED_PASS,yes,,
-michael_i_jordan,150,150,150,1043,12,4,4,2,2,2,PIPELINE_COMPLETED_PASS,yes,,

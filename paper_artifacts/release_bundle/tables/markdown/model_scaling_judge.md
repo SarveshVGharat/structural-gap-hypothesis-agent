@@ -1,9 +1,0 @@
-# Model Scaling Judge Scores
-
-|comparison item|kind|candidate_id|title|n_judges|mean overall|max overall|mean source grounding|mean formalizability|
-|---|---|---|---|---|---|---|---|---|
-|current_27b_single_family|27b|Candidate 001|Identifiability Limits of Greedy Strategies in Adversarial Stackelberg Games with Unknown Follower Types|6|6.67|8.00|6.33|6.33|
-|repaired_9b_bandits_average_3_families|9b_avg|||4 per candidate|5.92|7.00|7.42|5.25|
-|repaired_9b_bandits_best_family|9b_best|family:01|Characterizing Identifiability Limits of Structured Bandits Under Piecewise Non-Stationarity|4|6.25|7.00|7.75|5.25|
-|native_ai_scientist_v2_bandits_best_idea|native_best|native_ai_scientist_v2_002|Bandits with Adversarial Arm Execution: Robust Learning When Your Choices Don't Match Reality|4|5.00|5.00|6.00|4.50|
-|4B current-pipeline result|4b|NOT_AVAILABLE|No final families; critic-passing variants = 0|0|NOT_AVAILABLE|NOT_AVAILABLE|NOT_AVAILABLE|NOT_AVAILABLE|

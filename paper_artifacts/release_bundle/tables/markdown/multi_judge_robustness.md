@@ -1,9 +1,0 @@
-# Multi-Judge Robustness
-
-|judge_model|candidates_scored|parse_errors|cap_violations|SGHA_overall_formulation_quality_10|Native_AI_Scientist_v2_overall_formulation_quality_10|SGHA_minus_Native_delta|criteria_SGHA_wins|criteria_Native_wins|criteria_ties|paper_safe_interpretation|
-|---|---|---|---|---|---|---|---|---|---|---|
-|anthropic/claude-fable-5|30|0|1|5.8|4.6|1.2|9|1|0|SGHA higher formulation-quality score for this calibrated judge; descriptive LLM-judge result, not novelty proof.|
-|x-ai/grok-4.5|30|0|0|5.8|4.7333|1.0667|9|1|0|SGHA higher formulation-quality score for this calibrated judge; descriptive LLM-judge result, not novelty proof.|
-|moonshotai/kimi-k3|30|0|1|6.0667|5.0|1.0667|9|1|0|SGHA higher formulation-quality score for this calibrated judge; descriptive LLM-judge result, not novelty proof.|
-|AGGREGATE_CALIBRATED_MODELS|90|0|2|5.8889|4.7778|1.1111|9|1|0|Across calibrated completed judges, SGHA has higher mean formulation-quality scores; interpret as robustness evidence for formulation structure, not external novelty proof.|
-|Claude Opus baseline excluding Anthropic judge|60|0|not_reported|not_applicable|5.83|not_applicable|not_applicable|not_applicable|not_applicable|Sensitivity check: Claude Opus generator score remains similar when same-provider Anthropic judge is excluded.|
