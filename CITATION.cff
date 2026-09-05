@@ -1,24 +1,32 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite the accompanying arXiv paper when available."
+message: "If you use this software, please cite the accompanying paper listed below."
 title: "Structural Gap Hypothesis Agent"
 type: software
+
 authors:
-  - family-names: "TODO"
-    given-names: "TODO"
+  - family-names: "Gharat"
+    given-names: "Sarvesh"
+  - family-names: "Komiyama"
+    given-names: "Junpei"
+
 abstract: "Auditable structural gap detection system for generating research hypotheses from scientific papers."
 version: "0.1.0"
 date-released: "2026-08-17"
-repository-code: "https://github.com/TODO/structural-gap-hypothesis-agent"
+repository-code: "https://github.com/SarveshVGharat/structural-gap-hypothesis-agent"
 license: "Apache-2.0"
+
 preferred-citation:
   type: article
-  title: "TODO: final arXiv paper title"
+  title: "SGHA: Evidence-Grounded Research Problem Discovery with Local Language Models"
   authors:
-    - family-names: "TODO"
-      given-names: "TODO"
+    - family-names: "Gharat"
+      given-names: "Sarvesh"
+    - family-names: "Komiyama"
+      given-names: "Junpei"
+  journal: "arXiv preprint arXiv:2608.17501"
   year: 2026
-  doi: "TODO"
+  url: "https://arxiv.org/abs/2608.17501"
   identifiers:
     - type: other
-      value: "arXiv:TODO"
-      description: "TODO: final arXiv identifier"
+      value: "arXiv:2608.17501"
+      description: "arXiv preprint"
