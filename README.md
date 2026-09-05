@@ -108,7 +108,11 @@ The release audit checks for common blockers such as possible secrets, private p
 
 ## Citation
 
-Citation metadata is in `CITATION.cff`. Final arXiv details, author list, and DOI/arXiv identifiers are pending and marked with TODO placeholders.
+If you use SGHA in your research, please cite our paper:
+
+Sarvesh Gharat and Junpei Komiyama. **SGHA: Evidence-Grounded Research Problem Discovery with Local Language Models.** arXiv:2608.17501, 2026.
+
+[Read the paper](https://arxiv.org/abs/2608.17501) · [BibTeX](CITATION.bib)
 
 ## License
 
